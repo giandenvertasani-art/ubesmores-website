@@ -26,9 +26,6 @@ header {
     gap: 15px;
 }
 
-.logo {
-    width: 100px;
-    height: auto;
 }
 
 .brand h2 {
@@ -87,9 +84,11 @@ button:hover {
     border-radius: 15px;
 }
 .logo {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
+    width: 90px;
+    max-width: 90px;
+    height: 90px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 .hero-content {
     max-width: 1200px;
