@@ -1389,3 +1389,48 @@ textarea {
     animation: none;
   }
 }
+/* Fix oversized story image */
+
+.story {
+  grid-template-columns: minmax(300px, 480px) 1fr;
+  justify-content: center;
+  gap: clamp(45px, 7vw, 100px);
+}
+
+.story-image {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 22px;
+}
+
+.story-image img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  object-position: center;
+}
+
+@media (max-width: 900px) {
+  .story {
+    grid-template-columns: 1fr;
+  }
+
+  .story-image {
+    max-width: 440px;
+  }
+
+  .story-image img {
+    height: 390px;
+  }
+}
+
+@media (max-width: 520px) {
+  .story-image {
+    max-width: 340px;
+  }
+
+  .story-image img {
+    height: 300px;
+  }
+}
