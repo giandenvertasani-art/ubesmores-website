@@ -1328,3 +1328,182 @@ body > footer > small {
     animation: none;
   }
 }
+/* ========================================
+   EIGHT-FLAVOR COOKIE MENU
+======================================== */
+
+.cookie-menu {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  position: relative;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  overflow: hidden;
+  background: #fffaf1;
+  border: 1px solid rgba(91, 43, 130, 0.09);
+  border-radius: 28px;
+  box-shadow: 0 15px 40px rgba(64, 27, 83, 0.09);
+  text-align: left;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.menu-card:hover {
+  box-shadow: 0 25px 55px rgba(64, 27, 83, 0.18);
+  transform: translateY(-8px);
+}
+
+.menu-card.signature {
+  color: white;
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(255, 255, 255, 0.18),
+      transparent 30%
+    ),
+    linear-gradient(
+      145deg,
+      var(--ube),
+      var(--deep)
+    );
+}
+
+.menu-card.signature p {
+  color: #e1cde9;
+}
+
+.menu-icon {
+  width: 82px;
+  height: 82px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 25px;
+  background: #eee0f5;
+  border-radius: 50%;
+  font-size: 39px;
+}
+
+.menu-card.signature .menu-icon {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.menu-card h3 {
+  min-height: 58px;
+  margin: 0 0 12px;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.menu-card p {
+  flex: 1;
+  margin: 0 0 25px;
+  color: #746278;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.menu-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(91, 43, 130, 0.12);
+}
+
+.menu-card.signature .menu-card-bottom {
+  border-top-color: rgba(255, 255, 255, 0.17);
+}
+
+.menu-card-bottom strong {
+  color: var(--ube);
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+}
+
+.menu-card.signature .menu-card-bottom strong {
+  color: #f6c878;
+}
+
+.menu-card-bottom a {
+  padding: 10px 18px;
+  color: white;
+  background: var(--ube);
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.menu-card-bottom a:hover {
+  background: var(--deep);
+  transform: translateY(-2px);
+}
+
+.menu-card.signature .menu-card-bottom a {
+  color: var(--ube);
+  background: #fff4db;
+}
+
+.menu-badge {
+  position: absolute;
+  top: 20px;
+  right: -32px;
+  width: 125px;
+  padding: 7px;
+  color: var(--ube);
+  background: #f6c878;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(40deg);
+}
+
+.menu-badge.bestseller {
+  color: white;
+  background: var(--caramel);
+}
+
+/* Flavor selector */
+
+#flavor {
+  cursor: pointer;
+}
+
+#flavor option {
+  color: var(--ink);
+}
+
+/* Menu tablet layout */
+
+@media (max-width: 1050px) {
+  .cookie-menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Menu phone layout */
+
+@media (max-width: 600px) {
+  .cookie-menu {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-card {
+    min-height: 320px;
+  }
+}
