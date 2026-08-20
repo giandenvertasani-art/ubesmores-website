@@ -19,6 +19,7 @@ const cookiePrice = 89;
 // =========================
 
 function updateTotal() {
+
     let quantity = Number(quantityInput.value);
 
     if (quantity < 1) {
@@ -32,6 +33,7 @@ function updateTotal() {
     totalInput.value = "₱" + total;
 }
 
+
 quantityInput.addEventListener("input", updateTotal);
 
 
@@ -40,6 +42,7 @@ quantityInput.addEventListener("input", updateTotal);
 // =========================
 
 function updateAddressField() {
+
     if (methodSelect.value === "Delivery") {
 
         addressGroup.style.display = "block";
@@ -53,7 +56,11 @@ function updateAddressField() {
     }
 }
 
-methodSelect.addEventListener("change", updateAddressField);
+
+methodSelect.addEventListener(
+    "change",
+    updateAddressField
+);
 
 
 // =========================
@@ -61,17 +68,26 @@ methodSelect.addEventListener("change", updateAddressField);
 // =========================
 
 function setMinimumDate() {
+
     const tomorrow = new Date();
 
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setDate(
+        tomorrow.getDate() + 1
+    );
 
-    const year = tomorrow.getFullYear();
-    const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
-    const day = String(tomorrow.getDate()).padStart(2, "0");
+    const year =
+        tomorrow.getFullYear();
 
-    const minimumDate = `${year}-${month}-${day}`;
+    const month =
+        String(tomorrow.getMonth() + 1)
+            .padStart(2, "0");
 
-    dateInput.min = minimumDate;
+    const day =
+        String(tomorrow.getDate())
+            .padStart(2, "0");
+
+    dateInput.min =
+        `${year}-${month}-${day}`;
 }
 
 
@@ -79,67 +95,92 @@ function setMinimumDate() {
 // SUBMIT ORDER
 // =========================
 
-orderForm.addEventListener("submit", async function(event) {
+orderForm.addEventListener(
+    "submit",
+    async function(event) {
 
-    event.preventDefault();
+        event.preventDefault();
 
-    const selectedDate = dateInput.value;
+        successMessage.textContent = "";
 
-    if (!selectedDate) {
-        successMessage.textContent =
-            "Please select your preferred order date.";
+        const selectedDate =
+            dateInput.value;
 
-        return;
-    }
+        const minimumDate =
+            dateInput.min;
 
-    const minimumDate = dateInput.min;
 
-    if (selectedDate < minimumDate) {
-        successMessage.textContent =
-            "Please select a date at least 1 day in advance.";
-
-        return;
-    }
-
-    updateTotal();
-
-    const formData = new FormData(orderForm);
-
-    try {
-
-        const response = await fetch(orderForm.action, {
-            method: "POST",
-            body: formData,
-            headers: {
-                "Accept": "application/json"
-            }
-        });
-
-        if (response.ok) {
+        if (!selectedDate) {
 
             successMessage.textContent =
-                "Order submitted successfully! 💜🍪 We’ll contact you shortly to confirm your order.";
+                "Please select your preferred order date.";
 
-            orderForm.reset();
-
-            quantityInput.value = 1;
-
-            updateTotal();
-            updateAddressField();
-            setMinimumDate();
-
-        } else {
-
-            successMessage.textContent =
-                "Something went wrong. Please try again.";
+            return;
         }
 
-    } catch (error) {
 
-        successMessage.textContent =
-            "Unable to submit your order. Please check your internet connection and try again.";
+        if (selectedDate < minimumDate) {
+
+            successMessage.textContent =
+                "Please select a date at least 1 day in advance.";
+
+            return;
+        }
+
+
+        updateTotal();
+
+
+        const formData =
+            new FormData(orderForm);
+
+
+        try {
+
+            const response =
+                await fetch(
+                    orderForm.action,
+                    {
+                        method: "POST",
+
+                        body: formData,
+
+                        headers: {
+                            "Accept": "application/json"
+                        }
+                    }
+                );
+
+
+            if (response.ok) {
+
+                successMessage.textContent =
+                    "Order submitted successfully! 💜🍪 We’ll contact you shortly to confirm your order.";
+
+                orderForm.reset();
+
+                quantityInput.value = 1;
+
+                updateTotal();
+                updateAddressField();
+                setMinimumDate();
+
+            } else {
+
+                successMessage.textContent =
+                    "Something went wrong. Please try again.";
+
+            }
+
+        } catch (error) {
+
+            successMessage.textContent =
+                "Unable to submit your order. Please check your internet connection and try again.";
+
+        }
+
     }
-});
+);
 
 
 // =========================
