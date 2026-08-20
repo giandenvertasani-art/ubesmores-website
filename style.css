@@ -1,9 +1,32 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #fff8fc;
     color: #333;
 }
+
+section {
+    padding: 70px 20px;
+    text-align: center;
+    scroll-margin-top: 30px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
     background-color: #6f2c91;
@@ -18,6 +41,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 30px;
 }
 
 .brand {
@@ -26,11 +51,23 @@ header {
     gap: 15px;
 }
 
+.logo {
+    width: 90px;
+    height: 90px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
 }
 
 .brand h2 {
     margin: 0;
 }
+
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     display: flex;
@@ -47,49 +84,44 @@ nav a:hover {
     text-decoration: underline;
 }
 
-section {
-    padding: 60px 20px;
-    text-align: center;
+
+/* =========================
+   BUTTONS
+========================= */
+
+button,
+.button-link {
+    display: inline-block;
+
+    background-color: #6f2c91;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: 15px 30px;
+
+    font-size: 16px;
+    text-decoration: none;
+
+    cursor: pointer;
 }
+
+button:hover,
+.button-link:hover {
+    background-color: #4a1c61;
+}
+
+
+/* =========================
+   HOME
+========================= */
 
 #home {
     background-color: #f3e5f5;
     padding: 100px 20px;
 }
 
-#home h1 {
-    font-size: 40px;
-    color: #6f2c91;
-}
-
-button {
-    background-color: #6f2c91;
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #4a1c61;
-}
-
-.product {
-    background-color: white;
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 15px;
-}
-.logo {
-    width: 50px;
-    max-width: 50px;
-    height: 50px;
-    object-fit: contain;
-    flex-shrink: 0;
-}
 .hero-content {
     max-width: 1200px;
     margin: auto;
@@ -97,6 +129,7 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 50px;
 }
 
@@ -107,12 +140,15 @@ button:hover {
 
 .hero-text h1 {
     font-size: 48px;
+    color: #6f2c91;
+
     margin-bottom: 20px;
 }
 
 .hero-text p {
     font-size: 18px;
     line-height: 1.6;
+
     margin-bottom: 25px;
 }
 
@@ -125,30 +161,22 @@ button:hover {
     width: 100%;
     max-width: 450px;
     height: auto;
+
     border-radius: 25px;
 }
 
-@media (max-width: 768px) {
 
-    .hero-content {
-        flex-direction: column;
-    }
+/* =========================
+   SECTION HEADINGS
+========================= */
 
-    .hero-text {
-        text-align: center;
-    }
-
-    .hero-text h1 {
-        font-size: 36px;
-    }
-}
-#products {
-    background-color: #fff8fc;
-}
-
-#products h2 {
+#products h2,
+#about h2,
+#order h2,
+#contact h2 {
     font-size: 36px;
     color: #6f2c91;
+
     margin-bottom: 10px;
 }
 
@@ -157,19 +185,33 @@ button:hover {
     margin-bottom: 40px;
 }
 
+
+/* =========================
+   PRODUCTS
+========================= */
+
+#products {
+    background-color: #fff8fc;
+}
+
 .product-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+
     gap: 30px;
 }
 
 .product-card {
     background-color: white;
+
     width: 300px;
     padding: 20px;
+
     border-radius: 20px;
+
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
     transition: transform 0.3s ease;
 }
 
@@ -180,13 +222,17 @@ button:hover {
 .product-card img {
     width: 100%;
     height: 250px;
+
     object-fit: cover;
+
     border-radius: 15px;
 }
 
 .product-card h3 {
     color: #6f2c91;
+
     font-size: 24px;
+
     margin-bottom: 10px;
 }
 
@@ -198,45 +244,68 @@ button:hover {
 .price {
     font-size: 24px;
     font-weight: bold;
+
     color: #6f2c91;
 }
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-text {
+    max-width: 700px;
+
+    margin: auto;
+
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   ORDER FORM
+========================= */
+
 #order {
     background-color: #f3e5f5;
 }
 
-#order h2 {
-    font-size: 36px;
-    color: #6f2c91;
-    margin-bottom: 10px;
-}
-
 .order-form {
     max-width: 550px;
+
     margin: 30px auto 0;
-    background-color: white;
     padding: 30px;
+
+    background-color: white;
+
     border-radius: 20px;
+
     text-align: left;
+
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .order-form label {
     display: block;
+
     margin-top: 18px;
     margin-bottom: 8px;
+
     font-weight: bold;
-    color: #333;
 }
 
 .order-form input,
 .order-form select,
 .order-form textarea {
     width: 100%;
+
     padding: 13px;
+
     border: 1px solid #ccc;
     border-radius: 8px;
+
     font-size: 16px;
-    box-sizing: border-box;
 }
 
 .order-form input:focus,
@@ -250,41 +319,65 @@ button:hover {
     width: 100%;
     margin-top: 25px;
 }
+
+.order-total {
+    margin-top: 12px;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    color: #6f2c91;
+}
+
+#address-group {
+    display: none;
+}
+
+
+/* =========================
+   SUCCESS MESSAGE
+========================= */
+
 #success-message {
     max-width: 550px;
+
     margin: 20px auto 0;
     padding: 18px 20px;
+
     border-radius: 12px;
-    font-weight: bold;
-    text-align: center;
+    border: 1px solid #d8b4e2;
 
     background-color: #f3e5f5;
     color: #6f2c91;
-    border: 1px solid #d8b4e2;
-}   .order-total {
-    margin-top: 12px;
-    font-size: 22px;
+
     font-weight: bold;
-    color: #6f2c91;
-}#address-group {
+    text-align: center;
+}
+
+#success-message:empty {
     display: none;
-}#contact {
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+#contact {
     background-color: #fff8fc;
     min-height: 70vh;
 }
 
-#contact h2 {
-    font-size: 36px;
-    color: #6f2c91;
-    margin-bottom: 10px;
-}
-
 .contact-container {
     max-width: 600px;
+
     margin: 30px auto 0;
-    background-color: white;
     padding: 30px;
+
+    background-color: white;
+
     border-radius: 20px;
+
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
@@ -293,17 +386,34 @@ button:hover {
     font-size: 17px;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
     background-color: #6f2c91;
     color: white;
+
     text-align: center;
+
     padding: 20px;
 }
 
 footer p {
     margin: 0;
 }
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 768px) {
+
+    header {
+        padding: 15px;
+    }
 
     .header-container {
         flex-direction: column;
@@ -314,15 +424,20 @@ footer p {
         justify-content: center;
     }
 
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+
     nav {
         flex-wrap: wrap;
         justify-content: center;
+
         gap: 15px;
     }
 
     .hero-content {
         flex-direction: column;
-        text-align: center;
     }
 
     .hero-text {
@@ -349,16 +464,9 @@ footer p {
 
     .contact-container {
         width: 90%;
-        box-sizing: border-box;
     }
 
     section {
         padding: 50px 15px;
     }
-}
-header .logo {
-    width: 90px !important;
-    max-width: 90px !important;
-    height: 90px !important;
-    object-fit: contain;
 }
