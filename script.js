@@ -1,395 +1,383 @@
-// =========================
-// ORDER FORM ELEMENTS
-// =========================
+document.addEventListener("DOMContentLoaded", function () {
 
-const orderForm =
-    document.querySelector(".order-form");
+    // =========================
+    // ORDER FORM
+    // =========================
 
-const successMessage =
-    document.querySelector("#success-message");
+    const orderForm =
+        document.querySelector(".order-form");
 
-const quantityInput =
-    document.querySelector("#quantity");
+    const successMessage =
+        document.querySelector("#success-message");
 
-const totalPrice =
-    document.querySelector("#total-price");
+    const quantityInput =
+        document.querySelector("#quantity");
 
-const totalInput =
-    document.querySelector("#total-input");
+    const totalPrice =
+        document.querySelector("#total-price");
 
-const methodSelect =
-    document.querySelector("#method");
+    const totalInput =
+        document.querySelector("#total-input");
 
-const addressGroup =
-    document.querySelector("#address-group");
+    const methodSelect =
+        document.querySelector("#method");
 
-const addressInput =
-    document.querySelector("#address");
+    const addressGroup =
+        document.querySelector("#address-group");
 
-const dateInput =
-    document.querySelector("#date");
+    const addressInput =
+        document.querySelector("#address");
 
-const cookiePrice = 89;
+    const dateInput =
+        document.querySelector("#date");
 
-
-
-// =========================
-// TOTAL PRICE
-// =========================
-
-function updateTotal() {
-
-    let quantity =
-        Number(quantityInput.value);
-
-    if (quantity < 1) {
-
-        quantity = 1;
-
-        quantityInput.value = 1;
-    }
-
-    const total =
-        quantity * cookiePrice;
-
-    totalPrice.textContent =
-        total;
-
-    totalInput.value =
-        "₱" + total;
-}
+    const cookiePrice = 89;
 
 
-quantityInput.addEventListener(
-    "input",
-    updateTotal
-);
+    // =========================
+    // TOTAL PRICE
+    // =========================
 
+    function updateTotal() {
 
+        let quantity =
+            Number(quantityInput.value);
 
-// =========================
-// PICKUP / DELIVERY
-// =========================
-
-function updateAddressField() {
-
-    if (
-        methodSelect.value === "Delivery"
-    ) {
-
-        addressGroup.style.display =
-            "block";
-
-        addressInput.required =
-            true;
-
-    } else {
-
-        addressGroup.style.display =
-            "none";
-
-        addressInput.required =
-            false;
-
-        addressInput.value =
-            "";
-    }
-}
-
-
-methodSelect.addEventListener(
-    "change",
-    updateAddressField
-);
-
-
-
-// =========================
-// MINIMUM ORDER DATE
-// =========================
-
-function setMinimumDate() {
-
-    const tomorrow =
-        new Date();
-
-    tomorrow.setDate(
-        tomorrow.getDate() + 1
-    );
-
-    const year =
-        tomorrow.getFullYear();
-
-    const month =
-        String(
-            tomorrow.getMonth() + 1
-        ).padStart(2, "0");
-
-    const day =
-        String(
-            tomorrow.getDate()
-        ).padStart(2, "0");
-
-    dateInput.min =
-        `${year}-${month}-${day}`;
-}
-
-
-
-// =========================
-// ORDER SUBMISSION
-// =========================
-
-orderForm.addEventListener(
-    "submit",
-    async function (event) {
-
-        event.preventDefault();
-
-        successMessage.textContent =
-            "";
-
-
-        const selectedDate =
-            dateInput.value;
-
-        const minimumDate =
-            dateInput.min;
-
-
-        if (!selectedDate) {
-
-            successMessage.textContent =
-                "Please select your preferred order date.";
-
-            return;
+        if (quantity < 1) {
+            quantity = 1;
+            quantityInput.value = 1;
         }
 
+        const total =
+            quantity * cookiePrice;
+
+        totalPrice.textContent =
+            total;
+
+        totalInput.value =
+            "₱" + total;
+    }
+
+
+    quantityInput.addEventListener(
+        "input",
+        updateTotal
+    );
+
+
+    // =========================
+    // PICKUP / DELIVERY
+    // =========================
+
+    function updateAddressField() {
 
         if (
-            selectedDate < minimumDate
+            methodSelect.value === "Delivery"
         ) {
 
-            successMessage.textContent =
-                "Please select a date at least 1 day in advance.";
+            addressGroup.style.display =
+                "block";
 
-            return;
+            addressInput.required =
+                true;
+
+        } else {
+
+            addressGroup.style.display =
+                "none";
+
+            addressInput.required =
+                false;
+
+            addressInput.value =
+                "";
         }
+    }
 
 
-        updateTotal();
+    methodSelect.addEventListener(
+        "change",
+        updateAddressField
+    );
 
 
-        const formData =
-            new FormData(orderForm);
+    // =========================
+    // MINIMUM ORDER DATE
+    // =========================
+
+    function setMinimumDate() {
+
+        const tomorrow =
+            new Date();
+
+        tomorrow.setDate(
+            tomorrow.getDate() + 1
+        );
+
+        const year =
+            tomorrow.getFullYear();
+
+        const month =
+            String(
+                tomorrow.getMonth() + 1
+            ).padStart(2, "0");
+
+        const day =
+            String(
+                tomorrow.getDate()
+            ).padStart(2, "0");
+
+        dateInput.min =
+            `${year}-${month}-${day}`;
+    }
 
 
-        try {
+    // =========================
+    // FORM SUBMISSION
+    // =========================
 
-            const response =
-                await fetch(
-                    orderForm.action,
-                    {
-                        method: "POST",
+    orderForm.addEventListener(
+        "submit",
+        async function (event) {
 
-                        body: formData,
+            event.preventDefault();
 
-                        headers: {
-                            "Accept":
-                                "application/json"
+            successMessage.textContent =
+                "";
+
+            const selectedDate =
+                dateInput.value;
+
+            const minimumDate =
+                dateInput.min;
+
+
+            if (!selectedDate) {
+
+                successMessage.textContent =
+                    "Please select your preferred order date.";
+
+                return;
+            }
+
+
+            if (
+                selectedDate < minimumDate
+            ) {
+
+                successMessage.textContent =
+                    "Please select a date at least 1 day in advance.";
+
+                return;
+            }
+
+
+            updateTotal();
+
+
+            const formData =
+                new FormData(orderForm);
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        orderForm.action,
+                        {
+                            method: "POST",
+
+                            body: formData,
+
+                            headers: {
+                                "Accept":
+                                    "application/json"
+                            }
                         }
-                    }
-                );
+                    );
 
 
-            if (response.ok) {
+                if (response.ok) {
+
+                    successMessage.textContent =
+                        "Order submitted successfully! 💜🍪 We’ll contact you shortly to confirm your order.";
+
+                    orderForm.reset();
+
+                    quantityInput.value =
+                        1;
+
+                    updateTotal();
+
+                    updateAddressField();
+
+                    setMinimumDate();
+
+                } else {
+
+                    successMessage.textContent =
+                        "Something went wrong. Please try again.";
+
+                }
+
+            } catch (error) {
 
                 successMessage.textContent =
-                    "Order submitted successfully! 💜🍪 We’ll contact you shortly to confirm your order.";
-
-
-                orderForm.reset();
-
-                quantityInput.value =
-                    1;
-
-
-                updateTotal();
-
-                updateAddressField();
-
-                setMinimumDate();
-
-            } else {
-
-                successMessage.textContent =
-                    "Something went wrong. Please try again.";
+                    "Unable to submit your order. Please check your internet connection and try again.";
 
             }
-
-        } catch (error) {
-
-            successMessage.textContent =
-                "Unable to submit your order. Please check your internet connection and try again.";
 
         }
-
-    }
-);
-
-
-
-// =========================
-// UBE ASSISTANT
-// =========================
-
-const chatbotToggle =
-    document.querySelector(
-        "#chatbot-toggle"
-    );
-
-const chatbotWindow =
-    document.querySelector(
-        "#chatbot-window"
-    );
-
-const chatbotClose =
-    document.querySelector(
-        "#chatbot-close"
-    );
-
-const chatbotMessages =
-    document.querySelector(
-        "#chatbot-messages"
-    );
-
-const faqButtons =
-    document.querySelectorAll(
-        ".faq-button"
     );
 
 
+    // =========================
+    // UBE ASSISTANT CHATBOT
+    // =========================
 
-const faqAnswers = {
-
-    price:
-        "Our UbeSmores Cookie is ₱89 each. 🍪💜",
-
-    delivery:
-        "Yes! Delivery is available. Choose Delivery in the order form and enter your delivery address.",
-
-    order:
-        "Click Order Now, enter your details, select the quantity and order method, then press Submit Order.",
-
-    advance:
-        "Please order at least 1 day in advance so we have enough time to prepare your cookies.",
-
-    pickup:
-        "Yes! Pickup is available. Choose Pickup under Order Method when placing your order."
-
-};
-
-
-
-// OPEN CHATBOT
-
-chatbotToggle.addEventListener(
-    "click",
-    function () {
-
-        chatbotWindow.classList.toggle(
-            "active"
+    const chatbotToggle =
+        document.querySelector(
+            "#chatbot-toggle"
         );
 
-    }
-);
-
-
-
-// CLOSE CHATBOT
-
-chatbotClose.addEventListener(
-    "click",
-    function () {
-
-        chatbotWindow.classList.remove(
-            "active"
+    const chatbotWindow =
+        document.querySelector(
+            "#chatbot-window"
         );
 
-    }
-);
+    const chatbotClose =
+        document.querySelector(
+            "#chatbot-close"
+        );
+
+    const chatbotMessages =
+        document.querySelector(
+            "#chatbot-messages"
+        );
+
+    const faqButtons =
+        document.querySelectorAll(
+            ".faq-button"
+        );
 
 
+    const faqAnswers = {
 
-// FAQ RESPONSES
+        price:
+            "Our UbeSmores Cookie is ₱89 each. 🍪💜",
 
-faqButtons.forEach(
-    function (button) {
+        delivery:
+            "Yes! We offer delivery. Select Delivery in the order form and enter your delivery address.",
 
-        button.addEventListener(
-            "click",
-            function () {
+        order:
+            "Click Order Now, fill in your information, select your quantity and order method, then press Submit Order.",
 
-                const question =
-                    button.textContent.trim();
+        advance:
+            "Please place your order at least 1 day in advance so we have enough time to prepare your cookies.",
 
-                const answerKey =
-                    button.dataset.question;
+        pickup:
+            "Yes! Pickup is available. Select Pickup under Order Method when placing your order."
+
+    };
 
 
-                const userMessage =
-                    document.createElement(
-                        "div"
+    // OPEN CHATBOT
+
+    chatbotToggle.addEventListener(
+        "click",
+        function () {
+
+            chatbotWindow.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+    // CLOSE CHATBOT
+
+    chatbotClose.addEventListener(
+        "click",
+        function () {
+
+            chatbotWindow.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    // FAQ BUTTONS
+
+    faqButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    const question =
+                        button.textContent.trim();
+
+                    const answerKey =
+                        button.dataset.question;
+
+
+                    const userMessage =
+                        document.createElement(
+                            "div"
+                        );
+
+                    userMessage.className =
+                        "user-message";
+
+                    userMessage.textContent =
+                        question;
+
+
+                    const botMessage =
+                        document.createElement(
+                            "div"
+                        );
+
+                    botMessage.className =
+                        "bot-message";
+
+                    botMessage.textContent =
+                        faqAnswers[answerKey];
+
+
+                    chatbotMessages.appendChild(
+                        userMessage
                     );
 
-                userMessage.className =
-                    "user-message";
-
-                userMessage.textContent =
-                    question;
-
-
-                const botMessage =
-                    document.createElement(
-                        "div"
+                    chatbotMessages.appendChild(
+                        botMessage
                     );
 
-                botMessage.className =
-                    "bot-message";
 
-                botMessage.textContent =
-                    faqAnswers[
-                        answerKey
-                    ];
+                    chatbotMessages.scrollTop =
+                        chatbotMessages.scrollHeight;
 
+                }
+            );
 
-                chatbotMessages.appendChild(
-                    userMessage
-                );
-
-                chatbotMessages.appendChild(
-                    botMessage
-                );
+        }
+    );
 
 
-                chatbotMessages.scrollTop =
-                    chatbotMessages.scrollHeight;
+    // =========================
+    // INITIAL SETUP
+    // =========================
 
-            }
+    updateTotal();
+    updateAddressField();
+    setMinimumDate();
 
-        );
+    console.log(
+        "Ube Assistant loaded successfully 🍪"
+    );
 
-    }
-);
-
-
-
-// =========================
-// INITIAL PAGE SETUP
-// =========================
-
-updateTotal();
-
-updateAddressField();
-
-setMinimumDate();
+});
