@@ -10,15 +10,24 @@ document.addEventListener("DOMContentLoaded", function () {
     menuToggle.addEventListener("click", function () {
       const isOpen = navMenu.classList.toggle("open");
 
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
     });
 
-    document.querySelectorAll("#navMenu a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navMenu.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
+    document
+      .querySelectorAll("#navMenu a")
+      .forEach(function (link) {
+        link.addEventListener("click", function () {
+          navMenu.classList.remove("open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+        });
       });
-    });
   }
 
 
@@ -26,7 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
      SCROLL ANIMATIONS
   ======================================== */
 
-  const revealElements = document.querySelectorAll(".reveal");
+  const revealElements =
+    document.querySelectorAll(".reveal");
 
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
@@ -52,11 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /*
-   * Show the first section immediately.
-   * This prevents the hero text and image from staying hidden.
-   */
-
   document
     .querySelectorAll(".hero .reveal")
     .forEach(function (element) {
@@ -71,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const yearElement = document.getElementById("year");
 
   if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
+    yearElement.textContent =
+      new Date().getFullYear();
   }
 
 
@@ -79,47 +85,200 @@ document.addEventListener("DOMContentLoaded", function () {
      ORDER FORM ELEMENTS
   ======================================== */
 
-  const orderForm = document.getElementById("orderForm");
-  const quantityInput = document.getElementById("quantity");
-  const totalPrice = document.getElementById("total-price");
-  const totalInput = document.getElementById("total-input");
-  const orderMethod = document.getElementById("method");
-  const addressGroup = document.getElementById("address-group");
-  const addressInput = document.getElementById("address");
-  const dateInput = document.getElementById("date");
-  const successMessage = document.getElementById("success-message");
+  const orderForm =
+    document.getElementById("orderForm");
 
-  const COOKIE_PRICE = 89;
+  const flavorSelect =
+    document.getElementById("flavor");
+
+  const quantityInput =
+    document.getElementById("quantity");
+
+  const unitPriceDisplay =
+    document.getElementById("unit-price");
+
+  const totalPriceDisplay =
+    document.getElementById("total-price");
+
+  const unitPriceInput =
+    document.getElementById("unit-price-input");
+
+  const totalInput =
+    document.getElementById("total-input");
+
+  const orderMethod =
+    document.getElementById("method");
+
+  const addressGroup =
+    document.getElementById("address-group");
+
+  const addressInput =
+    document.getElementById("address");
+
+  const dateInput =
+    document.getElementById("date");
+
+  const successMessage =
+    document.getElementById("success-message");
 
 
   /* ========================================
-     AUTOMATIC TOTAL
+     FLAVOR INFORMATION
   ======================================== */
 
-  function updateTotal() {
-    if (!quantityInput || !totalPrice || !totalInput) {
-      return;
+  const flavorInformation = {
+    "ube-smores": {
+      name: "UbeSmores Cookie",
+      price: 89
+    },
+
+    "chocolate-chunk": {
+      name: "Classic Chocolate Chunk",
+      price: 79
+    },
+
+    "cookies-cream": {
+      name: "Cookies & Cream",
+      price: 85
+    },
+
+    "red-velvet": {
+      name: "Red Velvet Cream Cheese",
+      price: 95
+    },
+
+    "matcha": {
+      name: "Matcha White Chocolate",
+      price: 95
+    },
+
+    "biscoff": {
+      name: "Biscoff Caramel Lava",
+      price: 99
+    },
+
+    "salted-caramel": {
+      name: "Salted Caramel Pretzel",
+      price: 89
+    },
+
+    "classic-smores": {
+      name: "Classic S’mores",
+      price: 89
+    }
+  };
+
+
+  /* ========================================
+     AUTOMATIC FLAVOR PRICE AND TOTAL
+  ======================================== */
+
+  function getSelectedPrice() {
+    if (!flavorSelect || !flavorSelect.value) {
+      return 0;
     }
 
-    let quantity = Number(quantityInput.value);
+    const selectedFlavor =
+      flavorInformation[flavorSelect.value];
 
-    if (!Number.isInteger(quantity) || quantity < 1) {
-      quantity = 1;
-      quantityInput.value = "1";
+    if (!selectedFlavor) {
+      return 0;
     }
 
-    const total = quantity * COOKIE_PRICE;
+    return selectedFlavor.price;
+  }
 
-    totalPrice.textContent = total.toLocaleString("en-PH");
-    totalInput.value = "₱" + total.toLocaleString("en-PH");
+  function updateOrderTotal() {
+    let quantity = 1;
+
+    if (quantityInput) {
+      quantity = Number(quantityInput.value);
+
+      if (
+        !Number.isInteger(quantity) ||
+        quantity < 1
+      ) {
+        quantity = 1;
+        quantityInput.value = "1";
+      }
+    }
+
+    const unitPrice = getSelectedPrice();
+    const totalPrice = unitPrice * quantity;
+
+    if (unitPriceDisplay) {
+      unitPriceDisplay.textContent =
+        unitPrice.toLocaleString("en-PH");
+    }
+
+    if (totalPriceDisplay) {
+      totalPriceDisplay.textContent =
+        totalPrice.toLocaleString("en-PH");
+    }
+
+    if (unitPriceInput) {
+      unitPriceInput.value =
+        "₱" + unitPrice.toLocaleString("en-PH");
+    }
+
+    if (totalInput) {
+      totalInput.value =
+        "₱" + totalPrice.toLocaleString("en-PH");
+    }
+  }
+
+  if (flavorSelect) {
+    flavorSelect.addEventListener(
+      "change",
+      updateOrderTotal
+    );
   }
 
   if (quantityInput) {
-    quantityInput.addEventListener("input", updateTotal);
-    quantityInput.addEventListener("change", updateTotal);
+    quantityInput.addEventListener(
+      "input",
+      updateOrderTotal
+    );
 
-    updateTotal();
+    quantityInput.addEventListener(
+      "change",
+      updateOrderTotal
+    );
   }
+
+  updateOrderTotal();
+
+
+  /* ========================================
+     MENU ORDER BUTTONS
+  ======================================== */
+
+  document
+    .querySelectorAll("[data-menu-flavor]")
+    .forEach(function (orderButton) {
+      orderButton.addEventListener(
+        "click",
+        function () {
+          const selectedFlavor =
+            orderButton.getAttribute(
+              "data-menu-flavor"
+            );
+
+          if (
+            flavorSelect &&
+            flavorInformation[selectedFlavor]
+          ) {
+            flavorSelect.value = selectedFlavor;
+
+            updateOrderTotal();
+
+            setTimeout(function () {
+              flavorSelect.focus();
+            }, 600);
+          }
+        }
+      );
+    });
 
 
   /* ========================================
@@ -127,22 +286,34 @@ document.addEventListener("DOMContentLoaded", function () {
   ======================================== */
 
   function updateOrderMethod() {
-    if (!orderMethod || !addressGroup || !addressInput) {
+    if (
+      !orderMethod ||
+      !addressGroup ||
+      !addressInput
+    ) {
       return;
     }
 
-    const isDelivery = orderMethod.value === "Delivery";
+    const deliverySelected =
+      orderMethod.value === "Delivery";
 
-    addressGroup.classList.toggle("show", isDelivery);
-    addressInput.required = isDelivery;
+    addressGroup.classList.toggle(
+      "show",
+      deliverySelected
+    );
 
-    if (!isDelivery) {
+    addressInput.required = deliverySelected;
+
+    if (!deliverySelected) {
       addressInput.value = "";
     }
   }
 
   if (orderMethod) {
-    orderMethod.addEventListener("change", updateOrderMethod);
+    orderMethod.addEventListener(
+      "change",
+      updateOrderMethod
+    );
 
     updateOrderMethod();
   }
@@ -154,8 +325,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function formatDateForInput(date) {
     const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+
+    const month = String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+    const day = String(
+      date.getDate()
+    ).padStart(2, "0");
 
     return year + "-" + month + "-" + day;
   }
@@ -165,121 +342,149 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    /*
-     * Earliest order date is tomorrow.
-     * This automatically prevents customers from choosing
-     * today or a past date.
-     */
+    const tomorrow = new Date();
 
-    const minimumDate = new Date();
+    tomorrow.setHours(0, 0, 0, 0);
+    tomorrow.setDate(tomorrow.getDate() + 1);
 
-    minimumDate.setHours(0, 0, 0, 0);
-    minimumDate.setDate(minimumDate.getDate() + 1);
+    const minimumDate =
+      formatDateForInput(tomorrow);
 
-    const minimumDateValue =
-      formatDateForInput(minimumDate);
-
-    dateInput.min = minimumDateValue;
+    dateInput.min = minimumDate;
 
     if (
       dateInput.value &&
-      dateInput.value < minimumDateValue
+      dateInput.value < minimumDate
     ) {
-      dateInput.value = minimumDateValue;
+      dateInput.value = "";
     }
   }
 
   setMinimumOrderDate();
 
   if (dateInput) {
-    dateInput.addEventListener("change", function () {
-      if (
-        dateInput.min &&
-        dateInput.value < dateInput.min
-      ) {
-        dateInput.value = "";
+    dateInput.addEventListener(
+      "change",
+      function () {
+        if (
+          dateInput.min &&
+          dateInput.value < dateInput.min
+        ) {
+          dateInput.value = "";
 
-        dateInput.setCustomValidity(
-          "Please select tomorrow or a later date."
-        );
+          dateInput.setCustomValidity(
+            "Please select tomorrow or a later date."
+          );
 
-        dateInput.reportValidity();
-      } else {
-        dateInput.setCustomValidity("");
+          dateInput.reportValidity();
+        } else {
+          dateInput.setCustomValidity("");
+        }
       }
-    });
+    );
   }
 
 
   /* ========================================
-     FORMSPREE ORDER SUBMISSION
+     FORMSPREE SUBMISSION
   ======================================== */
 
   if (orderForm) {
-    orderForm.addEventListener("submit", async function (event) {
-      event.preventDefault();
+    orderForm.addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
 
-      const submitButton =
-        orderForm.querySelector('button[type="submit"]');
+        const submitButton =
+          orderForm.querySelector(
+            'button[type="submit"]'
+          );
 
-      if (!orderForm.checkValidity()) {
-        orderForm.reportValidity();
-        return;
-      }
+        if (!orderForm.checkValidity()) {
+          orderForm.reportValidity();
+          return;
+        }
 
-      if (successMessage) {
-        successMessage.textContent =
-          "Submitting your order...";
+        if (!getSelectedPrice()) {
+          if (flavorSelect) {
+            flavorSelect.setCustomValidity(
+              "Please choose a cookie flavor."
+            );
 
-        successMessage.classList.remove("error");
-      }
+            flavorSelect.reportValidity();
 
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.innerHTML =
-          "Submitting order...";
-      }
-
-      try {
-        const formData = new FormData(orderForm);
-
-        const response = await fetch(orderForm.action, {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json"
+            flavorSelect.setCustomValidity("");
           }
-        });
 
-        if (!response.ok) {
-          throw new Error("Form submission failed.");
+          return;
         }
 
         if (successMessage) {
           successMessage.textContent =
-            "Thank you! Your UbeSmores Cookie order was submitted successfully. 💜";
+            "Submitting your order...";
+
+          successMessage.classList.remove(
+            "error"
+          );
         }
 
-        orderForm.reset();
-
-        updateTotal();
-        updateOrderMethod();
-        setMinimumOrderDate();
-      } catch (error) {
-        if (successMessage) {
-          successMessage.textContent =
-            "Sorry, your order could not be submitted. Please check your internet connection and try again.";
-
-          successMessage.classList.add("error");
-        }
-      } finally {
         if (submitButton) {
-          submitButton.disabled = false;
-          submitButton.innerHTML =
-            "Submit Order <span>→</span>";
+          submitButton.disabled = true;
+
+          submitButton.textContent =
+            "Submitting order...";
+        }
+
+        try {
+          const formData =
+            new FormData(orderForm);
+
+          const response = await fetch(
+            orderForm.action,
+            {
+              method: "POST",
+              body: formData,
+              headers: {
+                Accept: "application/json"
+              }
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error(
+              "Form submission failed."
+            );
+          }
+
+          if (successMessage) {
+            successMessage.textContent =
+              "Thank you! Your UbeSmores Cookie order was submitted successfully. 💜";
+          }
+
+          orderForm.reset();
+
+          updateOrderTotal();
+          updateOrderMethod();
+          setMinimumOrderDate();
+        } catch (error) {
+          if (successMessage) {
+            successMessage.textContent =
+              "Sorry, your order could not be submitted. Please check your connection and try again.";
+
+            successMessage.classList.add(
+              "error"
+            );
+          }
+        } finally {
+          if (submitButton) {
+            submitButton.disabled = false;
+
+            submitButton.innerHTML =
+              "Submit Order <span>→</span>";
+          }
         }
       }
-    });
+    );
   }
 
 
@@ -287,15 +492,21 @@ document.addEventListener("DOMContentLoaded", function () {
      CHATBOT ELEMENTS
   ======================================== */
 
-  const chatbot = document.getElementById("chatbot");
+  const chatbot =
+    document.getElementById("chatbot");
+
   const chatLauncher =
     document.getElementById("chatLauncher");
+
   const closeChat =
     document.getElementById("closeChat");
+
   const chatForm =
     document.getElementById("chatForm");
+
   const chatInput =
     document.getElementById("chatInput");
+
   const chatMessages =
     document.getElementById("chatMessages");
 
@@ -309,7 +520,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    chatbot.classList.toggle("open", showChat);
+    chatbot.classList.toggle(
+      "open",
+      showChat
+    );
+
     chatbot.setAttribute(
       "aria-hidden",
       String(!showChat)
@@ -323,19 +538,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (chatLauncher) {
-    chatLauncher.addEventListener("click", function () {
-      const chatbotIsOpen =
-        chatbot &&
-        chatbot.classList.contains("open");
+    chatLauncher.addEventListener(
+      "click",
+      function () {
+        const chatbotIsOpen =
+          chatbot &&
+          chatbot.classList.contains("open");
 
-      toggleChat(!chatbotIsOpen);
-    });
+        toggleChat(!chatbotIsOpen);
+      }
+    );
   }
 
   if (closeChat) {
-    closeChat.addEventListener("click", function () {
-      toggleChat(false);
-    });
+    closeChat.addEventListener(
+      "click",
+      function () {
+        toggleChat(false);
+      }
+    );
   }
 
 
@@ -343,30 +564,33 @@ document.addEventListener("DOMContentLoaded", function () {
      CHATBOT ANSWERS
   ======================================== */
 
-  const answers = {
-    price:
-      "One UbeSmores Cookie costs ₱89. Your total updates automatically when you change the quantity in the order form. 🍪",
+  const chatbotAnswers = {
+    greeting:
+      "Hi, cookie lover! 💜 Ask me about our eight flavors, prices, ordering, pickup, delivery, preferred date, or social-media accounts.",
+
+    flavors:
+      "We have eight flavors: UbeSmores, Classic Chocolate Chunk, Cookies & Cream, Red Velvet Cream Cheese, Matcha White Chocolate, Biscoff Caramel Lava, Salted Caramel Pretzel, and Classic S’mores. 🍪",
+
+    prices:
+      "Our prices are: UbeSmores ₱89, Chocolate Chunk ₱79, Cookies & Cream ₱85, Red Velvet ₱95, Matcha ₱95, Biscoff Caramel Lava ₱99, Salted Caramel Pretzel ₱89, and Classic S’mores ₱89.",
 
     order:
-      "To order, go to the order form, enter your information, choose pickup or delivery, select your preferred date, and press Submit Order. 💜",
+      "Choose a flavor from the menu or order form, enter the quantity and your details, choose pickup or delivery, select a preferred date, then press Submit Order.",
 
     delivery:
-      "Yes, delivery is available! Choose Delivery in the order form and enter your complete delivery address.",
+      "Delivery is available! Choose Delivery in the order form and enter your complete delivery address.",
 
     pickup:
-      "Yes, pickup is available. Choose Pickup under Order Method, and the delivery-address field will automatically disappear.",
+      "Pickup is available. Choose Pickup under Order Method, and the delivery-address field will stay hidden.",
 
-    advance:
-      "Please place your order at least one day in advance. The smart calendar only allows tomorrow or a later date.",
-
-    ingredients:
-      "Our signature cookie has a soft and chewy ube base, toasted marshmallow on top, and a delicious caramel drizzle.",
+    date:
+      "Please place your order at least one day in advance. The calendar allows tomorrow or a later date.",
 
     storage:
-      "Keep your cookies in an airtight container. Warm them briefly before eating for a soft and gooey experience!",
+      "Keep your cookies in an airtight container. Warm them briefly before eating for a soft and gooey experience.",
 
-    greeting:
-      "Hi, cookie lover! 💜 Ask me about our price, cookie, ordering, pickup, delivery, preferred date, or storage.",
+    socials:
+      "Follow us on Facebook at Ube.Smores.Cookie, Instagram at @ubesmoresc.o, and X at @UbeSmoresC0. You can tap the social cards near the bottom of the website.",
 
     thanks:
       "You’re very welcome! Have an ube-lievable day. ♡"
@@ -377,76 +601,9 @@ document.addEventListener("DOMContentLoaded", function () {
      CHOOSE CHATBOT REPLY
   ======================================== */
 
-  function getReply(message) {
-    const text = message.toLowerCase().trim();
-
-    if (
-      text.includes("price") ||
-      text.includes("cost") ||
-      text.includes("magkano") ||
-      text.includes("how much") ||
-      text.includes("₱")
-    ) {
-      return answers.price;
-    }
-
-    if (
-      text.includes("delivery") ||
-      text.includes("deliver") ||
-      text.includes("shipping") ||
-      text.includes("address")
-    ) {
-      return answers.delivery;
-    }
-
-    if (
-      text.includes("pickup") ||
-      text.includes("pick up") ||
-      text.includes("claim")
-    ) {
-      return answers.pickup;
-    }
-
-    if (
-      text.includes("advance") ||
-      text.includes("early") ||
-      text.includes("date") ||
-      text.includes("when")
-    ) {
-      return answers.advance;
-    }
-
-    if (
-      text.includes("order") ||
-      text.includes("buy") ||
-      text.includes("purchase") ||
-      text.includes("bili")
-    ) {
-      return answers.order;
-    }
-
-    if (
-      text.includes("inside") ||
-      text.includes("ingredient") ||
-      text.includes("flavor") ||
-      text.includes("cookie") ||
-      text.includes("ube") ||
-      text.includes("mallow") ||
-      text.includes("marshmallow") ||
-      text.includes("caramel")
-    ) {
-      return answers.ingredients;
-    }
-
-    if (
-      text.includes("store") ||
-      text.includes("storage") ||
-      text.includes("keep") ||
-      text.includes("expire") ||
-      text.includes("shelf")
-    ) {
-      return answers.storage;
-    }
+  function getChatbotReply(message) {
+    const text =
+      message.toLowerCase().trim();
 
     if (
       text === "hi" ||
@@ -456,17 +613,89 @@ document.addEventListener("DOMContentLoaded", function () {
       text.includes("good afternoon") ||
       text.includes("good evening")
     ) {
-      return answers.greeting;
+      return chatbotAnswers.greeting;
+    }
+
+    if (
+      text.includes("price") ||
+      text.includes("cost") ||
+      text.includes("magkano") ||
+      text.includes("how much")
+    ) {
+      return chatbotAnswers.prices;
+    }
+
+    if (
+      text.includes("flavor") ||
+      text.includes("menu") ||
+      text.includes("available") ||
+      text.includes("cookie")
+    ) {
+      return chatbotAnswers.flavors;
+    }
+
+    if (
+      text.includes("delivery") ||
+      text.includes("deliver") ||
+      text.includes("shipping") ||
+      text.includes("address")
+    ) {
+      return chatbotAnswers.delivery;
+    }
+
+    if (
+      text.includes("pickup") ||
+      text.includes("pick up") ||
+      text.includes("claim")
+    ) {
+      return chatbotAnswers.pickup;
+    }
+
+    if (
+      text.includes("date") ||
+      text.includes("advance") ||
+      text.includes("early") ||
+      text.includes("when")
+    ) {
+      return chatbotAnswers.date;
+    }
+
+    if (
+      text.includes("order") ||
+      text.includes("buy") ||
+      text.includes("purchase") ||
+      text.includes("bili")
+    ) {
+      return chatbotAnswers.order;
+    }
+
+    if (
+      text.includes("store") ||
+      text.includes("storage") ||
+      text.includes("keep") ||
+      text.includes("expire")
+    ) {
+      return chatbotAnswers.storage;
+    }
+
+    if (
+      text.includes("facebook") ||
+      text.includes("instagram") ||
+      text.includes("social") ||
+      text.includes("twitter") ||
+      text === "x"
+    ) {
+      return chatbotAnswers.socials;
     }
 
     if (
       text.includes("thank") ||
       text.includes("salamat")
     ) {
-      return answers.thanks;
+      return chatbotAnswers.thanks;
     }
 
-    return "I’m still learning, but I’d love to help! Ask me about our ₱89 cookie, ordering, pickup, delivery, preferred date, or storage. 💜";
+    return "I’m still learning, but I’d love to help! Ask me about our flavors, prices, ordering, pickup, delivery, dates, or social-media accounts. 💜";
   }
 
 
@@ -474,7 +703,7 @@ document.addEventListener("DOMContentLoaded", function () {
      ADD CHAT MESSAGE
   ======================================== */
 
-  function addMessage(message, sender) {
+  function addChatMessage(message, sender) {
     if (!chatMessages) {
       return;
     }
@@ -488,6 +717,7 @@ document.addEventListener("DOMContentLoaded", function () {
     messageBubble.textContent = message;
 
     chatMessages.appendChild(messageBubble);
+
     chatMessages.scrollTop =
       chatMessages.scrollHeight;
   }
@@ -497,19 +727,25 @@ document.addEventListener("DOMContentLoaded", function () {
      SEND CHAT MESSAGE
   ======================================== */
 
-  function sendMessage(message) {
+  function sendChatMessage(message) {
     if (!message || !message.trim()) {
       return;
     }
 
-    addMessage(message.trim(), "user");
+    addChatMessage(
+      message.trim(),
+      "user"
+    );
 
     if (chatInput) {
       chatInput.value = "";
     }
 
     setTimeout(function () {
-      addMessage(getReply(message), "bot");
+      addChatMessage(
+        getChatbotReply(message),
+        "bot"
+      );
     }, 450);
   }
 
@@ -519,13 +755,16 @@ document.addEventListener("DOMContentLoaded", function () {
   ======================================== */
 
   if (chatForm) {
-    chatForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+    chatForm.addEventListener(
+      "submit",
+      function (event) {
+        event.preventDefault();
 
-      if (chatInput) {
-        sendMessage(chatInput.value);
+        if (chatInput) {
+          sendChatMessage(chatInput.value);
+        }
       }
-    });
+    );
   }
 
 
@@ -536,25 +775,26 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .querySelectorAll("[data-reply]")
     .forEach(function (button) {
-      button.addEventListener("click", function () {
-        const replyType =
-          button.getAttribute("data-reply");
+      button.addEventListener(
+        "click",
+        function () {
+          const replyType =
+            button.getAttribute("data-reply");
 
-        let question = button.textContent.trim();
-
-        if (replyType === "price") {
-          question = "How much is one cookie?";
+          if (replyType === "menu") {
+            sendChatMessage(
+              "What flavors are available?"
+            );
+          } else if (replyType === "order") {
+            sendChatMessage(
+              "How do I order?"
+            );
+          } else if (replyType === "price") {
+            sendChatMessage(
+              "What are the prices?"
+            );
+          }
         }
-
-        if (replyType === "order") {
-          question = "How do I order?";
-        }
-
-        if (replyType === "menu") {
-          question = "What is inside the cookie?";
-        }
-
-        sendMessage(question);
-      });
+      );
     });
 });
