@@ -9,11 +9,8 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <!-- PAGE TITLE -->
     <title>UbeSmores Cookie | Soft Ube S'mores Cookies</title>
 
-
-    <!-- BASIC SEO -->
     <meta
         name="description"
         content="Try UbeSmores Cookie — soft and chewy ube cookies topped with marshmallow and caramel drizzle. Order for pickup or delivery."
@@ -36,6 +33,7 @@
 
 
     <!-- OPEN GRAPH / SOCIAL SHARING -->
+
     <meta
         property="og:type"
         content="website"
@@ -72,7 +70,6 @@
     >
 
 
-    <!-- STYLESHEET -->
     <link
         rel="stylesheet"
         href="style.css"
@@ -106,25 +103,15 @@
 
             <nav>
 
-                <a href="#home">
-                    Home
-                </a>
+                <a href="#home">Home</a>
 
-                <a href="#products">
-                    Products
-                </a>
+                <a href="#products">Products</a>
 
-                <a href="#about">
-                    About
-                </a>
+                <a href="#about">About</a>
 
-                <a href="#order">
-                    Order
-                </a>
+                <a href="#order">Order</a>
 
-                <a href="#contact">
-                    Contact
-                </a>
+                <a href="#contact">Contact</a>
 
             </nav>
 
@@ -184,9 +171,7 @@
 
     <section id="products">
 
-        <h2>
-            Our Cookies
-        </h2>
+        <h2>Our Cookies</h2>
 
         <p class="section-subtitle">
             Freshly baked, soft, chewy, and made for your sweet cravings.
@@ -271,9 +256,6 @@
             method="POST"
         >
 
-
-            <!-- FULL NAME -->
-
             <label for="name">
                 Full Name
             </label>
@@ -287,9 +269,6 @@
             >
 
 
-
-            <!-- CONTACT NUMBER -->
-
             <label for="contact-number">
                 Contact Number
             </label>
@@ -302,9 +281,6 @@
                 required
             >
 
-
-
-            <!-- QUANTITY -->
 
             <label for="quantity">
                 Quantity
@@ -334,9 +310,6 @@
             >
 
 
-
-            <!-- ORDER METHOD -->
-
             <label for="method">
                 Order Method
             </label>
@@ -362,9 +335,6 @@
             </select>
 
 
-
-            <!-- DELIVERY ADDRESS -->
-
             <div id="address-group">
 
                 <label for="address">
@@ -381,9 +351,6 @@
             </div>
 
 
-
-            <!-- PREFERRED DATE -->
-
             <label for="date">
                 Preferred Date
             </label>
@@ -395,9 +362,6 @@
                 required
             >
 
-
-
-            <!-- SUBMIT -->
 
             <button type="submit">
                 Submit Order
@@ -473,109 +437,122 @@
 
 
 
-    <!-- JAVASCRIPT -->
-    <script src="script.js"></script>
-
-    
-</body>
     <!-- =========================
-     UBE ASSISTANT CHATBOT
-========================= -->
+         UBE ASSISTANT CHATBOT
+    ========================== -->
 
-<div class="chatbot">
+    <div class="chatbot">
 
-    <button
-        id="chatbot-toggle"
-        class="chatbot-toggle"
-        type="button"
-        aria-label="Open Ube Assistant"
-    >
-        💜
-    </button>
-
-
-    <div
-        id="chatbot-window"
-        class="chatbot-window"
-    >
-
-        <div class="chatbot-header">
-
-            <div>
-                <strong>Ube Assistant 💜</strong>
-                <p>Ask me about your order!</p>
-            </div>
-
-            <button
-                id="chatbot-close"
-                type="button"
-                aria-label="Close Ube Assistant"
-            >
-                ×
-            </button>
-
-        </div>
+        <button
+            id="chatbot-toggle"
+            class="chatbot-toggle"
+            type="button"
+            aria-label="Open Ube Assistant"
+        >
+            🍪
+        </button>
 
 
         <div
-            id="chatbot-messages"
-            class="chatbot-messages"
+            id="chatbot-window"
+            class="chatbot-window"
         >
 
-            <div class="bot-message">
-                Hi! I'm Ube Assistant 💜🍪
-                How can I help you today?
+            <div class="chatbot-header">
+
+                <div>
+
+                    <strong>
+                        Ube Assistant 🍪
+                    </strong>
+
+                    <p>
+                        How can I help you?
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="chatbot-close"
+                    type="button"
+                    aria-label="Close Ube Assistant"
+                >
+                    ×
+                </button>
+
             </div>
 
-        </div>
 
-
-        <div class="faq-buttons">
-
-            <button
-                type="button"
-                class="faq-button"
-                data-question="price"
+            <div
+                id="chatbot-messages"
+                class="chatbot-messages"
             >
-                How much is one cookie?
-            </button>
 
-            <button
-                type="button"
-                class="faq-button"
-                data-question="delivery"
-            >
-                Do you deliver?
-            </button>
+                <div class="bot-message">
+                    Hi! I'm Ube Assistant 🍪💜
+                    Ask me anything about our cookies or ordering.
+                </div>
 
-            <button
-                type="button"
-                class="faq-button"
-                data-question="order"
-            >
-                How do I order?
-            </button>
+            </div>
 
-            <button
-                type="button"
-                class="faq-button"
-                data-question="advance"
-            >
-                How early should I order?
-            </button>
 
-            <button
-                type="button"
-                class="faq-button"
-                data-question="pickup"
-            >
-                Do you offer pickup?
-            </button>
+            <div class="faq-buttons">
+
+                <button
+                    type="button"
+                    class="faq-button"
+                    data-question="price"
+                >
+                    How much is one cookie?
+                </button>
+
+
+                <button
+                    type="button"
+                    class="faq-button"
+                    data-question="delivery"
+                >
+                    Do you deliver?
+                </button>
+
+
+                <button
+                    type="button"
+                    class="faq-button"
+                    data-question="order"
+                >
+                    How do I order?
+                </button>
+
+
+                <button
+                    type="button"
+                    class="faq-button"
+                    data-question="advance"
+                >
+                    How early should I order?
+                </button>
+
+
+                <button
+                    type="button"
+                    class="faq-button"
+                    data-question="pickup"
+                >
+                    Is pickup available?
+                </button>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
-<script src="script.js"></script>
+
+
+    <script src="script.js"></script>
+
+</body>
+
 </html>
