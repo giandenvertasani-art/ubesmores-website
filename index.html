@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
@@ -35,7 +36,7 @@
 
 <body>
 
-  <!-- Announcement bar -->
+  <!-- Announcement -->
   <div class="announcement">
     Freshly baked happiness in every bite ♡
     <span>Made with real ube goodness</span>
@@ -44,9 +45,20 @@
   <!-- Navigation -->
   <header class="navbar" id="navbar">
 
-    <a class="brand" href="#home" aria-label="UbeSmores Cookie home">
-      <span>Ube</span>Smores
-      <i>Cookie</i>
+    <a
+      class="brand"
+      href="#home"
+      aria-label="UbeSmores Cookie home"
+    >
+      <img
+        src="images/Logo.jpg"
+        alt="UbeSmores Cookie logo"
+      >
+
+      <span>
+        <b>Ube</b>Smores
+        <i>Cookie</i>
+      </span>
     </a>
 
     <button
@@ -54,6 +66,7 @@
       id="menuToggle"
       aria-label="Open menu"
       aria-expanded="false"
+      type="button"
     >
       <span></span>
       <span></span>
@@ -73,7 +86,7 @@
 
   <main>
 
-    <!-- Hero section -->
+    <!-- Hero -->
     <section class="hero" id="home">
 
       <div class="hero-copy reveal">
@@ -130,33 +143,11 @@
         <div class="spark s1">✦</div>
         <div class="spark s2">♡</div>
 
-        <div
-          class="cookie-art"
-          role="img"
-          aria-label="Illustration of an ube cookie with toasted marshmallow and caramel drizzle"
+        <img
+          class="hero-product-image"
+          src="images/Cookie1.png"
+          alt="UbeSmores Cookie topped with marshmallow and caramel drizzle"
         >
-
-          <div class="crumb c1"></div>
-          <div class="crumb c2"></div>
-          <div class="crumb c3"></div>
-
-          <div class="marshmallow">
-            <i></i>
-            <i></i>
-            <i></i>
-          </div>
-
-          <div class="drizzle d1"></div>
-          <div class="drizzle d2"></div>
-          <div class="drizzle d3"></div>
-
-          <span class="chip x1"></span>
-          <span class="chip x2"></span>
-          <span class="chip x3"></span>
-          <span class="chip x4"></span>
-          <span class="chip x5"></span>
-
-        </div>
 
         <div class="floating-note">
           <span>★★★★★</span>
@@ -178,11 +169,11 @@
       <div>
         UBE GOODNESS ✦ TOASTED MALLOWS ♡ CARAMEL DRIZZLE ✦
         BAKED WITH LOVE ♡ UBE GOODNESS ✦ TOASTED MALLOWS ♡
-        CARAMEL DRIZZLE ✦ BAKED WITH LOVE ♡
+        CARAMEL DRIZZLE ✦
       </div>
     </section>
 
-    <!-- Story section -->
+    <!-- Story -->
     <section class="story section" id="story">
 
       <div class="story-art reveal">
@@ -254,7 +245,7 @@
 
     </section>
 
-    <!-- Product section -->
+    <!-- Product -->
     <section class="product section" id="menu">
 
       <div class="section-heading reveal">
@@ -272,6 +263,12 @@
         </p>
 
       </div>
+
+      <img
+        class="product-photo reveal"
+        src="images/Cookie1.png"
+        alt="Freshly baked UbeSmores Cookie"
+      >
 
       <div class="ingredient-grid">
 
@@ -321,7 +318,7 @@
 
     </section>
 
-    <!-- Reviews section -->
+    <!-- Reviews -->
     <section class="reviews section" id="reviews">
 
       <div class="section-heading light reveal">
@@ -387,7 +384,7 @@
 
     </section>
 
-    <!-- FAQ section -->
+    <!-- FAQ -->
     <section class="faq section" id="faq">
 
       <div class="section-heading reveal">
@@ -441,9 +438,8 @@
           </summary>
 
           <p>
-            Use the order button below or chat with Ubie.
-            Replace the sample order link with your Facebook,
-            Instagram, or order-form link.
+            Complete the order form below. You can choose pickup
+            or delivery and select your preferred date.
           </p>
 
         </details>
@@ -452,10 +448,10 @@
 
     </section>
 
-    <!-- Order section -->
+    <!-- Order form -->
     <section class="order section" id="order">
 
-      <div class="order-card reveal">
+      <div class="order-intro reveal">
 
         <p class="eyebrow">
           A sweet little treat awaits
@@ -466,24 +462,172 @@
         </h2>
 
         <p>
-          Message us and make your day a little sweeter.
+          Complete the form and we’ll prepare your freshly baked
+          UbeSmores Cookies.
         </p>
 
-        <a
-          class="button cream"
-          href="https://m.me/your-page-name"
-          target="_blank"
-          rel="noopener"
-        >
-          Order your UbeSmores
-          <span>→</span>
-        </a>
-
-        <small>
-          Update this link with your real ordering page.
-        </small>
-
       </div>
+
+      <form
+        class="order-form reveal"
+        id="orderForm"
+        action="https://formspree.io/f/xgawrlkb"
+        method="POST"
+      >
+
+        <div class="form-grid">
+
+          <div class="form-field">
+
+            <label for="name">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="name"
+              name="Full Name"
+              placeholder="Enter your full name"
+              required
+            >
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="contact-number">
+              Contact Number
+            </label>
+
+            <input
+              type="tel"
+              id="contact-number"
+              name="Contact Number"
+              placeholder="09XXXXXXXXX"
+              pattern="09[0-9]{9}"
+              required
+            >
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="quantity">
+              Quantity
+            </label>
+
+            <input
+              type="number"
+              id="quantity"
+              name="Quantity"
+              min="1"
+              value="1"
+              required
+            >
+
+          </div>
+
+          <div class="form-field">
+
+            <label for="method">
+              Order Method
+            </label>
+
+            <select
+              id="method"
+              name="Order Method"
+              required
+            >
+
+              <option value="">
+                Choose one
+              </option>
+
+              <option value="Pickup">
+                Pickup
+              </option>
+
+              <option value="Delivery">
+                Delivery
+              </option>
+
+            </select>
+
+          </div>
+
+          <div
+            class="form-field full"
+            id="address-group"
+          >
+
+            <label for="address">
+              Delivery Address
+            </label>
+
+            <textarea
+              id="address"
+              name="Delivery Address"
+              rows="3"
+              placeholder="Enter your complete delivery address"
+            ></textarea>
+
+          </div>
+
+          <div class="form-field full">
+
+            <label for="date">
+              Preferred Date
+            </label>
+
+            <input
+              type="date"
+              id="date"
+              name="Preferred Date"
+              required
+            >
+
+            <small id="date-help">
+              Please select an available future date.
+            </small>
+
+          </div>
+
+        </div>
+
+        <div class="order-summary">
+
+          <div>
+
+            <small>
+              ₱89 per cookie
+            </small>
+
+            <strong>
+              Total: ₱<span id="total-price">89</span>
+            </strong>
+
+          </div>
+
+          <input
+            type="hidden"
+            id="total-input"
+            name="Total"
+            value="₱89"
+          >
+
+          <button type="submit">
+            Submit Order
+            <span>→</span>
+          </button>
+
+        </div>
+
+        <p
+          id="success-message"
+          aria-live="polite"
+        ></p>
+
+      </form>
 
     </section>
 
@@ -493,8 +637,17 @@
   <footer>
 
     <a class="brand" href="#home">
-      <span>Ube</span>Smores
-      <i>Cookie</i>
+
+      <img
+        src="images/Logo.jpg"
+        alt="UbeSmores Cookie logo"
+      >
+
+      <span>
+        <b>Ube</b>Smores
+        <i>Cookie</i>
+      </span>
+
     </a>
 
     <p>
@@ -505,6 +658,14 @@
       <a href="#home">Home</a>
       <a href="#story">Story</a>
       <a href="#faq">FAQ</a>
+
+      <a
+        href="https://instagram.com/ubesmoresc.o"
+        target="_blank"
+        rel="noopener"
+      >
+        Instagram
+      </a>
     </div>
 
     <small>
@@ -514,17 +675,18 @@
 
   </footer>
 
-  <!-- Chatbot button -->
+  <!-- Chatbot launcher -->
   <button
     class="chat-launcher"
     id="chatLauncher"
     aria-label="Open Ubie chat"
+    type="button"
   >
     <span>♡</span>
     <i></i>
   </button>
 
-  <!-- Chatbot window -->
+  <!-- Chatbot -->
   <section
     class="chatbot"
     id="chatbot"
@@ -534,24 +696,35 @@
 
     <header>
 
-      <div class="bot-avatar">♡</div>
+      <div class="bot-avatar">
+        ♡
+      </div>
 
       <div>
+
         <strong>Ubie</strong>
 
         <small>
           <i></i>
           Online &amp; ready to help
         </small>
+
       </div>
 
-      <button id="closeChat" aria-label="Close chat">
+      <button
+        id="closeChat"
+        aria-label="Close chat"
+        type="button"
+      >
         ×
       </button>
 
     </header>
 
-    <div class="chat-messages" id="chatMessages">
+    <div
+      class="chat-messages"
+      id="chatMessages"
+    >
 
       <div class="message bot">
         Hi, cookie lover! 💜 I’m Ubie.
@@ -560,17 +733,29 @@
 
     </div>
 
-    <div class="quick-replies" id="quickReplies">
+    <div
+      class="quick-replies"
+      id="quickReplies"
+    >
 
-      <button data-reply="menu">
+      <button
+        type="button"
+        data-reply="menu"
+      >
         What’s inside?
       </button>
 
-      <button data-reply="order">
+      <button
+        type="button"
+        data-reply="order"
+      >
         How to order?
       </button>
 
-      <button data-reply="price">
+      <button
+        type="button"
+        data-reply="price"
+      >
         Price?
       </button>
 
@@ -586,7 +771,10 @@
         aria-label="Chat message"
       >
 
-      <button type="submit" aria-label="Send">
+      <button
+        type="submit"
+        aria-label="Send"
+      >
         ➤
       </button>
 
