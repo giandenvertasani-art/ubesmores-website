@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://giandenvertasani-art.github.io/ubesmores-website/sitemap.xml
