@@ -1,4 +1,113 @@
 const orderForm = document.querySelector(".order-form");
+// =========================
+// UBE ASSISTANT CHATBOT
+// =========================
+
+const chatbotToggle =
+    document.querySelector("#chatbot-toggle");
+
+const chatbotWindow =
+    document.querySelector("#chatbot-window");
+
+const chatbotClose =
+    document.querySelector("#chatbot-close");
+
+const chatbotMessages =
+    document.querySelector("#chatbot-messages");
+
+const faqButtons =
+    document.querySelectorAll(".faq-button");
+
+
+const faqAnswers = {
+
+    price:
+        "Our UbeSmores Cookie is ₱89 each. 💜🍪",
+
+    delivery:
+        "Yes! We offer delivery. Choose Delivery in the order form and enter your delivery address.",
+
+    order:
+        "Click Order Now, fill out the order form, choose your quantity and order method, then submit your order.",
+
+    advance:
+        "Please place your order at least 1 day in advance so we have enough time to prepare your cookies.",
+
+    pickup:
+        "Yes! Pickup is available. Just choose Pickup under Order Method when placing your order."
+
+};
+
+
+chatbotToggle.addEventListener(
+    "click",
+    function () {
+
+        chatbotWindow.classList.toggle("active");
+
+    }
+);
+
+
+chatbotClose.addEventListener(
+    "click",
+    function () {
+
+        chatbotWindow.classList.remove("active");
+
+    }
+);
+
+
+faqButtons.forEach(function (button) {
+
+    button.addEventListener(
+        "click",
+        function () {
+
+            const question =
+                button.textContent.trim();
+
+            const answerKey =
+                button.dataset.question;
+
+
+            const userMessage =
+                document.createElement("div");
+
+            userMessage.className =
+                "user-message";
+
+            userMessage.textContent =
+                question;
+
+
+            const botMessage =
+                document.createElement("div");
+
+            botMessage.className =
+                "bot-message";
+
+            botMessage.textContent =
+                faqAnswers[answerKey];
+
+
+            chatbotMessages.appendChild(
+                userMessage
+            );
+
+            chatbotMessages.appendChild(
+                botMessage
+            );
+
+
+            chatbotMessages.scrollTop =
+                chatbotMessages.scrollHeight;
+
+        }
+    );
+
+});
 const successMessage = document.querySelector("#success-message");
 
 const quantityInput = document.querySelector("#quantity");
