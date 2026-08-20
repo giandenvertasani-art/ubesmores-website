@@ -404,6 +404,57 @@
       >
 
         <div class="form-grid">
+          <div class="form-field full">
+
+  <label for="flavor">
+    Choose Cookie Flavor
+  </label>
+
+  <select
+    id="flavor"
+    name="Cookie Flavor"
+    required
+  >
+
+    <option value="">
+      Select a flavor
+    </option>
+
+    <option value="ube-smores" data-price="89">
+      UbeSmores Cookie — ₱89
+    </option>
+
+    <option value="chocolate-chunk" data-price="79">
+      Classic Chocolate Chunk — ₱79
+    </option>
+
+    <option value="cookies-cream" data-price="85">
+      Cookies &amp; Cream — ₱85
+    </option>
+
+    <option value="red-velvet" data-price="95">
+      Red Velvet Cream Cheese — ₱95
+    </option>
+
+    <option value="matcha" data-price="95">
+      Matcha White Chocolate — ₱95
+    </option>
+
+    <option value="biscoff" data-price="99">
+      Biscoff Caramel Lava — ₱99
+    </option>
+
+    <option value="salted-caramel" data-price="89">
+      Salted Caramel Pretzel — ₱89
+    </option>
+
+    <option value="classic-smores" data-price="89">
+      Classic S’mores — ₱89
+    </option>
+
+  </select>
+
+</div>
 
           <div class="form-field">
 
@@ -526,12 +577,12 @@
 
           <div>
 
-            <small>
-              ₱89 per cookie
-            </small>
+<small>
+  ₱<span id="unit-price">0</span> per cookie
+</small>
 
             <strong>
-              Total: ₱<span id="total-price">89</span>
+              Total: ₱<span id="total-price">0</span>
             </strong>
 
           </div>
@@ -540,7 +591,7 @@
             type="hidden"
             id="total-input"
             name="Total"
-            value="₱89"
+            value="₱0"
           >
 
           <button type="submit">
