@@ -356,3 +356,9 @@ footer p {
         padding: 50px 15px;
     }
 }
+header .logo {
+    width: 90px !important;
+    max-width: 90px !important;
+    height: 90px !important;
+    object-fit: contain;
+}
