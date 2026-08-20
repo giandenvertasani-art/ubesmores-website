@@ -353,3 +353,11 @@ body > footer .brand > img {
     animation: none;
   }
 }
+/* Keep important images visible even if JavaScript fails */
+
+.hero-product-image,
+.product-photo {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none;
+}
