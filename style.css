@@ -12,15 +12,22 @@ html {
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #fff8fc;
-    color: #333;
+    color: #333333;
 }
 
 section {
     padding: 70px 20px;
     text-align: center;
     scroll-margin-top: 30px;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
 }
 
 
@@ -36,7 +43,7 @@ header {
 
 .header-container {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
 
     display: flex;
     align-items: center;
@@ -62,6 +69,7 @@ header {
 
 .brand h2 {
     margin: 0;
+    font-size: 26px;
 }
 
 
@@ -71,6 +79,7 @@ header {
 
 nav {
     display: flex;
+    align-items: center;
     gap: 25px;
 }
 
@@ -105,6 +114,10 @@ button,
     text-decoration: none;
 
     cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
 }
 
 button:hover,
@@ -114,7 +127,7 @@ button:hover,
 
 
 /* =========================
-   HOME
+   HOME / HERO
 ========================= */
 
 #home {
@@ -124,7 +137,7 @@ button:hover,
 
 .hero-content {
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;
 
     display: flex;
     align-items: center;
@@ -140,6 +153,8 @@ button:hover,
 
 .hero-text h1 {
     font-size: 48px;
+    line-height: 1.15;
+
     color: #6f2c91;
 
     margin-bottom: 20px;
@@ -162,6 +177,10 @@ button:hover,
     max-width: 450px;
     height: auto;
 
+    display: block;
+
+    margin: 0 auto;
+
     border-radius: 25px;
 }
 
@@ -181,7 +200,10 @@ button:hover,
 }
 
 .section-subtitle {
-    color: #666;
+    color: #666666;
+
+    font-size: 17px;
+
     margin-bottom: 40px;
 }
 
@@ -203,14 +225,16 @@ button:hover,
 }
 
 .product-card {
+    width: 300px;
+
     background-color: white;
 
-    width: 300px;
     padding: 20px;
 
     border-radius: 20px;
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.1);
 
     transition: transform 0.3s ease;
 }
@@ -225,6 +249,8 @@ button:hover,
 
     object-fit: cover;
 
+    display: block;
+
     border-radius: 15px;
 }
 
@@ -233,19 +259,21 @@ button:hover,
 
     font-size: 24px;
 
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
 .product-description {
-    color: #555;
+    color: #555555;
+
     line-height: 1.6;
 }
 
 .price {
+    color: #6f2c91;
+
     font-size: 24px;
     font-weight: bold;
-
-    color: #6f2c91;
 }
 
 
@@ -256,7 +284,7 @@ button:hover,
 .about-text {
     max-width: 700px;
 
-    margin: auto;
+    margin: 0 auto;
 
     font-size: 18px;
     line-height: 1.7;
@@ -264,7 +292,7 @@ button:hover,
 
 
 /* =========================
-   ORDER FORM
+   ORDER
 ========================= */
 
 #order {
@@ -283,7 +311,8 @@ button:hover,
 
     text-align: left;
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .order-form label {
@@ -293,6 +322,8 @@ button:hover,
     margin-bottom: 8px;
 
     font-weight: bold;
+
+    color: #333333;
 }
 
 .order-form input,
@@ -302,21 +333,29 @@ button:hover,
 
     padding: 13px;
 
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 8px;
 
     font-size: 16px;
+
+    background-color: white;
 }
 
 .order-form input:focus,
 .order-form select:focus,
 .order-form textarea:focus {
     outline: 2px solid #6f2c91;
+
     border-color: #6f2c91;
+}
+
+.order-form textarea {
+    resize: vertical;
 }
 
 .order-form button {
     width: 100%;
+
     margin-top: 25px;
 }
 
@@ -345,10 +384,12 @@ button:hover,
     padding: 18px 20px;
 
     border-radius: 12px;
-    border: 1px solid #d8b4e2;
 
     background-color: #f3e5f5;
+
     color: #6f2c91;
+
+    border: 1px solid #d8b4e2;
 
     font-weight: bold;
     text-align: center;
@@ -365,6 +406,7 @@ button:hover,
 
 #contact {
     background-color: #fff8fc;
+
     min-height: 70vh;
 }
 
@@ -378,11 +420,13 @@ button:hover,
 
     border-radius: 20px;
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .contact-container p {
     margin: 15px 0;
+
     font-size: 17px;
 }
 
@@ -406,7 +450,225 @@ footer p {
 
 
 /* =========================
-   MOBILE
+   UBE ASSISTANT CHATBOT
+========================= */
+
+.chatbot {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 9999;
+}
+
+
+/* FLOATING COOKIE BUTTON */
+
+.chatbot-toggle {
+    width: 65px;
+    height: 65px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #6f2c91;
+    color: white;
+
+    font-size: 30px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.chatbot-toggle:hover {
+    background-color: #4a1c61;
+
+    transform: scale(1.05);
+}
+
+
+/* CHAT WINDOW */
+
+.chatbot-window {
+    display: none;
+
+    position: absolute;
+
+    right: 0;
+    bottom: 80px;
+
+    width: 350px;
+    max-height: 550px;
+
+    overflow: hidden;
+
+    background-color: white;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.chatbot-window.active {
+    display: block;
+}
+
+
+/* CHAT HEADER */
+
+.chatbot-header {
+    background-color: #6f2c91;
+    color: white;
+
+    padding: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatbot-header strong {
+    font-size: 18px;
+}
+
+.chatbot-header p {
+    margin: 4px 0 0;
+
+    font-size: 13px;
+}
+
+
+/* CHAT CLOSE BUTTON */
+
+#chatbot-close {
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+
+    color: white;
+
+    border: none;
+
+    font-size: 28px;
+
+    cursor: pointer;
+}
+
+#chatbot-close:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+
+/* CHAT MESSAGES */
+
+.chatbot-messages {
+    height: 230px;
+
+    padding: 15px;
+
+    overflow-y: auto;
+
+    background-color: #fff8fc;
+}
+
+
+/* BOT MESSAGE */
+
+.bot-message {
+    max-width: 85%;
+
+    margin: 0 auto 12px 0;
+    padding: 10px 13px;
+
+    background-color: #f3e5f5;
+
+    color: #5a236f;
+
+    border-radius:
+        14px 14px 14px 4px;
+
+    line-height: 1.4;
+}
+
+
+/* USER MESSAGE */
+
+.user-message {
+    max-width: 85%;
+
+    margin: 0 0 12px auto;
+    padding: 10px 13px;
+
+    background-color: #6f2c91;
+
+    color: white;
+
+    border-radius:
+        14px 14px 4px 14px;
+
+    line-height: 1.4;
+}
+
+
+/* FAQ BUTTON AREA */
+
+.faq-buttons {
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    background-color: white;
+}
+
+
+/* FAQ BUTTONS */
+
+.faq-button {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    background-color: white;
+
+    color: #6f2c91;
+
+    border: 1px solid #d8b4e2;
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.faq-button:hover {
+    background-color: #f3e5f5;
+}
+
+
+/* =========================
+   TABLET / MOBILE
 ========================= */
 
 @media (max-width: 768px) {
@@ -417,6 +679,7 @@ footer p {
 
     .header-container {
         flex-direction: column;
+
         gap: 15px;
     }
 
@@ -434,6 +697,10 @@ footer p {
         justify-content: center;
 
         gap: 15px;
+    }
+
+    #home {
+        padding: 70px 20px;
     }
 
     .hero-content {
@@ -459,6 +726,7 @@ footer p {
 
     .order-form {
         width: 90%;
+
         padding: 20px;
     }
 
@@ -470,154 +738,24 @@ footer p {
         padding: 50px 15px;
     }
 }
+
+
 /* =========================
-   UBE ASSISTANT CHATBOT
+   SMALL PHONE
 ========================= */
-
-.chatbot {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-
-    z-index: 1000;
-}
-
-.chatbot-toggle {
-    width: 60px;
-    height: 60px;
-
-    padding: 0;
-
-    border-radius: 50%;
-
-    font-size: 28px;
-
-    box-shadow:
-        0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.chatbot-window {
-    display: none;
-
-    position: absolute;
-
-    right: 0;
-    bottom: 75px;
-
-    width: 340px;
-    max-height: 500px;
-
-    overflow: hidden;
-
-    background-color: white;
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.2);
-}
-
-.chatbot-window.active {
-    display: block;
-}
-
-.chatbot-header {
-    background-color: #6f2c91;
-    color: white;
-
-    padding: 16px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.chatbot-header p {
-    margin: 4px 0 0;
-
-    font-size: 13px;
-}
-
-#chatbot-close {
-    background: transparent;
-
-    padding: 0;
-
-    font-size: 28px;
-
-    color: white;
-}
-
-.chatbot-messages {
-    max-height: 230px;
-
-    overflow-y: auto;
-
-    padding: 15px;
-
-    background-color: #fff8fc;
-}
-
-.bot-message,
-.user-message {
-    max-width: 85%;
-
-    margin-bottom: 12px;
-    padding: 10px 12px;
-
-    border-radius: 12px;
-
-    line-height: 1.4;
-}
-
-.bot-message {
-    background-color: #f3e5f5;
-    color: #5a236f;
-
-    margin-right: auto;
-}
-
-.user-message {
-    background-color: #6f2c91;
-    color: white;
-
-    margin-left: auto;
-}
-
-.faq-buttons {
-    padding: 12px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.faq-button {
-    width: 100%;
-
-    padding: 10px;
-
-    background-color: white;
-    color: #6f2c91;
-
-    border: 1px solid #d8b4e2;
-
-    text-align: left;
-}
-
-.faq-button:hover {
-    background-color: #f3e5f5;
-}
-
-
-/* CHATBOT MOBILE */
 
 @media (max-width: 480px) {
 
     .chatbot {
         right: 15px;
         bottom: 15px;
+    }
+
+    .chatbot-toggle {
+        width: 58px;
+        height: 58px;
+
+        font-size: 27px;
     }
 
     .chatbot-window {
@@ -628,222 +766,10 @@ footer p {
         bottom: 85px;
 
         width: auto;
-    }
-}
-/* ==================================
-   UBE ASSISTANT CHATBOT
-================================== */
-
-.chatbot {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    z-index: 9999;
-}
-
-
-/* COOKIE BUTTON */
-
-.chatbot-toggle {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-
-    border: none;
-
-    background-color: #6f2c91;
-    color: white;
-
-    font-size: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-}
-
-.chatbot-toggle:hover {
-    background-color: #4a1c61;
-}
-
-
-/* CHAT WINDOW */
-
-.chatbot-window {
-    position: absolute;
-
-    right: 0;
-    bottom: 80px;
-
-    width: 350px;
-
-    background-color: white;
-
-    border-radius: 18px;
-
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
-
-    overflow: hidden;
-
-    display: none;
-}
-
-
-/* THIS IS VERY IMPORTANT */
-
-.chatbot-window.active {
-    display: block;
-}
-
-
-/* HEADER */
-
-.chatbot-header {
-    background-color: #6f2c91;
-    color: white;
-
-    padding: 16px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chatbot-header strong {
-    font-size: 18px;
-}
-
-.chatbot-header p {
-    margin: 4px 0 0;
-    font-size: 13px;
-}
-
-
-/* CLOSE BUTTON */
-
-#chatbot-close {
-    width: auto;
-    height: auto;
-
-    padding: 0 5px;
-
-    border: none;
-    background: transparent;
-
-    color: white;
-
-    font-size: 28px;
-
-    cursor: pointer;
-}
-
-
-/* MESSAGES */
-
-.chatbot-messages {
-    height: 230px;
-
-    overflow-y: auto;
-
-    padding: 15px;
-
-    background-color: #fff8fc;
-}
-
-
-/* BOT MESSAGE */
-
-.bot-message {
-    max-width: 85%;
-
-    padding: 10px 13px;
-    margin-bottom: 12px;
-
-    background-color: #f3e5f5;
-    color: #5c246e;
-
-    border-radius: 14px 14px 14px 4px;
-
-    line-height: 1.4;
-}
-
-
-/* USER MESSAGE */
-
-.user-message {
-    max-width: 85%;
-
-    padding: 10px 13px;
-    margin: 0 0 12px auto;
-
-    background-color: #6f2c91;
-    color: white;
-
-    border-radius: 14px 14px 4px 14px;
-
-    line-height: 1.4;
-}
-
-
-/* FAQ AREA */
-
-.faq-buttons {
-    padding: 12px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-
-    background-color: white;
-}
-
-
-/* FAQ BUTTONS */
-
-.faq-button {
-    width: 100%;
-
-    padding: 10px 12px;
-
-    border: 1px solid #d8b4e2;
-
-    border-radius: 8px;
-
-    background-color: white;
-    color: #6f2c91;
-
-    font-size: 14px;
-
-    text-align: left;
-
-    cursor: pointer;
-}
-
-.faq-button:hover {
-    background-color: #f3e5f5;
-}
-
-
-/* MOBILE CHATBOT */
-
-@media (max-width: 480px) {
-
-    .chatbot {
-        right: 15px;
-        bottom: 15px;
+        max-height: 70vh;
     }
 
-    .chatbot-window {
-        position: fixed;
-
-        left: 15px;
-        right: 15px;
-        bottom: 90px;
-
-        width: auto;
+    .chatbot-messages {
+        height: 200px;
     }
 }
