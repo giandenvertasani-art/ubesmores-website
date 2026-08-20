@@ -15,7 +15,7 @@
 
   <meta
     name="description"
-    content="Soft and chewy ube cookies topped with toasted marshmallow and caramel drizzle."
+    content="Freshly baked premium cookies in eight delicious flavors."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,11 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="./style.css?v=20260820-2">
+  <!-- Version number prevents old CSS from loading -->
+  <link
+    rel="stylesheet"
+    href="./style.css?v=20260820-3"
+  >
 </head>
 
 <body>
@@ -39,19 +43,20 @@
   <!-- Announcement -->
   <div class="announcement">
     Freshly baked happiness in every bite ♡
-    <span>Made with real ube goodness</span>
+    <span>Eight delicious flavors available</span>
   </div>
 
   <!-- Navigation -->
-  <header class="navbar" id="navbar">
+  <header class="navbar">
 
     <a
       class="brand"
       href="#home"
       aria-label="UbeSmores Cookie home"
     >
+
       <img
-        src="images/Logo.jpg"
+        src="./images/Logo.jpg"
         alt="UbeSmores Cookie logo"
       >
 
@@ -59,14 +64,15 @@
         <b>Ube</b>Smores
         <i>Cookie</i>
       </span>
+
     </a>
 
     <button
       class="menu-toggle"
       id="menuToggle"
+      type="button"
       aria-label="Open menu"
       aria-expanded="false"
-      type="button"
     >
       <span></span>
       <span></span>
@@ -76,7 +82,7 @@
     <nav id="navMenu">
       <a href="#home">Home</a>
       <a href="#story">Our Story</a>
-      <a href="#menu">The Cookie</a>
+      <a href="#menu">Menu</a>
       <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
       <a class="nav-order" href="#order">Order now</a>
@@ -101,19 +107,19 @@
         </h1>
 
         <p class="hero-text">
-          Warm coffee. Chewy ube cookie. Toasted marshmallow.
+          Warm coffee. Chewy cookies. Toasted marshmallow.
           Caramel drizzle. Pure comfort in every bite.
         </p>
 
         <div class="hero-actions">
 
-          <a class="button primary" href="#order">
-            Get your cookie
+          <a class="button primary" href="#menu">
+            Explore flavors
             <span>→</span>
           </a>
 
-          <a class="button ghost" href="#story">
-            Discover our story
+          <a class="button ghost" href="#order">
+            Place an order
           </a>
 
         </div>
@@ -121,9 +127,9 @@
         <div class="social-proof">
 
           <div class="faces">
-            <b>G</b>
-            <b>A</b>
-            <b>M</b>
+            <b>U</b>
+            <b>B</b>
+            <b>E</b>
             <b>+</b>
           </div>
 
@@ -138,105 +144,92 @@
 
       <div class="hero-visual reveal">
 
-        <div class="glow"></div>
+        <div class="hero-glow"></div>
 
-        <div class="spark s1">✦</div>
-        <div class="spark s2">♡</div>
+        <div class="spark spark-one">✦</div>
+        <div class="spark spark-two">♡</div>
 
         <img
           class="hero-product-image"
-          src="images/Cookie1.png"
-          alt="UbeSmores Cookie topped with marshmallow and caramel drizzle"
+          src="./images/Cookie1.png"
+          alt="UbeSmores Cookie with toasted marshmallow and caramel drizzle"
         >
 
         <div class="floating-note">
           <span>★★★★★</span>
           <strong>Soft, chewy &amp; dreamy</strong>
-          <small>The perfect ube treat</small>
+          <small>Our signature ube treat</small>
         </div>
 
-      </div>
-
-      <div class="scroll-hint">
-        Scroll to taste the magic
-        <span>↓</span>
       </div>
 
     </section>
 
     <!-- Moving text -->
-    <section class="marquee">
+    <div class="marquee">
+
       <div>
-        UBE GOODNESS ✦ TOASTED MALLOWS ♡ CARAMEL DRIZZLE ✦
-        BAKED WITH LOVE ♡ UBE GOODNESS ✦ TOASTED MALLOWS ♡
-        CARAMEL DRIZZLE ✦
+        UBE GOODNESS ✦ EIGHT FLAVORS ♡ FRESHLY BAKED ✦
+        TOASTED MALLOWS ♡ CARAMEL DRIZZLE ✦ MADE WITH LOVE ♡
+        UBE GOODNESS ✦ EIGHT FLAVORS ♡ FRESHLY BAKED ✦
       </div>
-    </section>
+
+    </div>
 
     <!-- Story -->
     <section class="story section" id="story">
 
-      <div class="story-art reveal">
+      <div class="story-image reveal">
 
-        <div class="window">
+        <img
+          src="./images/Cookie1.png"
+          alt="Freshly baked UbeSmores Cookie"
+        >
 
-          <span class="rain r1"></span>
-          <span class="rain r2"></span>
-          <span class="rain r3"></span>
-
-          <div class="mug">
-            ☕
-            <small>Stay cozy</small>
-          </div>
-
-          <div class="mini-cookie"></div>
-
-        </div>
-
-        <p>Good things ahead ♡</p>
+        <span>Good things ahead ♡</span>
 
       </div>
 
-      <div class="section-copy reveal">
+      <div class="story-copy reveal">
 
         <p class="eyebrow">
           Made for sweet moments
         </p>
 
         <h2>
-          A familiar Filipino flavor, made extra cozy.
+          Familiar flavors, made extra cozy.
         </h2>
 
         <p>
-          We took the rich, nostalgic taste of ube and turned it
-          into a soft, chewy cookie—then topped it with toasted
-          marshmallow and a golden caramel drizzle.
+          UbeSmores Cookie began with one comforting idea:
+          combine the familiar Filipino flavor of ube with the
+          sweetness of classic s’mores.
         </p>
 
         <p>
-          It’s sweet, comforting, and made for rainy afternoons,
-          study breaks, coffee dates, and every little win worth
-          celebrating.
+          We now offer eight freshly baked flavors for rainy
+          afternoons, study breaks, coffee dates, celebrations,
+          and every little win worth enjoying.
         </p>
 
         <div class="features">
 
           <div>
             <span>☁</span>
-            <strong>Soft &amp; chewy</strong>
-            <small>A melt-in-your-mouth center</small>
+            <strong>Soft and chewy</strong>
+            <small>A satisfying center in every bite</small>
           </div>
 
           <div>
             <span>♡</span>
             <strong>Baked with love</strong>
-            <small>Thoughtfully made in every batch</small>
+            <small>Thoughtfully prepared in every batch</small>
           </div>
 
           <div>
             <span>☕</span>
             <strong>Coffee’s bestie</strong>
-            <small>Perfect with your favorite cup</small>
+            <small>Perfect with your favorite drink</small>
           </div>
 
         </div>
@@ -245,11 +238,235 @@
 
     </section>
 
-  <section class="product section" id="menu">
+    <!-- Menu -->
+    <section class="menu-section section" id="menu">
+
+      <div class="section-heading reveal">
+
+        <p class="eyebrow">
+          Pick your favorite
+        </p>
+
+        <h2>
+          Our cookie menu.
+        </h2>
+
+        <p>
+          Eight delicious flavors, freshly baked for every
+          kind of craving.
+        </p>
+
+      </div>
+
+      <div class="cookie-menu">
+
+        <!-- Flavor 1 -->
+        <article class="menu-card signature reveal">
+
+          <span class="menu-badge">
+            Signature
+          </span>
+
+          <div class="menu-icon">💜</div>
+
+          <h3>UbeSmores Cookie</h3>
+
+          <p>
+            Soft ube cookie topped with toasted marshmallow
+            and caramel drizzle.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱89</strong>
+
+            <a href="#order" data-menu-flavor="ube-smores">
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 2 -->
+        <article class="menu-card reveal">
+
+          <div class="menu-icon">🍫</div>
+
+          <h3>Classic Chocolate Chunk</h3>
+
+          <p>
+            Buttery cookie loaded with rich and melty
+            chocolate chunks.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱79</strong>
+
+            <a
+              href="#order"
+              data-menu-flavor="chocolate-chunk"
+            >
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 3 -->
+        <article class="menu-card reveal">
+
+          <div class="menu-icon">🖤</div>
+
+          <h3>Cookies &amp; Cream</h3>
+
+          <p>
+            Creamy vanilla cookie filled with crunchy
+            chocolate-cookie pieces.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱85</strong>
+
+            <a
+              href="#order"
+              data-menu-flavor="cookies-cream"
+            >
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 4 -->
+        <article class="menu-card reveal">
+
+          <div class="menu-icon">❤️</div>
+
+          <h3>Red Velvet Cream Cheese</h3>
+
+          <p>
+            Soft red velvet cookie with a rich cream-cheese
+            center.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱95</strong>
+
+            <a
+              href="#order"
+              data-menu-flavor="red-velvet"
+            >
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 5 -->
+        <article class="menu-card reveal">
+
+          <div class="menu-icon">🍵</div>
+
+          <h3>Matcha White Chocolate</h3>
+
+          <p>
+            Earthy matcha cookie balanced with creamy white
+            chocolate.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱95</strong>
+
+            <a href="#order" data-menu-flavor="matcha">
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 6 -->
+        <article class="menu-card reveal">
+
+          <span class="menu-badge bestseller">
+            Bestseller
+          </span>
+
+          <div class="menu-icon">🤎</div>
+
+          <h3>Biscoff Caramel Lava</h3>
+
+          <p>
+            Biscoff cookie with a warm and gooey caramel
+            center.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱99</strong>
+
+            <a href="#order" data-menu-flavor="biscoff">
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 7 -->
+        <article class="menu-card reveal">
+
+          <div class="menu-icon">🥨</div>
+
+          <h3>Salted Caramel Pretzel</h3>
+
+          <p>
+            Sweet caramel cookie with crunchy pretzel pieces
+            and sea salt.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱89</strong>
+
+            <a
+              href="#order"
+              data-menu-flavor="salted-caramel"
+            >
+              Order
+            </a>
+          </div>
+
+        </article>
+
+        <!-- Flavor 8 -->
+        <article class="menu-card reveal">
+
+          <div class="menu-icon">🔥</div>
+
+          <h3>Classic S’mores</h3>
+
+          <p>
+            Chocolate cookie topped with toasted marshmallow
+            and graham crumbs.
+          </p>
+
+          <div class="menu-card-bottom">
+            <strong>₱89</strong>
+
+            <a
+              href="#order"
+              data-menu-flavor="classic-smores"
+            >
+              Order
+            </a>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
     <!-- Reviews -->
     <section class="reviews section" id="reviews">
 
-      <div class="section-heading light reveal">
+      <div class="section-heading reveal">
 
         <p class="eyebrow">
           Sweet words
@@ -268,8 +485,8 @@
           <span>★★★★★</span>
 
           <p>
-            “Super soft and the ube flavor is just right!
-            The toasted mallow on top makes it extra special.”
+            “Super soft and the ube flavor is just right.
+            The toasted marshmallow makes it extra special.”
           </p>
 
           <footer>
@@ -298,7 +515,7 @@
           <span>★★★★★</span>
 
           <p>
-            “The caramel drizzle, marshmallow, and chewy ube
+            “The caramel drizzle, marshmallow, and chewy
             cookie are such a cozy combination.”
           </p>
 
@@ -330,46 +547,41 @@
       <div class="faq-list">
 
         <details>
-
           <summary>
-            How should I store my UbeSmores Cookies?
+            How should I store my cookies?
             <span>+</span>
           </summary>
 
           <p>
-            Keep them in an airtight container at room temperature.
-            For that fresh-baked feeling, warm them briefly before
-            enjoying.
+            Keep them in an airtight container. Warm them
+            briefly before eating for a fresh-baked experience.
           </p>
-
         </details>
 
         <details>
-
           <summary>
-            Is the marshmallow really on top?
+            Can I order different flavors?
             <span>+</span>
           </summary>
 
           <p>
-            Yes! The toasted marshmallow sits proudly on top,
-            finished with caramel drizzle.
+            Yes. Select your preferred flavor in the order
+            form. You may submit another order for additional
+            flavors.
           </p>
-
         </details>
 
         <details>
-
           <summary>
-            How can I place an order?
+            Are pickup and delivery available?
             <span>+</span>
           </summary>
 
           <p>
-            Complete the order form below. You can choose pickup
-            or delivery and select your preferred date.
+            Yes. Choose Pickup or Delivery in the order form.
+            The delivery-address field appears automatically
+            when Delivery is selected.
           </p>
-
         </details>
 
       </div>
@@ -377,7 +589,7 @@
     </section>
 
     <!-- Order form -->
-    <section class="order section" id="order">
+    <section class="order-section section" id="order">
 
       <div class="order-intro reveal">
 
@@ -386,12 +598,12 @@
         </p>
 
         <h2>
-          Ready for your cozy bite?
+          Place your order.
         </h2>
 
         <p>
-          Complete the form and we’ll prepare your freshly baked
-          UbeSmores Cookies.
+          Select a flavor and quantity. Your total will update
+          automatically.
         </p>
 
       </div>
@@ -404,58 +616,76 @@
       >
 
         <div class="form-grid">
+
+          <!-- Flavor -->
           <div class="form-field full">
 
-  <label for="flavor">
-    Choose Cookie Flavor
-  </label>
+            <label for="flavor">
+              Cookie Flavor
+            </label>
 
-  <select
-    id="flavor"
-    name="Cookie Flavor"
-    required
-  >
+            <select
+              id="flavor"
+              name="Cookie Flavor"
+              required
+            >
 
-    <option value="">
-      Select a flavor
-    </option>
+              <option value="" data-price="0">
+                Select a flavor
+              </option>
 
-    <option value="ube-smores" data-price="89">
-      UbeSmores Cookie — ₱89
-    </option>
+              <option value="ube-smores" data-price="89">
+                UbeSmores Cookie — ₱89
+              </option>
 
-    <option value="chocolate-chunk" data-price="79">
-      Classic Chocolate Chunk — ₱79
-    </option>
+              <option
+                value="chocolate-chunk"
+                data-price="79"
+              >
+                Classic Chocolate Chunk — ₱79
+              </option>
 
-    <option value="cookies-cream" data-price="85">
-      Cookies &amp; Cream — ₱85
-    </option>
+              <option
+                value="cookies-cream"
+                data-price="85"
+              >
+                Cookies &amp; Cream — ₱85
+              </option>
 
-    <option value="red-velvet" data-price="95">
-      Red Velvet Cream Cheese — ₱95
-    </option>
+              <option
+                value="red-velvet"
+                data-price="95"
+              >
+                Red Velvet Cream Cheese — ₱95
+              </option>
 
-    <option value="matcha" data-price="95">
-      Matcha White Chocolate — ₱95
-    </option>
+              <option value="matcha" data-price="95">
+                Matcha White Chocolate — ₱95
+              </option>
 
-    <option value="biscoff" data-price="99">
-      Biscoff Caramel Lava — ₱99
-    </option>
+              <option value="biscoff" data-price="99">
+                Biscoff Caramel Lava — ₱99
+              </option>
 
-    <option value="salted-caramel" data-price="89">
-      Salted Caramel Pretzel — ₱89
-    </option>
+              <option
+                value="salted-caramel"
+                data-price="89"
+              >
+                Salted Caramel Pretzel — ₱89
+              </option>
 
-    <option value="classic-smores" data-price="89">
-      Classic S’mores — ₱89
-    </option>
+              <option
+                value="classic-smores"
+                data-price="89"
+              >
+                Classic S’mores — ₱89
+              </option>
 
-  </select>
+            </select>
 
-</div>
+          </div>
 
+          <!-- Name -->
           <div class="form-field">
 
             <label for="name">
@@ -472,6 +702,7 @@
 
           </div>
 
+          <!-- Contact -->
           <div class="form-field">
 
             <label for="contact-number">
@@ -489,6 +720,7 @@
 
           </div>
 
+          <!-- Quantity -->
           <div class="form-field">
 
             <label for="quantity">
@@ -506,6 +738,7 @@
 
           </div>
 
+          <!-- Method -->
           <div class="form-field">
 
             <label for="method">
@@ -517,7 +750,6 @@
               name="Order Method"
               required
             >
-
               <option value="">
                 Choose one
               </option>
@@ -529,11 +761,11 @@
               <option value="Delivery">
                 Delivery
               </option>
-
             </select>
 
           </div>
 
+          <!-- Address -->
           <div
             class="form-field full"
             id="address-group"
@@ -552,6 +784,7 @@
 
           </div>
 
+          <!-- Date -->
           <div class="form-field full">
 
             <label for="date">
@@ -565,21 +798,22 @@
               required
             >
 
-            <small id="date-help">
-              Please select an available future date.
+            <small>
+              Please select tomorrow or a later date.
             </small>
 
           </div>
 
         </div>
 
+        <!-- Total -->
         <div class="order-summary">
 
           <div>
 
-<small>
-  ₱<span id="unit-price">0</span> per cookie
-</small>
+            <small>
+              ₱<span id="unit-price">0</span> per cookie
+            </small>
 
             <strong>
               Total: ₱<span id="total-price">0</span>
@@ -591,6 +825,13 @@
             type="hidden"
             id="total-input"
             name="Total"
+            value="₱0"
+          >
+
+          <input
+            type="hidden"
+            id="unit-price-input"
+            name="Price Per Cookie"
             value="₱0"
           >
 
@@ -613,12 +854,12 @@
   </main>
 
   <!-- Footer -->
-  <footer>
+  <footer class="main-footer">
 
     <a class="brand" href="#home">
 
       <img
-        src="images/Logo.jpg"
+        src="./images/Logo.jpg"
         alt="UbeSmores Cookie logo"
       >
 
@@ -635,8 +876,8 @@
 
     <div>
       <a href="#home">Home</a>
-      <a href="#story">Story</a>
-      <a href="#faq">FAQ</a>
+      <a href="#menu">Menu</a>
+      <a href="#order">Order</a>
 
       <a
         href="https://instagram.com/ubesmoresc.o"
@@ -658,10 +899,10 @@
   <button
     class="chat-launcher"
     id="chatLauncher"
-    aria-label="Open Ubie chat"
     type="button"
+    aria-label="Open Ubie chatbot"
   >
-    <span>♡</span>
+    ♡
     <i></i>
   </button>
 
@@ -680,20 +921,18 @@
       </div>
 
       <div>
-
         <strong>Ubie</strong>
 
         <small>
           <i></i>
-          Online &amp; ready to help
+          Online and ready to help
         </small>
-
       </div>
 
       <button
         id="closeChat"
-        aria-label="Close chat"
         type="button"
+        aria-label="Close chatbot"
       >
         ×
       </button>
@@ -706,36 +945,24 @@
     >
 
       <div class="message bot">
-        Hi, cookie lover! 💜 I’m Ubie.
-        How can I make your day sweeter?
+        Hi, cookie lover! 💜 Ask me about our flavors,
+        prices, pickup, delivery, or ordering.
       </div>
 
     </div>
 
-    <div
-      class="quick-replies"
-      id="quickReplies"
-    >
+    <div class="quick-replies">
 
-      <button
-        type="button"
-        data-reply="menu"
-      >
-        What’s inside?
+      <button type="button" data-reply="menu">
+        Flavors
       </button>
 
-      <button
-        type="button"
-        data-reply="order"
-      >
+      <button type="button" data-reply="order">
         How to order?
       </button>
 
-      <button
-        type="button"
-        data-reply="price"
-      >
-        Price?
+      <button type="button" data-reply="price">
+        Prices
       </button>
 
     </div>
@@ -752,7 +979,7 @@
 
       <button
         type="submit"
-        aria-label="Send"
+        aria-label="Send message"
       >
         ➤
       </button>
@@ -761,7 +988,8 @@
 
   </section>
 
-  <script src="script.js"></script>
+  <!-- New version prevents old JavaScript from loading -->
+  <script src="./script.js?v=20260820-3"></script>
 
 </body>
 </html>
