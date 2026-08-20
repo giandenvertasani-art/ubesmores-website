@@ -1,126 +1,36 @@
-const orderForm = document.querySelector(".order-form");
 // =========================
-// UBE ASSISTANT CHATBOT
+// ORDER FORM ELEMENTS
 // =========================
 
-const chatbotToggle =
-    document.querySelector("#chatbot-toggle");
+const orderForm =
+    document.querySelector(".order-form");
 
-const chatbotWindow =
-    document.querySelector("#chatbot-window");
+const successMessage =
+    document.querySelector("#success-message");
 
-const chatbotClose =
-    document.querySelector("#chatbot-close");
+const quantityInput =
+    document.querySelector("#quantity");
 
-const chatbotMessages =
-    document.querySelector("#chatbot-messages");
+const totalPrice =
+    document.querySelector("#total-price");
 
-const faqButtons =
-    document.querySelectorAll(".faq-button");
+const totalInput =
+    document.querySelector("#total-input");
 
+const methodSelect =
+    document.querySelector("#method");
 
-const faqAnswers = {
+const addressGroup =
+    document.querySelector("#address-group");
 
-    price:
-        "Our UbeSmores Cookie is ₱89 each. 💜🍪",
+const addressInput =
+    document.querySelector("#address");
 
-    delivery:
-        "Yes! We offer delivery. Choose Delivery in the order form and enter your delivery address.",
-
-    order:
-        "Click Order Now, fill out the order form, choose your quantity and order method, then submit your order.",
-
-    advance:
-        "Please place your order at least 1 day in advance so we have enough time to prepare your cookies.",
-
-    pickup:
-        "Yes! Pickup is available. Just choose Pickup under Order Method when placing your order."
-
-};
-
-
-chatbotToggle.addEventListener(
-    "click",
-    function () {
-
-        chatbotWindow.classList.toggle("active");
-
-    }
-);
-
-
-chatbotClose.addEventListener(
-    "click",
-    function () {
-
-        chatbotWindow.classList.remove("active");
-
-    }
-);
-
-
-faqButtons.forEach(function (button) {
-
-    button.addEventListener(
-        "click",
-        function () {
-
-            const question =
-                button.textContent.trim();
-
-            const answerKey =
-                button.dataset.question;
-
-
-            const userMessage =
-                document.createElement("div");
-
-            userMessage.className =
-                "user-message";
-
-            userMessage.textContent =
-                question;
-
-
-            const botMessage =
-                document.createElement("div");
-
-            botMessage.className =
-                "bot-message";
-
-            botMessage.textContent =
-                faqAnswers[answerKey];
-
-
-            chatbotMessages.appendChild(
-                userMessage
-            );
-
-            chatbotMessages.appendChild(
-                botMessage
-            );
-
-
-            chatbotMessages.scrollTop =
-                chatbotMessages.scrollHeight;
-
-        }
-    );
-
-});
-const successMessage = document.querySelector("#success-message");
-
-const quantityInput = document.querySelector("#quantity");
-const totalPrice = document.querySelector("#total-price");
-const totalInput = document.querySelector("#total-input");
-
-const methodSelect = document.querySelector("#method");
-const addressGroup = document.querySelector("#address-group");
-const addressInput = document.querySelector("#address");
-
-const dateInput = document.querySelector("#date");
+const dateInput =
+    document.querySelector("#date");
 
 const cookiePrice = 89;
+
 
 
 // =========================
@@ -129,21 +39,32 @@ const cookiePrice = 89;
 
 function updateTotal() {
 
-    let quantity = Number(quantityInput.value);
+    let quantity =
+        Number(quantityInput.value);
 
     if (quantity < 1) {
+
         quantity = 1;
+
         quantityInput.value = 1;
     }
 
-    const total = quantity * cookiePrice;
+    const total =
+        quantity * cookiePrice;
 
-    totalPrice.textContent = total;
-    totalInput.value = "₱" + total;
+    totalPrice.textContent =
+        total;
+
+    totalInput.value =
+        "₱" + total;
 }
 
 
-quantityInput.addEventListener("input", updateTotal);
+quantityInput.addEventListener(
+    "input",
+    updateTotal
+);
+
 
 
 // =========================
@@ -152,16 +73,26 @@ quantityInput.addEventListener("input", updateTotal);
 
 function updateAddressField() {
 
-    if (methodSelect.value === "Delivery") {
+    if (
+        methodSelect.value === "Delivery"
+    ) {
 
-        addressGroup.style.display = "block";
-        addressInput.required = true;
+        addressGroup.style.display =
+            "block";
+
+        addressInput.required =
+            true;
 
     } else {
 
-        addressGroup.style.display = "none";
-        addressInput.required = false;
-        addressInput.value = "";
+        addressGroup.style.display =
+            "none";
+
+        addressInput.required =
+            false;
+
+        addressInput.value =
+            "";
     }
 }
 
@@ -172,13 +103,15 @@ methodSelect.addEventListener(
 );
 
 
+
 // =========================
 // MINIMUM ORDER DATE
 // =========================
 
 function setMinimumDate() {
 
-    const tomorrow = new Date();
+    const tomorrow =
+        new Date();
 
     tomorrow.setDate(
         tomorrow.getDate() + 1
@@ -188,29 +121,34 @@ function setMinimumDate() {
         tomorrow.getFullYear();
 
     const month =
-        String(tomorrow.getMonth() + 1)
-            .padStart(2, "0");
+        String(
+            tomorrow.getMonth() + 1
+        ).padStart(2, "0");
 
     const day =
-        String(tomorrow.getDate())
-            .padStart(2, "0");
+        String(
+            tomorrow.getDate()
+        ).padStart(2, "0");
 
     dateInput.min =
         `${year}-${month}-${day}`;
 }
 
 
+
 // =========================
-// SUBMIT ORDER
+// ORDER SUBMISSION
 // =========================
 
 orderForm.addEventListener(
     "submit",
-    async function(event) {
+    async function (event) {
 
         event.preventDefault();
 
-        successMessage.textContent = "";
+        successMessage.textContent =
+            "";
+
 
         const selectedDate =
             dateInput.value;
@@ -228,7 +166,9 @@ orderForm.addEventListener(
         }
 
 
-        if (selectedDate < minimumDate) {
+        if (
+            selectedDate < minimumDate
+        ) {
 
             successMessage.textContent =
                 "Please select a date at least 1 day in advance.";
@@ -255,7 +195,8 @@ orderForm.addEventListener(
                         body: formData,
 
                         headers: {
-                            "Accept": "application/json"
+                            "Accept":
+                                "application/json"
                         }
                     }
                 );
@@ -266,12 +207,17 @@ orderForm.addEventListener(
                 successMessage.textContent =
                     "Order submitted successfully! 💜🍪 We’ll contact you shortly to confirm your order.";
 
+
                 orderForm.reset();
 
-                quantityInput.value = 1;
+                quantityInput.value =
+                    1;
+
 
                 updateTotal();
+
                 updateAddressField();
+
                 setMinimumDate();
 
             } else {
@@ -292,10 +238,158 @@ orderForm.addEventListener(
 );
 
 
+
 // =========================
-// RUN WHEN PAGE LOADS
+// UBE ASSISTANT
+// =========================
+
+const chatbotToggle =
+    document.querySelector(
+        "#chatbot-toggle"
+    );
+
+const chatbotWindow =
+    document.querySelector(
+        "#chatbot-window"
+    );
+
+const chatbotClose =
+    document.querySelector(
+        "#chatbot-close"
+    );
+
+const chatbotMessages =
+    document.querySelector(
+        "#chatbot-messages"
+    );
+
+const faqButtons =
+    document.querySelectorAll(
+        ".faq-button"
+    );
+
+
+
+const faqAnswers = {
+
+    price:
+        "Our UbeSmores Cookie is ₱89 each. 🍪💜",
+
+    delivery:
+        "Yes! Delivery is available. Choose Delivery in the order form and enter your delivery address.",
+
+    order:
+        "Click Order Now, enter your details, select the quantity and order method, then press Submit Order.",
+
+    advance:
+        "Please order at least 1 day in advance so we have enough time to prepare your cookies.",
+
+    pickup:
+        "Yes! Pickup is available. Choose Pickup under Order Method when placing your order."
+
+};
+
+
+
+// OPEN CHATBOT
+
+chatbotToggle.addEventListener(
+    "click",
+    function () {
+
+        chatbotWindow.classList.toggle(
+            "active"
+        );
+
+    }
+);
+
+
+
+// CLOSE CHATBOT
+
+chatbotClose.addEventListener(
+    "click",
+    function () {
+
+        chatbotWindow.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+
+// FAQ RESPONSES
+
+faqButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const question =
+                    button.textContent.trim();
+
+                const answerKey =
+                    button.dataset.question;
+
+
+                const userMessage =
+                    document.createElement(
+                        "div"
+                    );
+
+                userMessage.className =
+                    "user-message";
+
+                userMessage.textContent =
+                    question;
+
+
+                const botMessage =
+                    document.createElement(
+                        "div"
+                    );
+
+                botMessage.className =
+                    "bot-message";
+
+                botMessage.textContent =
+                    faqAnswers[
+                        answerKey
+                    ];
+
+
+                chatbotMessages.appendChild(
+                    userMessage
+                );
+
+                chatbotMessages.appendChild(
+                    botMessage
+                );
+
+
+                chatbotMessages.scrollTop =
+                    chatbotMessages.scrollHeight;
+
+            }
+
+        );
+
+    }
+);
+
+
+
+// =========================
+// INITIAL PAGE SETUP
 // =========================
 
 updateTotal();
+
 updateAddressField();
+
 setMinimumDate();
