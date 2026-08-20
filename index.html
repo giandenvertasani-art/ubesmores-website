@@ -1,558 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <title>UbeSmores Cookie | Soft Ube S'mores Cookies</title>
+  <meta name="theme-color" content="#5b2b82">
 
-    <meta
-        name="description"
-        content="Try UbeSmores Cookie — soft and chewy ube cookies topped with marshmallow and caramel drizzle. Order for pickup or delivery."
-    >
+  <title>UbeSmores Cookie | A Cozy Bite</title>
 
-    <meta
-        name="keywords"
-        content="UbeSmores Cookie, ube cookies, ube smores, cookies Philippines, dessert, marshmallow cookie, caramel cookie"
-    >
+  <meta
+    name="description"
+    content="Soft and chewy ube cookies topped with toasted marshmallow and caramel drizzle."
+  >
 
-    <meta
-        name="author"
-        content="UbeSmores Cookie"
-    >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <meta
-        name="robots"
-        content="index, follow"
-    >
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-    <!-- OPEN GRAPH / SOCIAL SHARING -->
-
-    <meta
-        property="og:type"
-        content="website"
-    >
-
-    <meta
-        property="og:title"
-        content="UbeSmores Cookie | Soft Ube S'mores Cookies"
-    >
-
-    <meta
-        property="og:description"
-        content="Soft and chewy ube cookies topped with marshmallow and caramel drizzle. Order your UbeSmores Cookie today!"
-    >
-
-    <meta
-        property="og:url"
-        content="https://giandenvertasani-art.github.io/ubesmores-website/"
-    >
-
-    <meta
-        property="og:image"
-        content="https://giandenvertasani-art.github.io/ubesmores-website/images/Cookie1.png"
-    >
-
-    <meta
-        property="og:image:alt"
-        content="Soft UbeSmores Cookie topped with marshmallow and caramel drizzle"
-    >
-
-    <meta
-        property="og:site_name"
-        content="UbeSmores Cookie"
-    >
-
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+  <!-- Announcement bar -->
+  <div class="announcement">
+    Freshly baked happiness in every bite ♡
+    <span>Made with real ube goodness</span>
+  </div>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+
+    <a class="brand" href="#home" aria-label="UbeSmores Cookie home">
+      <span>Ube</span>Smores
+      <i>Cookie</i>
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="menuToggle"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav id="navMenu">
+      <a href="#home">Home</a>
+      <a href="#story">Our Story</a>
+      <a href="#menu">The Cookie</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-order" href="#order">Order now</a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- Hero section -->
+    <section class="hero" id="home">
+
+      <div class="hero-copy reveal">
+
+        <p class="eyebrow">
+          Your new favorite comfort cookie
+        </p>
+
+        <h1>
+          A cozy bite of
+          <em>ube magic.</em>
+        </h1>
+
+        <p class="hero-text">
+          Warm coffee. Chewy ube cookie. Toasted marshmallow.
+          Caramel drizzle. Pure comfort in every bite.
+        </p>
+
+        <div class="hero-actions">
+
+          <a class="button primary" href="#order">
+            Get your cookie
+            <span>→</span>
+          </a>
+
+          <a class="button ghost" href="#story">
+            Discover our story
+          </a>
+
+        </div>
+
+        <div class="social-proof">
+
+          <div class="faces">
+            <b>G</b>
+            <b>A</b>
+            <b>M</b>
+            <b>+</b>
+          </div>
+
+          <div>
+            <strong>Made to brighten your day</strong>
+            <span>Freshly baked with love ♡</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual reveal">
+
+        <div class="glow"></div>
+
+        <div class="spark s1">✦</div>
+        <div class="spark s2">♡</div>
+
+        <div
+          class="cookie-art"
+          role="img"
+          aria-label="Illustration of an ube cookie with toasted marshmallow and caramel drizzle"
+        >
+
+          <div class="crumb c1"></div>
+          <div class="crumb c2"></div>
+          <div class="crumb c3"></div>
+
+          <div class="marshmallow">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+
+          <div class="drizzle d1"></div>
+          <div class="drizzle d2"></div>
+          <div class="drizzle d3"></div>
+
+          <span class="chip x1"></span>
+          <span class="chip x2"></span>
+          <span class="chip x3"></span>
+          <span class="chip x4"></span>
+          <span class="chip x5"></span>
+
+        </div>
+
+        <div class="floating-note">
+          <span>★★★★★</span>
+          <strong>Soft, chewy &amp; dreamy</strong>
+          <small>The perfect ube treat</small>
+        </div>
+
+      </div>
+
+      <div class="scroll-hint">
+        Scroll to taste the magic
+        <span>↓</span>
+      </div>
+
+    </section>
+
+    <!-- Moving text -->
+    <section class="marquee">
+      <div>
+        UBE GOODNESS ✦ TOASTED MALLOWS ♡ CARAMEL DRIZZLE ✦
+        BAKED WITH LOVE ♡ UBE GOODNESS ✦ TOASTED MALLOWS ♡
+        CARAMEL DRIZZLE ✦ BAKED WITH LOVE ♡
+      </div>
+    </section>
+
+    <!-- Story section -->
+    <section class="story section" id="story">
+
+      <div class="story-art reveal">
+
+        <div class="window">
+
+          <span class="rain r1"></span>
+          <span class="rain r2"></span>
+          <span class="rain r3"></span>
+
+          <div class="mug">
+            ☕
+            <small>Stay cozy</small>
+          </div>
+
+          <div class="mini-cookie"></div>
+
+        </div>
+
+        <p>Good things ahead ♡</p>
+
+      </div>
+
+      <div class="section-copy reveal">
+
+        <p class="eyebrow">
+          Made for sweet moments
+        </p>
+
+        <h2>
+          A familiar Filipino flavor, made extra cozy.
+        </h2>
+
+        <p>
+          We took the rich, nostalgic taste of ube and turned it
+          into a soft, chewy cookie—then topped it with toasted
+          marshmallow and a golden caramel drizzle.
+        </p>
+
+        <p>
+          It’s sweet, comforting, and made for rainy afternoons,
+          study breaks, coffee dates, and every little win worth
+          celebrating.
+        </p>
+
+        <div class="features">
+
+          <div>
+            <span>☁</span>
+            <strong>Soft &amp; chewy</strong>
+            <small>A melt-in-your-mouth center</small>
+          </div>
+
+          <div>
+            <span>♡</span>
+            <strong>Baked with love</strong>
+            <small>Thoughtfully made in every batch</small>
+          </div>
+
+          <div>
+            <span>☕</span>
+            <strong>Coffee’s bestie</strong>
+            <small>Perfect with your favorite cup</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- Product section -->
+    <section class="product section" id="menu">
+
+      <div class="section-heading reveal">
+
+        <p class="eyebrow">
+          Meet the star
+        </p>
+
+        <h2>
+          Not your ordinary cookie.
+        </h2>
+
+        <p>
+          Three dreamy layers. One unforgettable bite.
+        </p>
+
+      </div>
+
+      <div class="ingredient-grid">
+
+        <article class="ingredient reveal">
+
+          <span>01</span>
+
+          <div class="icon ube">◒</div>
+
+          <h3>Rich Ube Flavor</h3>
+
+          <p>
+            Sweet, earthy, and unmistakably Filipino.
+          </p>
+
+        </article>
+
+        <article class="ingredient featured reveal">
+
+          <span>02</span>
+
+          <div class="icon mallow">☁</div>
+
+          <h3>Toasted Marshmallow</h3>
+
+          <p>
+            Soft on top with a lightly golden finish.
+          </p>
+
+        </article>
+
+        <article class="ingredient reveal">
+
+          <span>03</span>
+
+          <div class="icon caramel">≈</div>
+
+          <h3>Caramel Drizzle</h3>
+
+          <p>
+            A golden finishing touch for extra comfort.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- Reviews section -->
+    <section class="reviews section" id="reviews">
+
+      <div class="section-heading light reveal">
+
+        <p class="eyebrow">
+          Sweet words
+        </p>
+
+        <h2>
+          Loved at first bite.
+        </h2>
+
+      </div>
+
+      <div class="review-grid">
+
+        <blockquote class="reveal">
+
+          <span>★★★★★</span>
+
+          <p>
+            “Super soft and the ube flavor is just right!
+            The toasted mallow on top makes it extra special.”
+          </p>
+
+          <footer>
+            — A happy cookie lover
+          </footer>
+
+        </blockquote>
+
+        <blockquote class="reveal">
+
+          <span>★★★★★</span>
+
+          <p>
+            “Perfect with coffee, especially on a rainy day.
+            One cookie was definitely not enough!”
+          </p>
+
+          <footer>
+            — Your new suki
+          </footer>
+
+        </blockquote>
+
+        <blockquote class="reveal">
+
+          <span>★★★★★</span>
+
+          <p>
+            “The caramel drizzle, marshmallow, and chewy ube
+            cookie are such a cozy combination.”
+          </p>
+
+          <footer>
+            — Ube obsessed ♡
+          </footer>
+
+        </blockquote>
+
+      </div>
+
+    </section>
+
+    <!-- FAQ section -->
+    <section class="faq section" id="faq">
+
+      <div class="section-heading reveal">
+
+        <p class="eyebrow">
+          Got questions?
+        </p>
+
+        <h2>
+          Cookie questions, answered.
+        </h2>
+
+      </div>
+
+      <div class="faq-list">
+
+        <details>
+
+          <summary>
+            How should I store my UbeSmores Cookies?
+            <span>+</span>
+          </summary>
+
+          <p>
+            Keep them in an airtight container at room temperature.
+            For that fresh-baked feeling, warm them briefly before
+            enjoying.
+          </p>
+
+        </details>
+
+        <details>
+
+          <summary>
+            Is the marshmallow really on top?
+            <span>+</span>
+          </summary>
+
+          <p>
+            Yes! The toasted marshmallow sits proudly on top,
+            finished with caramel drizzle.
+          </p>
+
+        </details>
+
+        <details>
+
+          <summary>
+            How can I place an order?
+            <span>+</span>
+          </summary>
+
+          <p>
+            Use the order button below or chat with Ubie.
+            Replace the sample order link with your Facebook,
+            Instagram, or order-form link.
+          </p>
+
+        </details>
+
+      </div>
+
+    </section>
+
+    <!-- Order section -->
+    <section class="order section" id="order">
+
+      <div class="order-card reveal">
+
+        <p class="eyebrow">
+          A sweet little treat awaits
+        </p>
+
+        <h2>
+          Ready for your cozy bite?
+        </h2>
+
+        <p>
+          Message us and make your day a little sweeter.
+        </p>
+
+        <a
+          class="button cream"
+          href="https://m.me/your-page-name"
+          target="_blank"
+          rel="noopener"
+        >
+          Order your UbeSmores
+          <span>→</span>
+        </a>
+
+        <small>
+          Update this link with your real ordering page.
+        </small>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+
+    <a class="brand" href="#home">
+      <span>Ube</span>Smores
+      <i>Cookie</i>
+    </a>
+
+    <p>
+      Warm cookies. Cozy moments. Sweet memories. ♡
+    </p>
+
+    <div>
+      <a href="#home">Home</a>
+      <a href="#story">Story</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <small>
+      © <span id="year"></span> UbeSmores Cookie.
+      Baked with love.
+    </small>
+
+  </footer>
+
+  <!-- Chatbot button -->
+  <button
+    class="chat-launcher"
+    id="chatLauncher"
+    aria-label="Open Ubie chat"
+  >
+    <span>♡</span>
+    <i></i>
+  </button>
+
+  <!-- Chatbot window -->
+  <section
+    class="chatbot"
+    id="chatbot"
+    aria-label="Ubie chatbot"
+    aria-hidden="true"
+  >
 
     <header>
 
-        <div class="header-container">
+      <div class="bot-avatar">♡</div>
 
-            <div class="brand">
+      <div>
+        <strong>Ubie</strong>
 
-                <img
-                    src="images/Logo.jpg"
-                    alt="UbeSmores Cookie business logo"
-                    class="logo"
-                >
+        <small>
+          <i></i>
+          Online &amp; ready to help
+        </small>
+      </div>
 
-                <h2>UbeSmores Cookie</h2>
-
-            </div>
-
-
-            <nav>
-
-                <a href="#home">Home</a>
-
-                <a href="#products">Products</a>
-
-                <a href="#about">About</a>
-
-                <a href="#order">Order</a>
-
-                <a href="#contact">Contact</a>
-
-            </nav>
-
-        </div>
+      <button id="closeChat" aria-label="Close chat">
+        ×
+      </button>
 
     </header>
 
-
-
-    <!-- =========================
-         HOME
-    ========================== -->
-
-    <section id="home">
-
-        <div class="hero-content">
-
-            <div class="hero-text">
-
-                <h1>
-                    Your Sweet Ube Craving Starts Here 💜
-                </h1>
-
-                <p>
-                    Soft and chewy ube cookies topped with
-                    marshmallow and caramel drizzle.
-                </p>
-
-                <a
-                    href="#order"
-                    class="button-link"
-                >
-                    Order Now
-                </a>
-
-            </div>
-
-
-            <div class="hero-image">
-
-                <img
-                    src="images/Cookie1.png"
-                    alt="Soft UbeSmores Cookie topped with marshmallow and caramel drizzle"
-                >
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         PRODUCTS
-    ========================== -->
-
-    <section id="products">
-
-        <h2>Our Cookies</h2>
-
-        <p class="section-subtitle">
-            Freshly baked, soft, chewy, and made for your sweet cravings.
-        </p>
-
-
-        <div class="product-container">
-
-            <div class="product-card">
-
-                <img
-                    src="images/Cookie1.png"
-                    alt="UbeSmores Cookie with marshmallow and caramel topping"
-                >
-
-                <h3>
-                    UbeSmores Cookie
-                </h3>
-
-                <p class="product-description">
-                    Soft and chewy ube cookie topped with marshmallow
-                    and caramel drizzle.
-                </p>
-
-                <p class="price">
-                    ₱89
-                </p>
-
-                <a
-                    href="#order"
-                    class="button-link"
-                >
-                    Order Now
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         ABOUT
-    ========================== -->
-
-    <section id="about">
-
-        <h2>
-            About Us
-        </h2>
-
-        <p class="about-text">
-            UbeSmores Cookie combines the classic Filipino flavor
-            of ube with the comforting sweetness of s'mores.
-        </p>
-
-    </section>
-
-
-
-    <!-- =========================
-         ORDER
-    ========================== -->
-
-    <section id="order">
-
-        <h2>
-            Place Your Order
-        </h2>
-
-        <p class="section-subtitle">
-            Fill out the form below and we'll prepare your
-            UbeSmores Cookie order.
-        </p>
-
-
-        <form
-            class="order-form"
-            action="https://formspree.io/f/xgawrlkb"
-            method="POST"
-        >
-
-            <label for="name">
-                Full Name
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                name="Full Name"
-                placeholder="Enter your full name"
-                required
-            >
-
-
-            <label for="contact-number">
-                Contact Number
-            </label>
-
-            <input
-                type="tel"
-                id="contact-number"
-                name="Contact Number"
-                placeholder="09XXXXXXXXX"
-                required
-            >
-
-
-            <label for="quantity">
-                Quantity
-            </label>
-
-            <input
-                type="number"
-                id="quantity"
-                name="Quantity"
-                min="1"
-                value="1"
-                required
-            >
-
-
-            <p class="order-total">
-                Total:
-                ₱<span id="total-price">89</span>
-            </p>
-
-
-            <input
-                type="hidden"
-                id="total-input"
-                name="Total"
-                value="₱89"
-            >
-
-
-            <label for="method">
-                Order Method
-            </label>
-
-            <select
-                id="method"
-                name="Order Method"
-                required
-            >
-
-                <option value="">
-                    Choose one
-                </option>
-
-                <option value="Pickup">
-                    Pickup
-                </option>
-
-                <option value="Delivery">
-                    Delivery
-                </option>
-
-            </select>
-
-
-            <div id="address-group">
-
-                <label for="address">
-                    Delivery Address
-                </label>
-
-                <textarea
-                    id="address"
-                    name="Delivery Address"
-                    rows="4"
-                    placeholder="Enter your delivery address"
-                ></textarea>
-
-            </div>
-
-
-            <label for="date">
-                Preferred Date
-            </label>
-
-            <input
-                type="date"
-                id="date"
-                name="Preferred Date"
-                required
-            >
-
-
-            <button type="submit">
-                Submit Order
-            </button>
-
-        </form>
-
-
-        <p
-            id="success-message"
-            aria-live="polite"
-        ></p>
-
-    </section>
-
-
-
-    <!-- =========================
-         CONTACT
-    ========================== -->
-
-    <section id="contact">
-
-        <h2>
-            Contact Us
-        </h2>
-
-        <p class="section-subtitle">
-            Have questions or want to place an order?
-            Reach us through our social pages.
-        </p>
-
-
-        <div class="contact-container">
-
-            <p>
-                <strong>Facebook:</strong>
-                Ube S'mores Cookie
-            </p>
-
-            <p>
-                <strong>Instagram:</strong>
-                ubesmoresc.o
-            </p>
-
-            <p>
-                <strong>TikTok:</strong>
-                ubesmores.co
-            </p>
-
-            <p>
-                <strong>X:</strong>
-                ubesmores.co
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <p>
-            © 2026 UbeSmores Cookie. All rights reserved.
-        </p>
-
-    </footer>
-
-
-
-    <!-- =========================
-         UBE ASSISTANT CHATBOT
-    ========================== -->
-
-    <div class="chatbot">
-
-        <button
-            id="chatbot-toggle"
-            class="chatbot-toggle"
-            type="button"
-            aria-label="Open Ube Assistant"
-        >
-            🍪
-        </button>
-
-
-        <div
-            id="chatbot-window"
-            class="chatbot-window"
-        >
-
-            <div class="chatbot-header">
-
-                <div>
-
-                    <strong>
-                        Ube Assistant 🍪
-                    </strong>
-
-                    <p>
-                        How can I help you?
-                    </p>
-
-                </div>
-
-
-                <button
-                    id="chatbot-close"
-                    type="button"
-                    aria-label="Close Ube Assistant"
-                >
-                    ×
-                </button>
-
-            </div>
-
-
-            <div
-                id="chatbot-messages"
-                class="chatbot-messages"
-            >
-
-                <div class="bot-message">
-                    Hi! I'm Ube Assistant 🍪💜
-                    Ask me anything about our cookies or ordering.
-                </div>
-
-            </div>
-
-
-            <div class="faq-buttons">
-
-                <button
-                    type="button"
-                    class="faq-button"
-                    data-question="price"
-                >
-                    How much is one cookie?
-                </button>
-
-
-                <button
-                    type="button"
-                    class="faq-button"
-                    data-question="delivery"
-                >
-                    Do you deliver?
-                </button>
-
-
-                <button
-                    type="button"
-                    class="faq-button"
-                    data-question="order"
-                >
-                    How do I order?
-                </button>
-
-
-                <button
-                    type="button"
-                    class="faq-button"
-                    data-question="advance"
-                >
-                    How early should I order?
-                </button>
-
-
-                <button
-                    type="button"
-                    class="faq-button"
-                    data-question="pickup"
-                >
-                    Is pickup available?
-                </button>
-
-            </div>
-
-        </div>
+    <div class="chat-messages" id="chatMessages">
+
+      <div class="message bot">
+        Hi, cookie lover! 💜 I’m Ubie.
+        How can I make your day sweeter?
+      </div>
 
     </div>
 
+    <div class="quick-replies" id="quickReplies">
 
+      <button data-reply="menu">
+        What’s inside?
+      </button>
 
-    <script src="script.js"></script>
+      <button data-reply="order">
+        How to order?
+      </button>
+
+      <button data-reply="price">
+        Price?
+      </button>
+
+    </div>
+
+    <form id="chatForm">
+
+      <input
+        id="chatInput"
+        type="text"
+        placeholder="Type your message..."
+        autocomplete="off"
+        aria-label="Chat message"
+      >
+
+      <button type="submit" aria-label="Send">
+        ➤
+      </button>
+
+    </form>
+
+  </section>
+
+  <script src="script.js"></script>
 
 </body>
-
 </html>
