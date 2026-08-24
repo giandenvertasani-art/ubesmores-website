@@ -129,7 +129,7 @@
 
   <link
     rel="stylesheet"
-    href="./style.css?v=20260824-1"
+    href="./style.css?v=20260824-2"
   >
 </head>
 
@@ -816,8 +816,8 @@
           </summary>
 
           <p>
-            Yes. Select a flavor in the order form. Submit
-            another order if you want an additional flavor.
+            Yes! Use the Build Your Box section to combine
+            different flavors in one order.
           </p>
 
         </details>
@@ -854,8 +854,8 @@
         </h2>
 
         <p>
-          Select your flavor and quantity. Your total price
-          will update automatically.
+          Mix and match all eight flavors in one cookie box.
+          Your quantity and total will update automatically.
         </p>
 
       </div>
@@ -869,71 +869,375 @@
 
         <div class="form-grid">
 
-          <!-- Flavor -->
-          <div class="form-field full">
+          <!-- Build your box -->
+          <div class="box-builder form-field full" id="boxBuilder">
 
-            <label for="flavor">
-              Cookie Flavor
-            </label>
+            <div class="box-builder-heading">
+              <div>
+                <span class="box-step-number">01</span>
+                <h3>Build your cookie box</h3>
+              </div>
 
-            <select
-              id="flavor"
-              name="Cookie Flavor"
-              required
-            >
+              <p>Mix any flavors you love.</p>
+            </div>
 
-              <option value="" data-price="0">
-                Select a flavor
-              </option>
+            <div class="box-flavor-grid">
 
-              <option value="ube-smores" data-price="89">
-                UbeSmores Cookie — ₱89
-              </option>
+              <article class="box-flavor" data-flavor-card="ube-smores">
 
-              <option
-                value="chocolate-chunk"
-                data-price="79"
-              >
-                Classic Chocolate Chunk — ₱79
-              </option>
+                <img
+                  src="./images/ube.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
 
-              <option
-                value="cookies-cream"
-                data-price="85"
-              >
-                Cookies &amp; Cream — ₱85
-              </option>
+                <div class="box-flavor-info">
+                  <strong>UbeSmores Cookie</strong>
+                  <small>₱89 each</small>
+                </div>
 
-              <option
-                value="red-velvet"
-                data-price="95"
-              >
-                Red Velvet Cream Cheese — ₱95
-              </option>
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one UbeSmores Cookie"
+                  >−</button>
 
-              <option value="matcha" data-price="95">
-                Matcha White Chocolate — ₱95
-              </option>
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="ube-smores"
+                    aria-label="UbeSmores Cookie quantity"
+                  >
 
-              <option value="biscoff" data-price="99">
-                Biscoff Caramel Lava — ₱99
-              </option>
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one UbeSmores Cookie"
+                  >+</button>
+                </div>
 
-              <option
-                value="salted-caramel"
-                data-price="89"
-              >
-                Salted Caramel Pretzel — ₱89
-              </option>
+              </article>
 
-              <option
-                value="classic-smores"
-                data-price="89"
-              >
-                Classic S’mores — ₱89
-              </option>
+              <article class="box-flavor" data-flavor-card="chocolate-chunk">
 
-            </select>
+                <img
+                  src="./images/classic.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Classic Chocolate Chunk</strong>
+                  <small>₱79 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Classic Chocolate Chunk"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="chocolate-chunk"
+                    aria-label="Classic Chocolate Chunk quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Classic Chocolate Chunk"
+                  >+</button>
+                </div>
+
+              </article>
+
+              <article class="box-flavor" data-flavor-card="cookies-cream">
+
+                <img
+                  src="./images/cream.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Cookies &amp; Cream</strong>
+                  <small>₱85 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Cookies & Cream"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="cookies-cream"
+                    aria-label="Cookies & Cream quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Cookies & Cream"
+                  >+</button>
+                </div>
+
+              </article>
+
+              <article class="box-flavor" data-flavor-card="red-velvet">
+
+                <img
+                  src="./images/velvet.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Red Velvet Cream Cheese</strong>
+                  <small>₱95 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Red Velvet Cream Cheese"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="red-velvet"
+                    aria-label="Red Velvet Cream Cheese quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Red Velvet Cream Cheese"
+                  >+</button>
+                </div>
+
+              </article>
+
+              <article class="box-flavor" data-flavor-card="matcha">
+
+                <img
+                  src="./images/matcha.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Matcha White Chocolate</strong>
+                  <small>₱95 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Matcha White Chocolate"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="matcha"
+                    aria-label="Matcha White Chocolate quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Matcha White Chocolate"
+                  >+</button>
+                </div>
+
+              </article>
+
+              <article class="box-flavor" data-flavor-card="biscoff">
+
+                <img
+                  src="./images/biscoff.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Biscoff Caramel Lava</strong>
+                  <small>₱99 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Biscoff Caramel Lava"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="biscoff"
+                    aria-label="Biscoff Caramel Lava quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Biscoff Caramel Lava"
+                  >+</button>
+                </div>
+
+              </article>
+
+              <article class="box-flavor" data-flavor-card="salted-caramel">
+
+                <img
+                  src="./images/pretzel.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Salted Caramel Pretzel</strong>
+                  <small>₱89 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Salted Caramel Pretzel"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="salted-caramel"
+                    aria-label="Salted Caramel Pretzel quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Salted Caramel Pretzel"
+                  >+</button>
+                </div>
+
+              </article>
+
+              <article class="box-flavor" data-flavor-card="classic-smores">
+
+                <img
+                  src="./images/smores.png"
+                  alt=""
+                  loading="lazy"
+                  width="76"
+                  height="76"
+                >
+
+                <div class="box-flavor-info">
+                  <strong>Classic S’mores</strong>
+                  <small>₱89 each</small>
+                </div>
+
+                <div class="quantity-control">
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="decrease"
+                    aria-label="Remove one Classic S’mores"
+                  >−</button>
+
+                  <input
+                    class="flavor-quantity"
+                    type="number"
+                    min="0"
+                    max="99"
+                    value="0"
+                    inputmode="numeric"
+                    data-flavor="classic-smores"
+                    aria-label="Classic S’mores quantity"
+                  >
+
+                  <button
+                    type="button"
+                    class="box-step"
+                    data-action="increase"
+                    aria-label="Add one Classic S’mores"
+                  >+</button>
+                </div>
+
+              </article>
+
+            </div>
+
+            <p class="box-error" id="box-error" role="alert"></p>
 
           </div>
 
@@ -967,24 +1271,6 @@
               name="Contact Number"
               placeholder="09XXXXXXXXX"
               pattern="09[0-9]{9}"
-              required
-            >
-
-          </div>
-
-          <!-- Quantity -->
-          <div class="form-field">
-
-            <label for="quantity">
-              Quantity
-            </label>
-
-            <input
-              type="number"
-              id="quantity"
-              name="Quantity"
-              min="1"
-              value="1"
               required
             >
 
@@ -1066,7 +1352,7 @@
           <div>
 
             <small>
-              ₱<span id="unit-price">0</span> per cookie
+              <span id="cookie-count">0 cookies selected</span>
             </small>
 
             <strong>
@@ -1077,15 +1363,22 @@
 
           <input
             type="hidden"
-            id="total-input"
-            name="Total"
-            value="₱0"
+            id="box-summary-input"
+            name="Cookie Box"
+            value=""
           >
 
           <input
             type="hidden"
-            id="unit-price-input"
-            name="Price Per Cookie"
+            id="total-quantity-input"
+            name="Total Quantity"
+            value="0"
+          >
+
+          <input
+            type="hidden"
+            id="total-input"
+            name="Total"
             value="₱0"
           >
 
@@ -1318,7 +1611,7 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./script.js?v=20260824-1"></script>
+  <script src="./script.js?v=20260824-2"></script>
 
 </body>
 </html>

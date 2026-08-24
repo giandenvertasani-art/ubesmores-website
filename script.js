@@ -88,20 +88,32 @@ document.addEventListener("DOMContentLoaded", function () {
   const orderForm =
     document.getElementById("orderForm");
 
-  const flavorSelect =
-    document.getElementById("flavor");
+  const flavorQuantityInputs =
+    Array.from(
+      document.querySelectorAll(
+        ".flavor-quantity"
+      )
+    );
 
-  const quantityInput =
-    document.getElementById("quantity");
+  const boxBuilder =
+    document.getElementById("boxBuilder");
 
-  const unitPriceDisplay =
-    document.getElementById("unit-price");
+  const boxError =
+    document.getElementById("box-error");
+
+  const cookieCountDisplay =
+    document.getElementById("cookie-count");
 
   const totalPriceDisplay =
     document.getElementById("total-price");
 
-  const unitPriceInput =
-    document.getElementById("unit-price-input");
+  const boxSummaryInput =
+    document.getElementById("box-summary-input");
+
+  const totalQuantityInput =
+    document.getElementById(
+      "total-quantity-input"
+    );
 
   const totalInput =
     document.getElementById("total-input");
@@ -170,45 +182,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* ========================================
-     AUTOMATIC FLAVOR PRICE AND TOTAL
+     BUILD YOUR MIX-AND-MATCH BOX
   ======================================== */
 
-  function getSelectedPrice() {
-    if (!flavorSelect || !flavorSelect.value) {
-      return 0;
+  function normalizeFlavorQuantity(input) {
+    let quantity = Number(input.value);
+
+    if (!Number.isInteger(quantity) || quantity < 0) {
+      quantity = 0;
     }
 
-    const selectedFlavor =
-      flavorInformation[flavorSelect.value];
+    quantity = Math.min(quantity, 99);
+    input.value = String(quantity);
 
-    if (!selectedFlavor) {
-      return 0;
+    const flavorCard = input.closest(
+      "[data-flavor-card]"
+    );
+
+    if (flavorCard) {
+      flavorCard.classList.toggle(
+        "has-items",
+        quantity > 0
+      );
     }
 
-    return selectedFlavor.price;
+    return quantity;
+  }
+
+  function getBoxSelection() {
+    return flavorQuantityInputs
+      .map(function (input) {
+        const flavorId =
+          input.getAttribute("data-flavor");
+
+        const flavor =
+          flavorInformation[flavorId];
+
+        const quantity =
+          normalizeFlavorQuantity(input);
+
+        if (!flavor || quantity < 1) {
+          return null;
+        }
+
+        return {
+          id: flavorId,
+          name: flavor.name,
+          price: flavor.price,
+          quantity: quantity,
+          subtotal: flavor.price * quantity
+        };
+      })
+      .filter(Boolean);
   }
 
   function updateOrderTotal() {
-    let quantity = 1;
+    const selection = getBoxSelection();
 
-    if (quantityInput) {
-      quantity = Number(quantityInput.value);
+    const totalQuantity = selection.reduce(
+      function (sum, item) {
+        return sum + item.quantity;
+      },
+      0
+    );
 
-      if (
-        !Number.isInteger(quantity) ||
-        quantity < 1
-      ) {
-        quantity = 1;
-        quantityInput.value = "1";
-      }
-    }
+    const totalPrice = selection.reduce(
+      function (sum, item) {
+        return sum + item.subtotal;
+      },
+      0
+    );
 
-    const unitPrice = getSelectedPrice();
-    const totalPrice = unitPrice * quantity;
-
-    if (unitPriceDisplay) {
-      unitPriceDisplay.textContent =
-        unitPrice.toLocaleString("en-PH");
+    if (cookieCountDisplay) {
+      cookieCountDisplay.textContent =
+        totalQuantity +
+        (totalQuantity === 1
+          ? " cookie selected"
+          : " cookies selected");
     }
 
     if (totalPriceDisplay) {
@@ -216,35 +266,91 @@ document.addEventListener("DOMContentLoaded", function () {
         totalPrice.toLocaleString("en-PH");
     }
 
-    if (unitPriceInput) {
-      unitPriceInput.value =
-        "₱" + unitPrice.toLocaleString("en-PH");
+    if (boxSummaryInput) {
+      boxSummaryInput.value = selection
+        .map(function (item) {
+          return (
+            item.name +
+            " x" +
+            item.quantity +
+            " — ₱" +
+            item.subtotal.toLocaleString("en-PH")
+          );
+        })
+        .join("\n");
+    }
+
+    if (totalQuantityInput) {
+      totalQuantityInput.value =
+        String(totalQuantity);
     }
 
     if (totalInput) {
       totalInput.value =
         "₱" + totalPrice.toLocaleString("en-PH");
     }
+
+    if (boxError && totalQuantity > 0) {
+      boxError.textContent = "";
+    }
+
+    return {
+      selection: selection,
+      totalQuantity: totalQuantity,
+      totalPrice: totalPrice
+    };
   }
 
-  if (flavorSelect) {
-    flavorSelect.addEventListener(
-      "change",
-      updateOrderTotal
-    );
-  }
+  flavorQuantityInputs.forEach(
+    function (input) {
+      input.addEventListener(
+        "input",
+        updateOrderTotal
+      );
 
-  if (quantityInput) {
-    quantityInput.addEventListener(
-      "input",
-      updateOrderTotal
-    );
+      input.addEventListener(
+        "change",
+        updateOrderTotal
+      );
+    }
+  );
 
-    quantityInput.addEventListener(
-      "change",
-      updateOrderTotal
-    );
-  }
+  document
+    .querySelectorAll(".box-step")
+    .forEach(function (button) {
+      button.addEventListener(
+        "click",
+        function () {
+          const control = button.closest(
+            ".quantity-control"
+          );
+
+          const input = control
+            ? control.querySelector(
+                ".flavor-quantity"
+              )
+            : null;
+
+          if (!input) {
+            return;
+          }
+
+          const direction =
+            button.getAttribute("data-action");
+
+          const current =
+            normalizeFlavorQuantity(input);
+
+          input.value = String(
+            direction === "increase"
+              ? Math.min(current + 1, 99)
+              : Math.max(current - 1, 0)
+          );
+
+          updateOrderTotal();
+        }
+      );
+    });
 
   updateOrderTotal();
 
@@ -264,16 +370,27 @@ document.addEventListener("DOMContentLoaded", function () {
               "data-menu-flavor"
             );
 
+          const input = document.querySelector(
+            '.flavor-quantity[data-flavor="' +
+              selectedFlavor +
+              '"]'
+          );
+
           if (
-            flavorSelect &&
+            input &&
             flavorInformation[selectedFlavor]
           ) {
-            flavorSelect.value = selectedFlavor;
+            const current =
+              normalizeFlavorQuantity(input);
+
+            input.value = String(
+              Math.min(current + 1, 99)
+            );
 
             updateOrderTotal();
 
             setTimeout(function () {
-              flavorSelect.focus();
+              input.focus();
             }, 600);
           }
         }
@@ -405,15 +522,25 @@ document.addEventListener("DOMContentLoaded", function () {
           return;
         }
 
-        if (!getSelectedPrice()) {
-          if (flavorSelect) {
-            flavorSelect.setCustomValidity(
-              "Please choose a cookie flavor."
-            );
+        const boxTotals = updateOrderTotal();
 
-            flavorSelect.reportValidity();
+        if (boxTotals.totalQuantity < 1) {
+          if (boxError) {
+            boxError.textContent =
+              "Please add at least one cookie to your box.";
+          }
 
-            flavorSelect.setCustomValidity("");
+          if (boxBuilder) {
+            boxBuilder.scrollIntoView({
+              behavior: "smooth",
+              block: "center"
+            });
+          }
+
+          if (flavorQuantityInputs[0]) {
+            setTimeout(function () {
+              flavorQuantityInputs[0].focus();
+            }, 450);
           }
 
           return;
@@ -575,7 +702,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Our prices are: UbeSmores ₱89, Chocolate Chunk ₱79, Cookies & Cream ₱85, Red Velvet ₱95, Matcha ₱95, Biscoff Caramel Lava ₱99, Salted Caramel Pretzel ₱89, and Classic S’mores ₱89.",
 
     order:
-      "Choose a flavor from the menu or order form, enter the quantity and your details, choose pickup or delivery, select a preferred date, then press Submit Order.",
+      "Build your box by adding any combination of our eight flavors, enter your details, choose pickup or delivery, select a preferred date, then press Submit Order.",
 
     delivery:
       "Delivery is available! Choose Delivery in the order form and enter your complete delivery address.",
