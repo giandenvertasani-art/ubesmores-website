@@ -797,4 +797,342 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       );
     });
+  /* ========================================
+     SHARED CUSTOMER REVIEWS
+  ======================================== */
+
+  const SUPABASE_URL =
+    "https://kuzbwuttvyyhhwiwfduy.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt1emJ3dXR0dnl5aGh3aXdmZHV5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc1NjIwODEsImV4cCI6MjEwMzEzODA4MX0.NDuqROyRQpNeRBUbO0RdYtqI8JoJ8FwRJfFF2EkqbqM";
+
+  const reviewForm =
+    document.getElementById("reviewForm");
+
+  const reviewsList =
+    document.getElementById("reviewsList");
+
+  const reviewName =
+    document.getElementById("reviewName");
+
+  const reviewAnonymous =
+    document.getElementById("reviewAnonymous");
+
+  const reviewText =
+    document.getElementById("reviewText");
+
+  const reviewCharacterCount =
+    document.getElementById("reviewCharacterCount");
+
+  const reviewStatus =
+    document.getElementById("reviewStatus");
+
+  const reviewSubmit =
+    document.getElementById("reviewSubmit");
+
+  let reviewDatabase = null;
+
+  if (
+    window.supabase &&
+    typeof window.supabase.createClient === "function"
+  ) {
+    reviewDatabase = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_PUBLISHABLE_KEY
+    );
+  }
+
+  function setReviewStatus(message, isError) {
+    if (!reviewStatus) {
+      return;
+    }
+
+    reviewStatus.textContent = message;
+    reviewStatus.classList.toggle(
+      "error",
+      Boolean(isError)
+    );
+  }
+
+  function createReviewCard(review) {
+    const card = document.createElement("blockquote");
+    const stars = document.createElement("span");
+    const message = document.createElement("p");
+    const footer = document.createElement("footer");
+    const name = document.createElement("strong");
+    const flavor = document.createElement("span");
+    const date = document.createElement("time");
+
+    const rating = Math.max(
+      1,
+      Math.min(5, Number(review.rating) || 1)
+    );
+
+    stars.className = "review-stars";
+    stars.textContent =
+      "★".repeat(rating) + "☆".repeat(5 - rating);
+
+    message.textContent = "“" + review.review_text + "”";
+
+    name.textContent = review.is_anonymous
+      ? "Anonymous Cookie Lover"
+      : review.display_name;
+
+    flavor.textContent = review.flavor;
+
+    const reviewDate = new Date(review.created_at);
+
+    date.dateTime = reviewDate.toISOString();
+    date.textContent = new Intl.DateTimeFormat(
+      "en-PH",
+      {
+        month: "short",
+        day: "numeric",
+        year: "numeric"
+      }
+    ).format(reviewDate);
+
+    footer.append(name, flavor, date);
+    card.append(stars, message, footer);
+    card.className = "review-card";
+
+    return card;
+  }
+
+  function updateReviewSummary(reviews) {
+    const averageRating =
+      document.getElementById("averageRating");
+
+    const averageRatingNumber =
+      document.getElementById("averageRatingNumber");
+
+    const reviewCount =
+      document.getElementById("reviewCount");
+
+    if (
+      !averageRating ||
+      !averageRatingNumber ||
+      !reviewCount
+    ) {
+      return;
+    }
+
+    if (!reviews.length) {
+      averageRating.hidden = true;
+      return;
+    }
+
+    const total = reviews.reduce(
+      function (sum, review) {
+        return sum + Number(review.rating);
+      },
+      0
+    );
+
+    averageRatingNumber.textContent =
+      (total / reviews.length).toFixed(1);
+
+    reviewCount.textContent =
+      reviews.length +
+      (reviews.length === 1 ? " review" : " reviews");
+
+    averageRating.hidden = false;
+  }
+
+  async function loadApprovedReviews() {
+    if (!reviewsList) {
+      return;
+    }
+
+    if (!reviewDatabase) {
+      reviewsList.innerHTML =
+        '<p class="reviews-error">Reviews are temporarily unavailable.</p>';
+      return;
+    }
+
+    const result = await reviewDatabase
+      .from("reviews")
+      .select(
+        "id, display_name, is_anonymous, flavor, rating, review_text, created_at"
+      )
+      .eq("approved", true)
+      .order("created_at", { ascending: false })
+      .limit(12);
+
+    reviewsList.replaceChildren();
+
+    if (result.error) {
+      const errorMessage = document.createElement("p");
+
+      errorMessage.className = "reviews-error";
+      errorMessage.textContent =
+        "We could not load the reviews right now.";
+
+      reviewsList.append(errorMessage);
+      return;
+    }
+
+    const reviews = result.data || [];
+
+    updateReviewSummary(reviews);
+
+    if (!reviews.length) {
+      const emptyMessage = document.createElement("p");
+
+      emptyMessage.className = "reviews-empty";
+      emptyMessage.textContent =
+        "No approved reviews yet. Be the first to share a sweet moment!";
+
+      reviewsList.append(emptyMessage);
+      return;
+    }
+
+    reviews.forEach(function (review) {
+      reviewsList.append(createReviewCard(review));
+    });
+  }
+
+  if (reviewAnonymous && reviewName) {
+    reviewAnonymous.addEventListener(
+      "change",
+      function () {
+        reviewName.disabled = reviewAnonymous.checked;
+        reviewName.required = !reviewAnonymous.checked;
+
+        if (reviewAnonymous.checked) {
+          reviewName.value = "";
+          reviewName.placeholder =
+            "Your review will appear anonymously";
+        } else {
+          reviewName.placeholder =
+            "First name or nickname";
+          reviewName.focus();
+        }
+      }
+    );
+  }
+
+  if (reviewText && reviewCharacterCount) {
+    reviewText.addEventListener(
+      "input",
+      function () {
+        reviewCharacterCount.textContent =
+          String(reviewText.value.length);
+      }
+    );
+  }
+
+  if (reviewForm) {
+    reviewForm.addEventListener(
+      "submit",
+      async function (event) {
+        event.preventDefault();
+        setReviewStatus("", false);
+
+        if (!reviewDatabase) {
+          setReviewStatus(
+            "Reviews are temporarily unavailable.",
+            true
+          );
+          return;
+        }
+
+        const honeypot =
+          document.getElementById("reviewWebsite");
+
+        if (honeypot && honeypot.value) {
+          reviewForm.reset();
+          return;
+        }
+
+        const lastSubmission = Number(
+          localStorage.getItem(
+            "ubesmoresLastReviewSubmission"
+          )
+        );
+
+        if (
+          lastSubmission &&
+          Date.now() - lastSubmission < 60000
+        ) {
+          setReviewStatus(
+            "Please wait a minute before submitting another review.",
+            true
+          );
+          return;
+        }
+
+        const formData = new FormData(reviewForm);
+        const isAnonymous =
+          Boolean(reviewAnonymous && reviewAnonymous.checked);
+
+        const review = {
+          display_name: isAnonymous
+            ? "Anonymous Cookie Lover"
+            : String(
+                formData.get("display_name") || ""
+              ).trim(),
+          is_anonymous: isAnonymous,
+          flavor: String(
+            formData.get("flavor") || ""
+          ),
+          rating: Number(formData.get("rating")),
+          review_text: String(
+            formData.get("review_text") || ""
+          ).trim(),
+          approved: false
+        };
+
+        if (reviewSubmit) {
+          reviewSubmit.disabled = true;
+          reviewSubmit.textContent =
+            "Submitting review…";
+        }
+
+        const result = await reviewDatabase
+          .from("reviews")
+          .insert(review);
+
+        if (result.error) {
+          setReviewStatus(
+            "Your review could not be submitted. Please try again.",
+            true
+          );
+        } else {
+          localStorage.setItem(
+            "ubesmoresLastReviewSubmission",
+            String(Date.now())
+          );
+
+          reviewForm.reset();
+
+          if (reviewName) {
+            reviewName.disabled = false;
+            reviewName.required = true;
+            reviewName.placeholder =
+              "First name or nickname";
+          }
+
+          if (reviewCharacterCount) {
+            reviewCharacterCount.textContent = "0";
+          }
+
+          setReviewStatus(
+            "Thank you! Your review was submitted for approval. 💜",
+            false
+          );
+        }
+
+        if (reviewSubmit) {
+          reviewSubmit.disabled = false;
+          reviewSubmit.innerHTML =
+            'Submit review <span>→</span>';
+        }
+      }
+    );
+  }
+
+  loadApprovedReviews();
+
 });
