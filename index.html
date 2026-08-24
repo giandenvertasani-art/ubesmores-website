@@ -129,7 +129,7 @@
 
   <link
     rel="stylesheet"
-    href="./style.css?v=20260821-1"
+    href="./style.css?v=20260824-1"
   >
 </head>
 
@@ -637,54 +637,141 @@
           Loved at first bite.
         </h2>
 
+        <p>
+          Share your cookie experience and read what other
+          UbeSmores lovers have to say.
+        </p>
+
       </div>
 
-      <div class="review-grid">
+      <div class="review-layout">
 
-        <blockquote class="reveal">
+        <form class="review-form reveal" id="reviewForm">
 
-          <span>★★★★★</span>
+          <div class="review-form-heading">
+            <span>✦</span>
 
-          <p>
-            “Super soft and the ube flavor is just right.
-            The toasted marshmallows make it extra special.”
-          </p>
+            <div>
+              <p class="eyebrow">Your turn</p>
+              <h3>Leave a sweet review</h3>
+            </div>
+          </div>
 
-          <footer>
-            — A happy cookie lover
-          </footer>
+          <div class="review-form-grid">
 
-        </blockquote>
+            <label class="review-field">
+              <span>Display name</span>
+              <input
+                id="reviewName"
+                name="display_name"
+                type="text"
+                maxlength="40"
+                placeholder="First name or nickname"
+                autocomplete="name"
+                required
+              >
+            </label>
 
-        <blockquote class="reveal">
+            <label class="review-field">
+              <span>Cookie flavor</span>
+              <select id="reviewFlavor" name="flavor" required>
+                <option value="">Choose a flavor</option>
+                <option>UbeSmores Cookie</option>
+                <option>Classic Chocolate Chunk</option>
+                <option>Cookies &amp; Cream</option>
+                <option>Red Velvet Cream Cheese</option>
+                <option>Matcha White Chocolate</option>
+                <option>Biscoff Caramel Lava</option>
+                <option>Salted Caramel Pretzel</option>
+                <option>Classic S'mores</option>
+              </select>
+            </label>
 
-          <span>★★★★★</span>
+            <fieldset class="review-rating">
+              <legend>Your rating</legend>
 
-          <p>
-            “Perfect with coffee, especially on a rainy day.
-            One cookie was definitely not enough!”
-          </p>
+              <div class="star-picker" aria-label="Choose a rating">
+                <input type="radio" id="star5" name="rating" value="5" required>
+                <label for="star5" title="5 stars">★</label>
 
-          <footer>
-            — Your new suki
-          </footer>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" title="4 stars">★</label>
 
-        </blockquote>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars">★</label>
 
-        <blockquote class="reveal">
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" title="2 stars">★</label>
 
-          <span>★★★★★</span>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" title="1 star">★</label>
+              </div>
+            </fieldset>
 
-          <p>
-            “The caramel drizzle, marshmallows, and chewy
-            cookie are such a cozy combination.”
-          </p>
+            <label class="review-field review-field-full">
+              <span>Your review</span>
+              <textarea
+                id="reviewText"
+                name="review_text"
+                rows="5"
+                minlength="5"
+                maxlength="500"
+                placeholder="What did you love about your cookie?"
+                required
+              ></textarea>
+              <small><span id="reviewCharacterCount">0</span>/500 characters</small>
+            </label>
 
-          <footer>
-            — Ube obsessed ♡
-          </footer>
+            <label class="anonymous-option review-field-full">
+              <input id="reviewAnonymous" name="is_anonymous" type="checkbox">
+              <span>Post as “Anonymous Cookie Lover”</span>
+            </label>
 
-        </blockquote>
+            <label class="review-honeypot" aria-hidden="true">
+              Leave this empty
+              <input
+                id="reviewWebsite"
+                name="website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              >
+            </label>
+
+          </div>
+
+          <button class="review-submit" id="reviewSubmit" type="submit">
+            Submit review <span>→</span>
+          </button>
+
+          <p class="review-status" id="reviewStatus" role="status" aria-live="polite"></p>
+
+          <small class="review-note">
+            Reviews are checked before appearing publicly.
+          </small>
+
+        </form>
+
+        <div class="customer-reviews reveal">
+
+          <div class="review-summary">
+            <div>
+              <p class="eyebrow">Cookie community</p>
+              <h3>Customer reviews</h3>
+            </div>
+
+            <div class="average-rating" id="averageRating" hidden>
+              <strong id="averageRatingNumber">0.0</strong>
+              <span>★★★★★</span>
+              <small id="reviewCount">0 reviews</small>
+            </div>
+          </div>
+
+          <div class="review-grid" id="reviewsList" aria-live="polite">
+            <p class="reviews-loading">Loading sweet reviews…</p>
+          </div>
+
+        </div>
 
       </div>
 
@@ -1230,7 +1317,8 @@
 
   </section>
 
-  <script src="./script.js?v=20260821-1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./script.js?v=20260824-1"></script>
 
 </body>
 </html>
