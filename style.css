@@ -157,6 +157,34 @@ textarea {
   cursor: pointer;
 }
 
+/* Theme toggle */
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  color: var(--ube);
+  background: rgba(91, 43, 130, 0.08);
+  border: 1px solid rgba(91, 43, 130, 0.16);
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.theme-toggle:hover {
+  color: white;
+  background: var(--ube);
+  transform: translateY(-1px);
+}
+
+.theme-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
 /* General buttons */
 
 .button {
@@ -499,7 +527,7 @@ textarea {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 16px;
   margin-top: 35px;
 }
@@ -1076,6 +1104,78 @@ textarea {
   box-shadow: var(--shadow);
 }
 
+.order-type-picker {
+  margin: 0;
+  padding: 0 0 28px;
+  border: 0;
+  border-bottom: 1px solid #e1d5e2;
+}
+
+.order-type-picker legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  color: var(--deep);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 700;
+}
+
+.order-type-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px;
+}
+
+.order-type-card {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.order-type-card input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.order-type-card > span {
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 17px;
+  color: var(--deep);
+  background: white;
+  border: 2px solid #e0d2e3;
+  border-radius: 18px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.order-type-card strong,
+.order-type-card small {
+  display: block;
+}
+
+.order-type-card small {
+  color: #806e84;
+  font-size: 11px;
+}
+
+.order-type-card input:checked + span {
+  border-color: var(--ube);
+  box-shadow: 0 9px 22px rgba(91, 43, 130, 0.14);
+  transform: translateY(-2px);
+}
+
+.order-type-card input:focus-visible + span {
+  outline: 3px solid rgba(91, 43, 130, 0.25);
+  outline-offset: 2px;
+}
+
 .box-builder {
   margin-bottom: 8px;
   padding-bottom: 28px;
@@ -1424,6 +1524,14 @@ textarea {
   background: linear-gradient(145deg, #282828, #000000);
 }
 
+.social-card.youtube {
+  background: linear-gradient(145deg, #ff3434, #b50000);
+}
+
+.social-card.tiktok {
+  background: linear-gradient(145deg, #171717, #302247);
+}
+
 .social-icon {
   width: 55px;
   height: 55px;
@@ -1686,6 +1794,151 @@ textarea {
   cursor: pointer;
 }
 
+/* Dark mode */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  color: #f8effc;
+  background: #160c20;
+}
+
+html[data-theme="dark"] .navbar {
+  background: rgba(27, 14, 38, 0.95);
+  border-bottom-color: rgba(217, 184, 238, 0.14);
+}
+
+html[data-theme="dark"] .brand > span,
+html[data-theme="dark"] .navbar nav > a:not(.nav-order) {
+  color: #f8effc;
+}
+
+html[data-theme="dark"] .theme-toggle {
+  color: #f1dfff;
+  background: rgba(217, 184, 238, 0.12);
+  border-color: rgba(217, 184, 238, 0.22);
+}
+
+html[data-theme="dark"] .hero {
+  background:
+    radial-gradient(circle at 80% 30%, #4d2868, transparent 35%),
+    linear-gradient(130deg, #160c20 35%, #2a1639);
+}
+
+html[data-theme="dark"] .hero-text,
+html[data-theme="dark"] .social-proof span,
+html[data-theme="dark"] .section-heading > p:last-child,
+html[data-theme="dark"] .story-copy > p:not(.eyebrow),
+html[data-theme="dark"] .features small,
+html[data-theme="dark"] .faq-list p {
+  color: #cbb8d2;
+}
+
+html[data-theme="dark"] .faces b {
+  border-color: #160c20;
+}
+
+html[data-theme="dark"] .story,
+html[data-theme="dark"] .faq {
+  background: #160c20;
+}
+
+html[data-theme="dark"] .features div,
+html[data-theme="dark"] .faq-list details {
+  border-color: rgba(217, 184, 238, 0.2);
+}
+
+html[data-theme="dark"] .menu-section {
+  background: #21132d;
+}
+
+html[data-theme="dark"] .social-section {
+  background:
+    radial-gradient(circle at 50% 0%, #4a2860, transparent 40%),
+    #160c20;
+}
+
+html[data-theme="dark"] .order-section {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(143, 85, 186, 0.18), transparent 25%),
+    linear-gradient(145deg, #21132d, #33213a);
+}
+
+html[data-theme="dark"] .order-intro > p:last-child {
+  color: #d0bed5;
+}
+
+html[data-theme="dark"] .order-form,
+html[data-theme="dark"] .review-form {
+  color: #f8effc;
+  background: #24152f;
+  border-color: rgba(217, 184, 238, 0.16);
+}
+
+html[data-theme="dark"] .order-type-picker,
+html[data-theme="dark"] .box-builder {
+  border-color: rgba(217, 184, 238, 0.16);
+}
+
+html[data-theme="dark"] .order-type-picker legend,
+html[data-theme="dark"] .box-builder-heading h3,
+html[data-theme="dark"] .box-flavor-info strong,
+html[data-theme="dark"] .form-field label,
+html[data-theme="dark"] .review-field > span,
+html[data-theme="dark"] .review-form-heading h3 {
+  color: #f8effc;
+}
+
+html[data-theme="dark"] .order-type-card > span,
+html[data-theme="dark"] .box-flavor,
+html[data-theme="dark"] .form-field input,
+html[data-theme="dark"] .form-field select,
+html[data-theme="dark"] .form-field textarea,
+html[data-theme="dark"] .review-field input,
+html[data-theme="dark"] .review-field select,
+html[data-theme="dark"] .review-field textarea {
+  color: #f8effc;
+  background: #342143;
+  border-color: rgba(217, 184, 238, 0.24);
+}
+
+html[data-theme="dark"] .order-type-card small,
+html[data-theme="dark"] .box-builder-heading p,
+html[data-theme="dark"] .form-field small {
+  color: #c7b1ce;
+}
+
+html[data-theme="dark"] .floating-note {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .chatbot {
+  color: #f8effc;
+  background: #24152f;
+}
+
+html[data-theme="dark"] .chat-messages,
+html[data-theme="dark"] .quick-replies {
+  background: #1b1025;
+}
+
+html[data-theme="dark"] .message.bot,
+html[data-theme="dark"] .quick-replies button {
+  color: #f8effc;
+  background: #382047;
+}
+
+html[data-theme="dark"] .chatbot form {
+  border-top-color: rgba(217, 184, 238, 0.16);
+}
+
+html[data-theme="dark"] .chatbot input {
+  color: #f8effc;
+  background: #24152f;
+}
+
 /* Scroll reveal */
 
 .reveal {
@@ -1733,6 +1986,10 @@ textarea {
     transition:
       opacity 0.25s,
       transform 0.25s;
+  }
+
+  html[data-theme="dark"] .navbar nav {
+    background: #24152f;
   }
 
   .navbar nav.open {
@@ -1808,6 +2065,10 @@ textarea {
 /* Phones */
 
 @media (max-width: 700px) {
+  .order-type-options {
+    grid-template-columns: 1fr;
+  }
+
   .form-grid {
     grid-template-columns: 1fr;
   }
