@@ -1,5 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* ========================================
+     DARK / NORMAL MODE
+  ======================================== */
+
+  const themeToggle =
+    document.getElementById("themeToggle");
+
+  function updateThemeButton(theme) {
+    if (!themeToggle) {
+      return;
+    }
+
+    const isDark = theme === "dark";
+    const icon = themeToggle.querySelector(".theme-icon");
+    const label = themeToggle.querySelector(".theme-label");
+
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute(
+      "aria-label",
+      isDark ? "Switch to normal mode" : "Switch to dark mode"
+    );
+
+    if (icon) {
+      icon.textContent = isDark ? "☀" : "☾";
+    }
+
+    if (label) {
+      label.textContent = isDark ? "Normal" : "Dark";
+    }
+  }
+
+  const startingTheme =
+    document.documentElement.getAttribute("data-theme") || "light";
+
+  updateThemeButton(startingTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", function () {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme");
+
+      const nextTheme =
+        currentTheme === "dark" ? "light" : "dark";
+
+      document.documentElement.setAttribute("data-theme", nextTheme);
+
+      try {
+        localStorage.setItem("ubesmoresTheme", nextTheme);
+      } catch (error) {
+        /* Theme still works when storage is unavailable. */
+      }
+
+      updateThemeButton(nextTheme);
+    });
+  }
+
+  /* ========================================
      MOBILE NAVIGATION
   ======================================== */
 
@@ -95,6 +151,19 @@ document.addEventListener("DOMContentLoaded", function () {
       )
     );
 
+  const orderTypeInputs =
+    Array.from(
+      document.querySelectorAll(
+        '[name="Order Type"]'
+      )
+    );
+
+  const boxBuilderTitle =
+    document.getElementById("boxBuilderTitle");
+
+  const boxBuilderHint =
+    document.getElementById("boxBuilderHint");
+
   const boxBuilder =
     document.getElementById("boxBuilder");
 
@@ -182,8 +251,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* ========================================
-     BUILD YOUR MIX-AND-MATCH BOX
+     SOLO AND MIX-AND-MATCH ORDERS
   ======================================== */
+
+  function getSelectedOrderType() {
+    const selected = orderTypeInputs.find(
+      function (input) {
+        return input.checked;
+      }
+    );
+
+    return selected
+      ? selected.getAttribute("data-order-type")
+      : "solo";
+  }
+
+  function getOrderLimit() {
+    const orderType = getSelectedOrderType();
+
+    if (orderType === "box-6") {
+      return 6;
+    }
+
+    if (orderType === "box-8") {
+      return 8;
+    }
+
+    return 99;
+  }
 
   function normalizeFlavorQuantity(input) {
     let quantity = Number(input.value);
@@ -192,7 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
       quantity = 0;
     }
 
-    quantity = Math.min(quantity, 99);
+    quantity = Math.min(quantity, getOrderLimit());
     input.value = String(quantity);
 
     const flavorCard = input.closest(
@@ -236,7 +331,36 @@ document.addEventListener("DOMContentLoaded", function () {
       .filter(Boolean);
   }
 
-  function updateOrderTotal() {
+  function enforceOrderType(changedInput) {
+    const orderType = getSelectedOrderType();
+
+    if (orderType === "solo" && changedInput) {
+      flavorQuantityInputs.forEach(function (input) {
+        if (input !== changedInput && Number(changedInput.value) > 0) {
+          input.value = "0";
+        }
+      });
+    }
+
+    if (orderType !== "solo") {
+      const limit = getOrderLimit();
+      let remaining = limit;
+
+      flavorQuantityInputs.forEach(function (input) {
+        const quantity = Math.min(
+          Math.max(0, Number(input.value) || 0),
+          remaining
+        );
+
+        input.value = String(quantity);
+        remaining -= quantity;
+      });
+    }
+  }
+
+  function updateOrderTotal(changedInput) {
+    enforceOrderType(changedInput);
+
     const selection = getBoxSelection();
 
     const totalQuantity = selection.reduce(
@@ -253,12 +377,21 @@ document.addEventListener("DOMContentLoaded", function () {
       0
     );
 
+    const orderType = getSelectedOrderType();
+    const targetQuantity =
+      orderType === "box-6"
+        ? 6
+        : orderType === "box-8"
+          ? 8
+          : null;
+
     if (cookieCountDisplay) {
-      cookieCountDisplay.textContent =
-        totalQuantity +
-        (totalQuantity === 1
-          ? " cookie selected"
-          : " cookies selected");
+      cookieCountDisplay.textContent = targetQuantity
+        ? totalQuantity + " of " + targetQuantity + " cookies selected"
+        : totalQuantity +
+          (totalQuantity === 1
+            ? " cookie selected"
+            : " cookies selected");
     }
 
     if (totalPriceDisplay) {
@@ -290,27 +423,79 @@ document.addEventListener("DOMContentLoaded", function () {
         "₱" + totalPrice.toLocaleString("en-PH");
     }
 
-    if (boxError && totalQuantity > 0) {
-      boxError.textContent = "";
+    if (boxError) {
+      if (targetQuantity && totalQuantity > 0 && totalQuantity < targetQuantity) {
+        boxError.textContent =
+          "Please add " +
+          (targetQuantity - totalQuantity) +
+          " more " +
+          (targetQuantity - totalQuantity === 1 ? "cookie." : "cookies.");
+      } else {
+        boxError.textContent = "";
+      }
     }
 
     return {
       selection: selection,
       totalQuantity: totalQuantity,
-      totalPrice: totalPrice
+      totalPrice: totalPrice,
+      orderType: orderType,
+      targetQuantity: targetQuantity
     };
   }
+
+  function updateOrderType(resetQuantities) {
+    const orderType = getSelectedOrderType();
+
+    if (resetQuantities) {
+      flavorQuantityInputs.forEach(function (input) {
+        input.value = "0";
+      });
+    }
+
+    if (boxBuilderTitle) {
+      boxBuilderTitle.textContent =
+        orderType === "solo"
+          ? "Choose your solo flavor"
+          : "Mix your cookie box";
+    }
+
+    if (boxBuilderHint) {
+      boxBuilderHint.textContent =
+        orderType === "box-6"
+          ? "Choose exactly 6 cookies."
+          : orderType === "box-8"
+            ? "Choose exactly 8 cookies."
+            : "Choose one flavor in any quantity.";
+    }
+
+    flavorQuantityInputs.forEach(function (input) {
+      input.max = String(getOrderLimit());
+    });
+
+    updateOrderTotal();
+  }
+
+  orderTypeInputs.forEach(function (input) {
+    input.addEventListener("change", function () {
+      updateOrderType(true);
+    });
+  });
 
   flavorQuantityInputs.forEach(
     function (input) {
       input.addEventListener(
         "input",
-        updateOrderTotal
+        function () {
+          updateOrderTotal(input);
+        }
       );
 
       input.addEventListener(
         "change",
-        updateOrderTotal
+        function () {
+          updateOrderTotal(input);
+        }
       );
     }
   );
@@ -341,18 +526,29 @@ document.addEventListener("DOMContentLoaded", function () {
           const current =
             normalizeFlavorQuantity(input);
 
+          if (
+            direction === "increase" &&
+            getSelectedOrderType() !== "solo"
+          ) {
+            const totals = updateOrderTotal();
+
+            if (totals.totalQuantity >= getOrderLimit()) {
+              return;
+            }
+          }
+
           input.value = String(
             direction === "increase"
-              ? Math.min(current + 1, 99)
+              ? Math.min(current + 1, getOrderLimit())
               : Math.max(current - 1, 0)
           );
 
-          updateOrderTotal();
+          updateOrderTotal(input);
         }
       );
     });
 
-  updateOrderTotal();
+  updateOrderType(false);
 
 
   /* ========================================
@@ -380,14 +576,21 @@ document.addEventListener("DOMContentLoaded", function () {
             input &&
             flavorInformation[selectedFlavor]
           ) {
-            const current =
-              normalizeFlavorQuantity(input);
-
-            input.value = String(
-              Math.min(current + 1, 99)
+            const soloOption = orderTypeInputs.find(
+              function (option) {
+                return option.getAttribute("data-order-type") === "solo";
+              }
             );
 
-            updateOrderTotal();
+            if (soloOption) {
+              soloOption.checked = true;
+            }
+
+            flavorQuantityInputs.forEach(function (quantityInput) {
+              quantityInput.value = quantityInput === input ? "1" : "0";
+            });
+
+            updateOrderType(false);
 
             setTimeout(function () {
               input.focus();
@@ -524,10 +727,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const boxTotals = updateOrderTotal();
 
-        if (boxTotals.totalQuantity < 1) {
+        const invalidSolo =
+          boxTotals.orderType === "solo" &&
+          boxTotals.selection.length !== 1;
+
+        const invalidMixBox =
+          boxTotals.targetQuantity &&
+          boxTotals.totalQuantity !== boxTotals.targetQuantity;
+
+        if (
+          boxTotals.totalQuantity < 1 ||
+          invalidSolo ||
+          invalidMixBox
+        ) {
           if (boxError) {
-            boxError.textContent =
-              "Please add at least one cookie to your box.";
+            if (boxTotals.totalQuantity < 1) {
+              boxError.textContent =
+                "Please choose at least one cookie.";
+            } else if (invalidSolo) {
+              boxError.textContent =
+                "A solo order can contain only one flavor.";
+            } else {
+              boxError.textContent =
+                "Your mixed box must contain exactly " +
+                boxTotals.targetQuantity +
+                " cookies.";
+            }
           }
 
           if (boxBuilder) {
@@ -590,7 +815,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           orderForm.reset();
 
-          updateOrderTotal();
+          updateOrderType(false);
           updateOrderMethod();
           setMinimumOrderDate();
         } catch (error) {
@@ -702,7 +927,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Our prices are: UbeSmores ₱89, Chocolate Chunk ₱79, Cookies & Cream ₱85, Red Velvet ₱95, Matcha ₱95, Biscoff Caramel Lava ₱99, Salted Caramel Pretzel ₱89, and Classic S’mores ₱89.",
 
     order:
-      "Build your box by adding any combination of our eight flavors, enter your details, choose pickup or delivery, select a preferred date, then press Submit Order.",
+      "Choose Solo Cookie for one flavor in any quantity, or select Mix Box 6 or Mix Box 8 and divide the exact box quantity among your favorite flavors. Then enter your details and submit your order.",
 
     delivery:
       "Delivery is available! Choose Delivery in the order form and enter your complete delivery address.",
@@ -717,7 +942,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Keep your cookies in an airtight container. Warm them briefly before eating for a soft and gooey experience.",
 
     socials:
-      "Follow us on Facebook at Ube.Smores.Cookie, Instagram at @ubesmoresc.o, and X at @UbeSmoresC0. You can tap the social cards near the bottom of the website.",
+      "Follow us on Facebook at Ube.Smores.Cookie, Instagram at @ubesmoresc.o, X at @UbeSmoresC0, YouTube at @UbeSmoresCookie, and TikTok at @ubesmores.co. Tap the social cards near the bottom of the website.",
 
     thanks:
       "You’re very welcome! Have an ube-lievable day. ♡"
@@ -810,6 +1035,8 @@ document.addEventListener("DOMContentLoaded", function () {
       text.includes("instagram") ||
       text.includes("social") ||
       text.includes("twitter") ||
+      text.includes("youtube") ||
+      text.includes("tiktok") ||
       text === "x"
     ) {
       return chatbotAnswers.socials;
