@@ -11,6 +11,24 @@
 
   <meta name="theme-color" content="#5b2b82">
 
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem("ubesmoresTheme");
+        var preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+
+        document.documentElement.setAttribute(
+          "data-theme",
+          savedTheme || preferredTheme
+        );
+      } catch (error) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+
   <title>UbeSmores Cookie | Premium Cookies</title>
 
   <meta
@@ -109,7 +127,9 @@
   "sameAs": [
     "https://www.facebook.com/Ube.Smores.Cookie",
     "https://www.instagram.com/ubesmoresc.o/",
-    "https://x.com/UbeSmoresC0"
+    "https://x.com/UbeSmoresC0",
+    "https://www.youtube.com/@UbeSmoresCookie",
+    "https://www.tiktok.com/@ubesmores.co"
   ]
 }
 </script>
@@ -129,7 +149,7 @@
 
   <link
     rel="stylesheet"
-    href="./style.css?v=20260824-2"
+    href="./style.css?v=20260826-1"
   >
 </head>
 
@@ -181,6 +201,18 @@
       <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
       <a href="#socials">Socials</a>
+
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        type="button"
+        aria-label="Switch to dark mode"
+        aria-pressed="false"
+      >
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Dark</span>
+      </button>
+
       <a class="nav-order" href="#order">Order now</a>
     </nav>
 
@@ -854,7 +886,7 @@
         </h2>
 
         <p>
-          Mix and match all eight flavors in one cookie box.
+          Choose a solo cookie or build a mixed box of 6 or 8.
           Your quantity and total will update automatically.
         </p>
 
@@ -869,16 +901,66 @@
 
         <div class="form-grid">
 
+          <!-- Order type -->
+          <fieldset class="order-type-picker form-field full" id="orderTypePicker">
+            <legend>
+              <span class="box-step-number">01</span>
+              Choose your order type
+            </legend>
+
+            <div class="order-type-options">
+              <label class="order-type-card">
+                <input
+                  type="radio"
+                  name="Order Type"
+                  value="Solo Order"
+                  data-order-type="solo"
+                  checked
+                >
+                <span>
+                  <strong>Solo Cookie</strong>
+                  <small>Choose one flavor</small>
+                </span>
+              </label>
+
+              <label class="order-type-card">
+                <input
+                  type="radio"
+                  name="Order Type"
+                  value="Mix Box of 6"
+                  data-order-type="box-6"
+                >
+                <span>
+                  <strong>Mix Box 6</strong>
+                  <small>Choose exactly 6 cookies</small>
+                </span>
+              </label>
+
+              <label class="order-type-card">
+                <input
+                  type="radio"
+                  name="Order Type"
+                  value="Mix Box of 8"
+                  data-order-type="box-8"
+                >
+                <span>
+                  <strong>Mix Box 8</strong>
+                  <small>Choose exactly 8 cookies</small>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
           <!-- Build your box -->
           <div class="box-builder form-field full" id="boxBuilder">
 
             <div class="box-builder-heading">
               <div>
-                <span class="box-step-number">01</span>
-                <h3>Build your cookie box</h3>
+                <span class="box-step-number">02</span>
+                <h3 id="boxBuilderTitle">Choose your flavor</h3>
               </div>
 
-              <p>Mix any flavors you love.</p>
+              <p id="boxBuilderHint">Solo orders use one flavor.</p>
             </div>
 
             <div class="box-flavor-grid">
@@ -1474,6 +1556,42 @@
 
         </a>
 
+        <a
+          class="social-card youtube reveal"
+          href="https://www.youtube.com/@UbeSmoresCookie"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <span class="social-icon">▶</span>
+
+          <div>
+            <small>YouTube</small>
+            <strong>@UbeSmoresCookie</strong>
+          </div>
+
+          <b>→</b>
+
+        </a>
+
+        <a
+          class="social-card tiktok reveal"
+          href="https://www.tiktok.com/@ubesmores.co"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+
+          <span class="social-icon">♪</span>
+
+          <div>
+            <small>TikTok</small>
+            <strong>@ubesmores.co</strong>
+          </div>
+
+          <b>→</b>
+
+        </a>
+
       </div>
 
     </section>
@@ -1611,7 +1729,7 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./script.js?v=20260824-2"></script>
+  <script src="./script.js?v=20260826-1"></script>
 
 </body>
 </html>
