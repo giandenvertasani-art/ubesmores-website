@@ -692,6 +692,12 @@ textarea {
   background: var(--caramel);
 }
 
+.menu-badge.new-flavor {
+  color: white;
+  background: linear-gradient(135deg, #7c2ba1, #d96a88);
+  box-shadow: 0 8px 24px rgba(91, 43, 130, 0.3);
+}
+
 /* Reviews */
 
 .reviews {
