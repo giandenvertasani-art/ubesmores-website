@@ -33,7 +33,7 @@
 
   <meta
     name="description"
-    content="Meet four new freshly baked cookie flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan."
+    content="Enjoy our original UbeSmores Cookie plus four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan."
   >
   <!-- Search-engine instructions -->
 
@@ -64,7 +64,7 @@
 
 <meta
   property="og:description"
-  content="Discover four new UbeSmores Cookie flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan."
+  content="Discover the original UbeSmores Cookie and four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan."
 >
 
 <meta
@@ -99,7 +99,7 @@
 
 <meta
   name="twitter:description"
-  content="Meet four new freshly baked UbeSmores Cookie flavors, available for pickup or delivery."
+  content="Meet the original UbeSmores Cookie and four new freshly baked flavors, available for pickup or delivery."
 >
 
 <meta
@@ -122,7 +122,7 @@
   "name": "UbeSmores Cookie",
   "url": "https://giandenvertasani-art.github.io/ubesmores-website/",
   "image": "https://giandenvertasani-art.github.io/ubesmores-website/images/coffee-white-chocolate.webp",
-  "description": "Four new freshly baked cookie flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan.",
+  "description": "The original UbeSmores Cookie plus four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan.",
   "priceRange": "₱89",
   "sameAs": [
     "https://www.facebook.com/Ube.Smores.Cookie",
@@ -235,8 +235,8 @@
         </h1>
 
         <p class="hero-text">
-          Coffee White Chocolate. Salted Caramel. Biscoff Yema.
-          Buko Pandan. Meet your newest cookie cravings.
+          The original UbeSmores Cookie plus Coffee White Chocolate,
+          Salted Caramel, Biscoff Yema, and Buko Pandan.
         </p>
 
         <div class="hero-actions">
@@ -286,7 +286,7 @@
         <div class="floating-note">
           <span>★★★★★</span>
           <strong>SOFT. GOOEY. UNFORGETTABLE.</strong>
-          <small>Four exciting new flavors</small>
+          <small>Original favorite + four new flavors</small>
         </div>
 
       </div>
@@ -335,9 +335,9 @@
         </p>
 
         <p>
-          Our newest collection brings together four fresh flavors:
+          Our original UbeSmores Cookie stays on the menu alongside
           Coffee White Chocolate, Salted Caramel, Biscoff Yema,
-          and Buko Pandan—each baked for your sweetest moments.
+          and Buko Pandan—five choices for your sweetest moments.
         </p>
 
         <div class="features">
@@ -370,11 +370,20 @@
     <section class="menu-section section" id="menu">
       <div class="section-heading reveal">
         <p class="eyebrow">Just dropped</p>
-        <h2>Meet our four new flavors.</h2>
-        <p>Four exciting creations, freshly baked and available for ₱89 each.</p>
+        <h2>The original plus four new flavors.</h2>
+        <p>Keep loving the original UbeSmores Cookie and meet four exciting new creations—all ₱89 each.</p>
       </div>
 
       <div class="cookie-menu">
+        <article class="menu-card signature reveal" style="--cookie-image: url('./images/ube.png');">
+          <span class="menu-badge">Original</span>
+          <div class="menu-card-content">
+            <h3>UbeSmores Cookie</h3>
+            <p>Our original soft ube cookie topped with toasted marshmallows and golden caramel drizzle.</p>
+            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="ube-smores">Order</a></div>
+          </div>
+        </article>
+
         <article class="menu-card reveal" style="--cookie-image: url('./images/coffee-white-chocolate.webp');">
           <span class="menu-badge new-flavor">New Flavor</span>
           <div class="menu-card-content">
@@ -465,6 +474,7 @@
               <span>Cookie flavor</span>
               <select id="reviewFlavor" name="flavor" required>
                 <option value="">Choose a flavor</option>
+                <option>UbeSmores Cookie</option>
                 <option>Coffee White Chocolate</option>
                 <option>Salted Caramel</option>
                 <option>Biscoff Yema</option>
@@ -717,6 +727,16 @@
             </div>
 
             <div class="box-flavor-grid">
+
+              <article class="box-flavor" data-flavor-card="ube-smores">
+                <img src="./images/ube.png" alt="" loading="lazy" width="76" height="76">
+                <div class="box-flavor-info"><strong>UbeSmores Cookie</strong><small>₱89 each</small></div>
+                <div class="quantity-control">
+                  <button type="button" class="box-step" data-action="decrease" aria-label="Remove one UbeSmores Cookie">−</button>
+                  <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="ube-smores" aria-label="UbeSmores Cookie quantity">
+                  <button type="button" class="box-step" data-action="increase" aria-label="Add one UbeSmores Cookie">+</button>
+                </div>
+              </article>
 
               <article class="box-flavor" data-flavor-card="coffee-white-chocolate">
                 <img src="./images/coffee-white-chocolate.webp" alt="" loading="lazy" width="76" height="76">
