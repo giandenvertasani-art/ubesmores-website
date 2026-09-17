@@ -208,45 +208,11 @@ document.addEventListener("DOMContentLoaded", function () {
   ======================================== */
 
   const flavorInformation = {
-    "ube-smores": {
-      name: "UbeSmores Cookie",
-      price: 89
-    },
-
-    "chocolate-chunk": {
-      name: "Classic Chocolate Chunk",
-      price: 79
-    },
-
-    "cookies-cream": {
-      name: "Cookies & Cream",
-      price: 85
-    },
-
-    "red-velvet": {
-      name: "Red Velvet Cream Cheese",
-      price: 95
-    },
-
-    "matcha": {
-      name: "Matcha White Chocolate",
-      price: 95
-    },
-
-    "biscoff": {
-      name: "Biscoff Caramel Lava",
-      price: 99
-    },
-
-    "salted-caramel": {
-      name: "Salted Caramel Pretzel",
-      price: 89
-    },
-
-    "classic-smores": {
-      name: "Classic S’mores",
-      price: 89
-    }
+    "ube-smores": { name: "UbeSmores Cookie", price: 89 },
+    "coffee-white-chocolate": { name: "Coffee White Chocolate", price: 89 },
+    "salted-caramel": { name: "Salted Caramel", price: 89 },
+    "biscoff-yema": { name: "Biscoff Yema", price: 89 },
+    "buko-pandan": { name: "Buko Pandan", price: 89 }
   };
 
 
@@ -918,13 +884,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const chatbotAnswers = {
     greeting:
-      "Hi, cookie lover! 💜 Ask me about our eight flavors, prices, ordering, pickup, delivery, preferred date, or social-media accounts.",
+      "Hi, cookie lover! 💜 Ask me about our original UbeSmores Cookie, four NEW flavors, prices, ordering, pickup, delivery, preferred date, or social-media accounts.",
 
     flavors:
-      "We have eight flavors: UbeSmores, Classic Chocolate Chunk, Cookies & Cream, Red Velvet Cream Cheese, Matcha White Chocolate, Biscoff Caramel Lava, Salted Caramel Pretzel, and Classic S’mores. 🍪",
+      "We have five flavors: our original UbeSmores Cookie plus four NEW flavors—Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan. Each one is ₱89. 🍪",
 
     prices:
-      "Our prices are: UbeSmores ₱89, Chocolate Chunk ₱79, Cookies & Cream ₱85, Red Velvet ₱95, Matcha ₱95, Biscoff Caramel Lava ₱99, Salted Caramel Pretzel ₱89, and Classic S’mores ₱89.",
+      "All five flavors are ₱89 each: UbeSmores Cookie, Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan.",
 
     order:
       "Choose Solo Cookie for one flavor in any quantity, or select Mix Box 6 or Mix Box 8 and divide the exact box quantity among your favorite flavors. Then enter your details and submit your order.",
