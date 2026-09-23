@@ -149,7 +149,7 @@
 
   <link
     rel="stylesheet"
-    href="./style.css?v=20260917-1"
+    href="./style.css?v=20260923-1"
   >
 </head>
 
@@ -375,48 +375,48 @@
       </div>
 
       <div class="cookie-menu">
-        <article class="menu-card signature reveal" style="--cookie-image: url('./images/ube.png');">
+        <article class="menu-card signature flavor-ube reveal" style="--cookie-image: url('./images/ube.png'); --flavor-accent: #7040a0;">
           <span class="menu-badge">Original</span>
           <div class="menu-card-content">
             <h3>UbeSmores Cookie</h3>
             <p>Our original soft ube cookie topped with toasted marshmallows and golden caramel drizzle.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="ube-smores">Order</a></div>
+            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="ube-smores">Add to order <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
-        <article class="menu-card reveal" style="--cookie-image: url('./images/coffee-white-chocolate-menu.webp');">
+        <article class="menu-card flavor-coffee reveal" style="--cookie-image: url('./images/coffee-white-chocolate-menu.webp'); --flavor-accent: #8a5a44;">
           <span class="menu-badge new-flavor">New Flavor</span>
           <div class="menu-card-content">
             <h3>Coffee White Chocolate</h3>
             <p>Rich coffee cookie blended with creamy white chocolate chips for the perfect café-inspired bite.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="coffee-white-chocolate">Order</a></div>
+            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="coffee-white-chocolate">Add to order <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
-        <article class="menu-card reveal" style="--cookie-image: url('./images/salted-caramel-menu.webp');">
+        <article class="menu-card flavor-caramel reveal" style="--cookie-image: url('./images/salted-caramel-menu.webp'); --flavor-accent: #c8842f;">
           <span class="menu-badge new-flavor">New Flavor</span>
           <div class="menu-card-content">
             <h3>Salted Caramel</h3>
             <p>A soft caramel cookie with a gooey caramel center and a delicate touch of sea salt.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="salted-caramel">Order</a></div>
+            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="salted-caramel">Add to order <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
-        <article class="menu-card reveal" style="--cookie-image: url('./images/biscoff-yema-menu.webp');">
+        <article class="menu-card flavor-biscoff reveal" style="--cookie-image: url('./images/biscoff-yema-menu.webp'); --flavor-accent: #b5672e;">
           <span class="menu-badge new-flavor">New Flavor</span>
           <div class="menu-card-content">
             <h3>Biscoff Yema</h3>
             <p>Spiced Biscoff cookie crumbs wrapped around a luscious, creamy golden-yema center.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="biscoff-yema">Order</a></div>
+            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="biscoff-yema">Add to order <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
 
-        <article class="menu-card reveal" style="--cookie-image: url('./images/buko-pandan-menu.webp');">
+        <article class="menu-card flavor-pandan reveal" style="--cookie-image: url('./images/buko-pandan-menu.webp'); --flavor-accent: #598e62;">
           <span class="menu-badge new-flavor">New Flavor</span>
           <div class="menu-card-content">
             <h3>Buko Pandan</h3>
             <p>Fragrant pandan cookie with creamy white chocolate and toasted coconut for a tropical treat.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="buko-pandan">Order</a></div>
+            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="buko-pandan">Add to order <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
       </div>
@@ -784,6 +784,18 @@
 
           </div>
 
+          <!-- Customer and fulfilment details -->
+          <fieldset class="customer-details form-field full">
+            <legend>
+              <span class="box-step-number">03</span>
+              <span>
+                Delivery details
+                <small>Tell us where and when you want your cookies.</small>
+              </span>
+            </legend>
+
+            <div class="customer-details-grid">
+
           <!-- Full name -->
           <div class="form-field">
 
@@ -886,6 +898,9 @@
             </small>
 
           </div>
+
+            </div>
+          </fieldset>
 
         </div>
 
@@ -1190,7 +1205,7 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./script.js?v=20260917-1"></script>
+  <script src="./script.js?v=20260923-1"></script>
 
 </body>
 </html>
