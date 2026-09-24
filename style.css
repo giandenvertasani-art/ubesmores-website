@@ -2286,6 +2286,10 @@ html[data-theme="dark"] .chatbot input {
   box-shadow: 0 20px 50px rgba(16, 5, 25, 0.15);
 }
 
+.average-rating[hidden] {
+  display: none;
+}
+
 .survey-heading {
   display: flex;
   justify-content: space-between;
