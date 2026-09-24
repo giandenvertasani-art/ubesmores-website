@@ -2274,6 +2274,170 @@ html[data-theme="dark"] .chatbot input {
   }
 }
 
+/* Original UbeSmores product feedback survey, September 2026 */
+.survey-results {
+  max-width: 1180px;
+  margin: 0 auto 56px;
+  padding: clamp(24px, 4vw, 42px);
+  color: var(--ink);
+  background: linear-gradient(135deg, #fff9ef, #f6eadb);
+  border: 1px solid #ead8c6;
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(16, 5, 25, 0.15);
+}
+
+.survey-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+.survey-heading .eyebrow {
+  color: var(--ube);
+  margin: 0 0 8px;
+}
+
+.survey-heading h3 {
+  margin: 0 0 7px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(27px, 3vw, 39px);
+  line-height: 1.2;
+}
+
+.survey-heading > div > p:last-child {
+  margin: 0;
+  color: #6b566d;
+  font-size: 13px;
+}
+
+.survey-count {
+  display: grid;
+  justify-items: center;
+  flex-shrink: 0;
+  min-width: 116px;
+  padding: 13px 18px;
+  color: #fff;
+  background: var(--ube);
+  border-radius: 19px;
+}
+
+.survey-count strong {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.survey-count span {
+  font-size: 11px;
+}
+
+.survey-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.survey-metric {
+  min-width: 0;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #ead8e3;
+  border-radius: 19px;
+}
+
+.survey-metric h4 {
+  min-height: 40px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.survey-score {
+  margin: 6px 0 14px;
+  color: var(--ube);
+  font-family: "Playfair Display", serif;
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.survey-score span {
+  color: #796a75;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.survey-meter {
+  height: 9px;
+  overflow: hidden;
+  background: #e9dcec;
+  border-radius: 20px;
+}
+
+.survey-meter span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ube), var(--violet));
+  border-radius: inherit;
+}
+
+.survey-metric > p:last-child {
+  margin: 14px 0 0;
+  color: #6b566d;
+  font-size: 11px;
+}
+
+.survey-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.survey-notes p {
+  margin: 0;
+  padding: 16px 18px;
+  color: #4b394a;
+  background: #f4e8ee;
+  border-radius: 15px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.survey-source {
+  margin: 19px 0 0;
+  color: #6b566d;
+  font-size: 11px;
+}
+
+html[data-theme="dark"] .survey-results {
+  color: #f8effc;
+  background: linear-gradient(135deg, #362344, #2b1c37);
+  border-color: #674877;
+}
+
+html[data-theme="dark"] .survey-heading .eyebrow { color: #d9b8ee; }
+html[data-theme="dark"] .survey-heading > div > p:last-child,
+html[data-theme="dark"] .survey-score span,
+html[data-theme="dark"] .survey-metric > p:last-child,
+html[data-theme="dark"] .survey-source { color: #dbc9e2; }
+html[data-theme="dark"] .survey-metric { background: #442d53; border-color: #694c78; }
+html[data-theme="dark"] .survey-score { color: #f0d7ff; }
+html[data-theme="dark"] .survey-meter { background: #6a5275; }
+html[data-theme="dark"] .survey-notes p { color: #f7eafb; background: #4d345e; }
+
+@media (max-width: 700px) {
+  .survey-results { padding: 24px 18px; }
+  .survey-heading { align-items: flex-start; }
+  .survey-count { min-width: 84px; padding: 10px 12px; }
+  .survey-metrics { grid-template-columns: 1fr; }
+  .survey-metric h4 { min-height: 0; }
+  .survey-notes { grid-template-columns: 1fr; }
+}
+
 /* ========================================
    PREMIUM STOREFRONT REFRESH — 2026-09-23
 ======================================== */
@@ -2734,4 +2898,3 @@ html[data-theme="dark"] .chatbot input {
     transition: none;
   }
 }
-
