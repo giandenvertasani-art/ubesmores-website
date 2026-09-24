@@ -209,7 +209,7 @@ legend { padding: 0; }
 .review-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 .review-field { display: flex; flex-direction: column; min-width: 0; }
 .review-field > span, .form-field label, .review-rating legend { font-size: 11px; font-weight: 600; margin-bottom: 6px; }
-input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), select, textarea { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--line); background: var(--paper); padding: 10px 12px; border-radius: 3px; color: var(--ink); font-size: 13px; }
+:where(input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), select, textarea) { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--line); background: var(--paper); padding: 10px 12px; border-radius: 3px; color: var(--ink); font-size: 13px; }
 input::placeholder, textarea::placeholder { color: var(--muted); opacity: .9; }
 textarea { resize: vertical; }
 input[type="radio"], input[type="checkbox"] { accent-color: var(--ube); }
@@ -482,7 +482,7 @@ input[type="radio"], input[type="checkbox"] { accent-color: var(--ube); }
   .review-form { padding: 24px; }
   .review-form h3 { font-size: 26px; }
   .review-form-grid, .customer-details-grid { grid-template-columns: 1fr; gap: 17px; }
-  input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), select, textarea { font-size: 16px; }
+  :where(input:not([type="radio"]):not([type="checkbox"]):not([type="hidden"]), select, textarea) { font-size: 16px; }
   .review-field > span, .form-field label, .review-rating legend { font-size: 11px; }
   .order-type-options { gap: 8px; }
   .order-type-card > span { padding: 14px 9px; }
@@ -498,7 +498,7 @@ input[type="radio"], input[type="checkbox"] { accent-color: var(--ube); }
   .box-flavor-info strong { font-size: 11px; }
   .box-flavor-info small { font-size: 9px; }
   .quantity-control .box-step { width: 34px; height: 44px; }
-  .quantity-control .flavor-quantity { width: 29px; font-size: 14px; }
+  .quantity-control .flavor-quantity { width: 29px; font-size: 16px; }
   .order-summary { padding: 27px; }
   .order-summary h3 { font-size: 32px; }
   .faq { gap: 26px; }
