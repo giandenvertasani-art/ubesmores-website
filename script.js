@@ -1465,6 +1465,30 @@ document.addEventListener("DOMContentLoaded", function () {
         const isAnonymous =
           Boolean(reviewAnonymous && reviewAnonymous.checked);
 
+        const criteriaRatings = [
+          Number(formData.get("appearance_rating")),
+          Number(formData.get("texture_rating")),
+          Number(formData.get("flavor_rating"))
+        ];
+
+        if (
+          criteriaRatings.some(function (rating) {
+            return rating < 1 || rating > 5;
+          })
+        ) {
+          setReviewStatus(
+            "Please rate the appearance, texture, and flavor.",
+            true
+          );
+          return;
+        }
+
+        const overallRating = Math.round(
+          criteriaRatings.reduce(function (sum, rating) {
+            return sum + rating;
+          }, 0) / criteriaRatings.length
+        );
+
         const review = {
           display_name: isAnonymous
             ? "Anonymous Cookie Lover"
@@ -1475,7 +1499,7 @@ document.addEventListener("DOMContentLoaded", function () {
           flavor: String(
             formData.get("flavor") || ""
           ),
-          rating: Number(formData.get("rating")),
+          rating: overallRating,
           review_text: String(
             formData.get("review_text") || ""
           ).trim(),

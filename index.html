@@ -149,7 +149,7 @@
 
   <link
     rel="stylesheet"
-    href="./style.css?v=20260925-5"
+    href="./style.css?v=20260925-6"
   >
 </head>
 
@@ -485,26 +485,67 @@
               </select>
             </label>
 
-            <fieldset class="review-rating">
-              <legend>Your rating</legend>
-
-              <div class="star-picker" aria-label="Choose a rating">
-                <input type="radio" id="star5" name="rating" value="5" required>
-                <label for="star5" title="5 stars">★</label>
-
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4" title="4 stars">★</label>
-
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3" title="3 stars">★</label>
-
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2" title="2 stars">★</label>
-
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1" title="1 star">★</label>
+            <div class="review-criteria review-field-full">
+              <div class="review-criteria-heading">
+                <strong>Rate your cookie</strong>
+                <small>Choose 1–5 stars for each.</small>
               </div>
-            </fieldset>
+
+              <fieldset class="review-rating">
+                <legend>Appearance</legend>
+
+                <div class="star-picker" aria-label="Rate the cookie appearance">
+                  <input type="radio" id="appearance5" name="appearance_rating" value="5" required>
+                  <label for="appearance5" title="5 stars">★</label>
+                  <input type="radio" id="appearance4" name="appearance_rating" value="4">
+                  <label for="appearance4" title="4 stars">★</label>
+                  <input type="radio" id="appearance3" name="appearance_rating" value="3">
+                  <label for="appearance3" title="3 stars">★</label>
+                  <input type="radio" id="appearance2" name="appearance_rating" value="2">
+                  <label for="appearance2" title="2 stars">★</label>
+                  <input type="radio" id="appearance1" name="appearance_rating" value="1">
+                  <label for="appearance1" title="1 star">★</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="review-rating">
+                <legend>Texture</legend>
+
+                <div class="star-picker" aria-label="Rate the cookie texture">
+                  <input type="radio" id="texture5" name="texture_rating" value="5" required>
+                  <label for="texture5" title="5 stars">★</label>
+                  <input type="radio" id="texture4" name="texture_rating" value="4">
+                  <label for="texture4" title="4 stars">★</label>
+                  <input type="radio" id="texture3" name="texture_rating" value="3">
+                  <label for="texture3" title="3 stars">★</label>
+                  <input type="radio" id="texture2" name="texture_rating" value="2">
+                  <label for="texture2" title="2 stars">★</label>
+                  <input type="radio" id="texture1" name="texture_rating" value="1">
+                  <label for="texture1" title="1 star">★</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="review-rating">
+                <legend>Flavor</legend>
+
+                <div class="star-picker" aria-label="Rate the cookie flavor">
+                  <input type="radio" id="flavor5" name="flavor_rating" value="5" required>
+                  <label for="flavor5" title="5 stars">★</label>
+                  <input type="radio" id="flavor4" name="flavor_rating" value="4">
+                  <label for="flavor4" title="4 stars">★</label>
+                  <input type="radio" id="flavor3" name="flavor_rating" value="3">
+                  <label for="flavor3" title="3 stars">★</label>
+                  <input type="radio" id="flavor2" name="flavor_rating" value="2">
+                  <label for="flavor2" title="2 stars">★</label>
+                  <input type="radio" id="flavor1" name="flavor_rating" value="1">
+                  <label for="flavor1" title="1 star">★</label>
+                </div>
+              </fieldset>
+
+              <small class="review-criteria-note">
+                Your overall score is calculated from these three ratings.
+              </small>
+            </div>
 
             <label class="review-field review-field-full">
               <span>Your review</span>
@@ -1216,7 +1257,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./gform-reviews.js?v=20260925-3"></script>
-  <script src="./script.js?v=20260925-3"></script>
+  <script src="./script.js?v=20260925-4"></script>
 
 </body>
 </html>

@@ -816,21 +816,55 @@ textarea {
 }
 
 .review-field-full,
-.review-rating,
 .anonymous-option,
 .review-honeypot {
   grid-column: 1 / -1;
 }
 
+.review-criteria {
+  display: grid;
+  gap: 10px;
+}
+
+.review-criteria-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.review-criteria-heading strong {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.review-criteria-heading small,
+.review-criteria-note {
+  color: #75627b;
+  font-size: 10px;
+}
+
 .review-rating {
   min-width: 0;
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 10px 14px 12px;
+  background: white;
+  border: 1px solid #d8c7dd;
+  border-radius: 14px;
 }
 
 .review-rating legend {
-  margin-bottom: 5px;
+  padding: 0 5px;
+  color: var(--ink);
+}
+
+.review-criteria .star-picker label {
+  font-size: 28px;
+}
+
+.review-criteria-note {
+  line-height: 1.5;
+  text-align: center;
 }
 
 .star-picker {
