@@ -2552,14 +2552,13 @@ html[data-theme="dark"] .chatbot input {
   font-weight: 700;
 }
 
-.gform-more { margin-top: 16px; }
-.gform-more > summary {
+.gform-toggle {
   width: fit-content;
   min-height: 45px;
   display: flex;
   align-items: center;
   gap: 12px;
-  margin: 0 auto;
+  margin: 16px auto 0;
   padding: 10px 18px;
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
@@ -2567,17 +2566,12 @@ html[data-theme="dark"] .chatbot input {
   border-radius: 30px;
   font-size: 11px;
   font-weight: 700;
-  list-style: none;
+  cursor: pointer;
 }
 
-.gform-more > summary::-webkit-details-marker { display: none; }
-.gform-more > summary:hover { background: rgba(255, 255, 255, 0.14); }
-.gform-more > summary span:last-child { transition: transform .2s ease; }
-.gform-more[open] > summary span:last-child { transform: rotate(180deg); }
-.gform-more .gform-review-grid { margin-top: 16px; }
-.show-less-label { display: none; }
-.gform-more[open] .show-more-label { display: none; }
-.gform-more[open] .show-less-label { display: inline; }
+.gform-toggle:hover { background: rgba(255, 255, 255, 0.14); }
+.gform-toggle span { transition: transform .2s ease; }
+.gform-toggle[aria-expanded="true"] span { transform: rotate(180deg); }
 
 .gform-review-note {
   margin: 16px 0 0;
