@@ -34,7 +34,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./bakery.css?v=20260924-1">
+  <link rel="stylesheet" href="./bakery.css?v=20260925-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -134,6 +134,26 @@
 
     <section class="reviews section" id="reviews" aria-labelledby="reviewsTitle">
       <div class="section-heading"><p class="eyebrow">04 / SWEET WORDS</p><h2 id="reviewsTitle">Pull up a chair.<br><em>Tell us what you think.</em></h2><p>Your cookie moments make this little corner feel like home.</p></div>
+      <section class="survey-results" aria-labelledby="surveyResultsTitle">
+        <div class="survey-heading">
+          <div>
+            <p class="eyebrow">ORIGINAL UBESMORES TASTING SURVEY</p>
+            <h3 id="surveyResultsTitle">What our tasters told us.</h3>
+            <p>Google Form feedback collected September 19–20, 2026.</p>
+          </div>
+          <div class="survey-count"><strong>56</strong><span>responses</span></div>
+        </div>
+        <div class="survey-metrics" aria-label="Average ratings out of five">
+          <article class="survey-metric"><span class="survey-stars" aria-hidden="true">★★★★★</span><h4>Overall appearance</h4><p class="survey-score">4.64 <span>/ 5</span></p><div class="survey-meter" aria-hidden="true"><span style="width:92.86%"></span></div><p>53 of 56 rated it 4 or 5</p></article>
+          <article class="survey-metric"><span class="survey-stars" aria-hidden="true">★★★★★</span><h4>Texture</h4><p class="survey-score">4.50 <span>/ 5</span></p><div class="survey-meter" aria-hidden="true"><span style="width:90%"></span></div><p>49 of 56 rated it 4 or 5</p></article>
+          <article class="survey-metric"><span class="survey-stars" aria-hidden="true">★★★★★</span><h4>Ube + s’mores combination</h4><p class="survey-score">4.73 <span>/ 5</span></p><div class="survey-meter" aria-hidden="true"><span style="width:94.64%"></span></div><p>54 of 56 rated it 4 or 5</p></article>
+        </div>
+        <div class="survey-notes">
+          <p><strong>What stood out</strong> Ube filling, toasted marshmallows, and the flavor combination.</p>
+          <p><strong>What we heard</strong> Softer texture, more filling, and small adjustments to sweetness.</p>
+        </div>
+        <p class="survey-source">Averages use all 56 ratings for each question. These survey results are separate from the customer reviews below.</p>
+      </section>
       <div class="review-layout">
         <div class="customer-reviews">
           <div class="review-summary"><h3>Notes from our cookie lovers</h3><div class="average-rating" id="averageRating" hidden><strong id="averageRatingNumber">0.0</strong><span aria-hidden="true">★★★★★</span><small id="reviewCount">0 reviews</small></div></div>
@@ -212,7 +232,7 @@
   <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open Ubie chatbot" aria-expanded="false" aria-controls="chatbot"><span aria-hidden="true">🍪</span><span>Ask Ubie</span></button>
   <section class="chatbot" id="chatbot" aria-label="Ubie chatbot" aria-hidden="true" inert><header><div class="bot-avatar" aria-hidden="true">♡</div><div><strong>Ubie</strong><small>Your little cookie helper</small></div><button id="closeChat" type="button" aria-label="Close chatbot">×</button></header><div class="chat-messages" id="chatMessages" role="log" aria-live="polite"><div class="message bot">Welcome to our cookie corner! Ask me about flavors, prices, or building your box. ♡</div></div><div class="quick-replies"><button type="button" data-reply="menu">Flavors</button><button type="button" data-reply="order">How to order?</button><button type="button" data-reply="price">Prices</button></div><form id="chatForm"><input id="chatInput" type="text" placeholder="Ask about our cookies…" autocomplete="off" aria-label="Chat message"><button type="submit" aria-label="Send message">→</button></form></section>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./script.js?v=20260924-1"></script>
-  <script src="./showroom.js?v=20260924-1"></script>
+  <script src="./script.js?v=20260925-1"></script>
+  <script src="./showroom.js?v=20260925-1"></script>
 </body>
 </html>
