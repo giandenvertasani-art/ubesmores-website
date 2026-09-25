@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "aria-expanded",
         String(isOpen)
       );
-      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
     });
 
     document
@@ -83,18 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "aria-expanded",
             "false"
           );
-          menuToggle.setAttribute("aria-label", "Open navigation menu");
         });
       });
-
-    navMenu.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") {
-        navMenu.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-        menuToggle.setAttribute("aria-label", "Open navigation menu");
-        menuToggle.focus();
-      }
-    });
   }
 
 
@@ -374,26 +363,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (totalPriceDisplay) {
       totalPriceDisplay.textContent =
         totalPrice.toLocaleString("en-PH");
-    }
-
-    const receiptItems = document.getElementById("receiptItems");
-    if (receiptItems) {
-      receiptItems.replaceChildren();
-      if (!selection.length) {
-        const empty = document.createElement("li");
-        empty.className = "receipt-empty";
-        empty.textContent = "Your favorites will appear here.";
-        receiptItems.append(empty);
-      }
-      selection.forEach(function (item) {
-        const row = document.createElement("li");
-        const name = document.createElement("span");
-        const subtotal = document.createElement("span");
-        name.textContent = item.quantity + " × " + item.name;
-        subtotal.textContent = "₱" + item.subtotal.toLocaleString("en-PH");
-        row.append(name, subtotal);
-        receiptItems.append(row);
-      });
     }
 
     if (boxSummaryInput) {
@@ -878,25 +847,12 @@ document.addEventListener("DOMContentLoaded", function () {
       "aria-hidden",
       String(!showChat)
     );
-    chatbot.inert = !showChat;
-    if (chatLauncher) {
-      chatLauncher.setAttribute("aria-expanded", String(showChat));
-      chatLauncher.setAttribute("aria-label", showChat ? "Close Ubie chatbot" : "Open Ubie chatbot");
-    }
 
     if (showChat && chatInput) {
       setTimeout(function () {
-        if (chatbot.classList.contains("open")) chatInput.focus();
+        chatInput.focus();
       }, 200);
-    } else if (chatLauncher) {
-      chatLauncher.focus();
     }
-  }
-
-  if (chatbot) {
-    chatbot.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") toggleChat(false);
-    });
   }
 
   if (chatLauncher) {
