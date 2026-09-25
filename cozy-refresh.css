@@ -73,6 +73,12 @@ body.cozy-showroom {
   border-color: rgba(96, 48, 138, 0.13);
 }
 
+.cozy-showroom .theme-toggle:hover {
+  color: #fff;
+  background: var(--cozy-ube);
+  border-color: var(--cozy-ube);
+}
+
 .cozy-showroom .hero {
   position: relative;
   max-width: 1440px;
