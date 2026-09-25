@@ -1133,6 +1133,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const reviewsList =
     document.getElementById("reviewsList");
 
+  const reviewsToggle =
+    document.getElementById("reviewsToggle");
+
   const reviewName =
     document.getElementById("reviewName");
 
@@ -1152,6 +1155,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("reviewSubmit");
 
   let reviewDatabase = null;
+  let combinedReviews = [];
+  let reviewsExpanded = false;
 
   if (
     window.supabase &&
@@ -1189,15 +1194,24 @@ document.addEventListener("DOMContentLoaded", function () {
       Math.min(5, Number(review.rating) || 1)
     );
 
+    const roundedRating = Math.round(rating);
+
     stars.className = "review-stars";
     stars.textContent =
-      "★".repeat(rating) + "☆".repeat(5 - rating);
+      "★".repeat(roundedRating) +
+      "☆".repeat(5 - roundedRating);
+    stars.setAttribute(
+      "aria-label",
+      rating.toFixed(1) + " out of 5 stars"
+    );
 
     message.textContent = "“" + review.review_text + "”";
 
-    name.textContent = review.is_anonymous
-      ? "Anonymous Cookie Lover"
-      : review.display_name;
+    name.textContent = review.imported_ratings
+      ? "Anonymous"
+      : review.is_anonymous
+        ? "Anonymous Cookie Lover"
+        : review.display_name;
 
     flavor.textContent = review.flavor;
 
@@ -1214,10 +1228,90 @@ document.addEventListener("DOMContentLoaded", function () {
     ).format(reviewDate);
 
     footer.append(name, flavor, date);
-    card.append(stars, message, footer);
+    card.append(stars, message);
+
+    if (review.imported_ratings) {
+      const breakdown = document.createElement("div");
+      breakdown.className = "review-rating-breakdown";
+
+      [
+        ["Appearance", review.imported_ratings.appearance],
+        ["Texture", review.imported_ratings.texture],
+        ["Flavor", review.imported_ratings.flavor]
+      ].forEach(function (ratingItem) {
+        const item = document.createElement("span");
+        const score = document.createElement("strong");
+
+        item.append(document.createTextNode(ratingItem[0] + " "));
+        score.textContent = ratingItem[1] + "/5";
+        item.append(score);
+        breakdown.append(item);
+      });
+
+      card.append(breakdown);
+    }
+
+    card.append(footer);
     card.className = "review-card";
 
     return card;
+  }
+
+  function renderCombinedReviews() {
+    if (!reviewsList) {
+      return;
+    }
+
+    reviewsList.replaceChildren();
+
+    if (!combinedReviews.length) {
+      const emptyMessage = document.createElement("p");
+
+      emptyMessage.className = "reviews-empty";
+      emptyMessage.textContent =
+        "No approved reviews yet. Be the first to share a sweet moment!";
+
+      reviewsList.append(emptyMessage);
+
+      if (reviewsToggle) {
+        reviewsToggle.hidden = true;
+      }
+
+      return;
+    }
+
+    const visibleReviews = reviewsExpanded
+      ? combinedReviews
+      : combinedReviews.slice(0, 6);
+
+    visibleReviews.forEach(function (review) {
+      reviewsList.append(createReviewCard(review));
+    });
+
+    reviewsList.classList.toggle(
+      "expanded",
+      reviewsExpanded
+    );
+
+    if (reviewsToggle) {
+      const arrow = document.createElement("span");
+      arrow.setAttribute("aria-hidden", "true");
+      arrow.textContent = "↓";
+
+      reviewsToggle.hidden = combinedReviews.length <= 6;
+      reviewsToggle.replaceChildren(
+        document.createTextNode(
+          reviewsExpanded
+            ? "Show fewer reviews "
+            : "Show all " + combinedReviews.length + " reviews "
+        ),
+        arrow
+      );
+      reviewsToggle.setAttribute(
+        "aria-expanded",
+        String(reviewsExpanded)
+      );
+    }
   }
 
   function updateReviewSummary(reviews) {
@@ -1265,51 +1359,58 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (!reviewDatabase) {
-      reviewsList.innerHTML =
-        '<p class="reviews-error">Reviews are temporarily unavailable.</p>';
-      return;
+    const importedReviews = Array.isArray(
+      window.ubeImportedReviews
+    )
+      ? window.ubeImportedReviews
+      : [];
+
+    let approvedReviews = [];
+
+    if (reviewDatabase) {
+      const result = await reviewDatabase
+        .from("reviews")
+        .select(
+          "id, display_name, is_anonymous, flavor, rating, review_text, created_at"
+        )
+        .eq("approved", true)
+        .order("created_at", { ascending: false })
+        .limit(100);
+
+      if (!result.error) {
+        approvedReviews = result.data || [];
+      }
     }
 
-    const result = await reviewDatabase
-      .from("reviews")
-      .select(
-        "id, display_name, is_anonymous, flavor, rating, review_text, created_at"
-      )
-      .eq("approved", true)
-      .order("created_at", { ascending: false })
-      .limit(12);
+    combinedReviews = approvedReviews
+      .concat(importedReviews)
+      .sort(function (firstReview, secondReview) {
+        return (
+          new Date(secondReview.created_at).getTime() -
+          new Date(firstReview.created_at).getTime()
+        );
+      });
 
-    reviewsList.replaceChildren();
+    updateReviewSummary(combinedReviews);
+    renderCombinedReviews();
+  }
 
-    if (result.error) {
-      const errorMessage = document.createElement("p");
+  if (reviewsToggle) {
+    reviewsToggle.addEventListener("click", function () {
+      reviewsExpanded = !reviewsExpanded;
+      renderCombinedReviews();
 
-      errorMessage.className = "reviews-error";
-      errorMessage.textContent =
-        "We could not load the reviews right now.";
+      if (!reviewsExpanded) {
+        const reviewSection =
+          document.getElementById("gformReviews");
 
-      reviewsList.append(errorMessage);
-      return;
-    }
-
-    const reviews = result.data || [];
-
-    updateReviewSummary(reviews);
-
-    if (!reviews.length) {
-      const emptyMessage = document.createElement("p");
-
-      emptyMessage.className = "reviews-empty";
-      emptyMessage.textContent =
-        "No approved reviews yet. Be the first to share a sweet moment!";
-
-      reviewsList.append(emptyMessage);
-      return;
-    }
-
-    reviews.forEach(function (review) {
-      reviewsList.append(createReviewCard(review));
+        if (reviewSection) {
+          reviewSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }
+      }
     });
   }
 

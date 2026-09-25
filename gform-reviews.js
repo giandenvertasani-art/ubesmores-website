@@ -61,93 +61,20 @@
     ["2026-09-20", 5, 5, 5, "I think you can make the portion bigger so it doesn’t leave you wanting more. :)))"]
   ];
 
-  const grid = document.getElementById("gformReviewGrid");
-  const toggle = document.getElementById("gformReviewToggle");
-  if (!grid || !toggle) return;
-
-  const dateFormatter = new Intl.DateTimeFormat("en-PH", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-    timeZone: "Asia/Manila"
-  });
-  let expanded = false;
-
-  function createRating(label, value) {
-    const item = document.createElement("div");
-    const term = document.createElement("dt");
-    const description = document.createElement("dd");
-    term.textContent = label;
-    description.textContent = value + "/5";
-    item.append(term, description);
-    return item;
-  }
-
-  function createCard(response, index) {
-    const [date, appearance, texture, flavor, comment] = response;
-    const average = ((appearance + texture + flavor) / 3).toFixed(1);
-    const card = document.createElement("article");
-    card.className = "gform-review-card";
-
-    const header = document.createElement("header");
-    const avatar = document.createElement("span");
-    avatar.className = "gform-avatar";
-    avatar.setAttribute("aria-hidden", "true");
-    avatar.textContent = String(index + 1).padStart(2, "0");
-
-    const identity = document.createElement("div");
-    const name = document.createElement("strong");
-    const time = document.createElement("time");
-    name.textContent = "Anonymous";
-    time.dateTime = date;
-    time.textContent = dateFormatter.format(new Date(date + "T12:00:00+08:00"));
-    identity.append(name, time);
-
-    const averageLabel = document.createElement("span");
-    averageLabel.className = "gform-average";
-    averageLabel.setAttribute("aria-label", "Average rating " + average + " out of 5");
-    averageLabel.textContent = average + " ★";
-    header.append(avatar, identity, averageLabel);
-
-    const quote = document.createElement("blockquote");
-    quote.textContent = "“" + comment + "”";
-
-    const ratings = document.createElement("dl");
-    ratings.append(
-      createRating("Appearance", appearance),
-      createRating("Texture", texture),
-      createRating("Flavor", flavor)
-    );
-
-    card.append(header, quote, ratings);
-    return card;
-  }
-
-  function render() {
-    const count = expanded ? responses.length : 6;
-    const fragment = document.createDocumentFragment();
-    responses.slice(0, count).forEach((response, index) => {
-      fragment.append(createCard(response, index));
-    });
-    grid.replaceChildren(fragment);
-
-    const arrow = document.createElement("span");
-    arrow.setAttribute("aria-hidden", "true");
-    arrow.textContent = "↓";
-    toggle.replaceChildren(
-      document.createTextNode(expanded ? "Show fewer reviews " : "Show all 57 reviews "),
-      arrow
-    );
-    toggle.setAttribute("aria-expanded", String(expanded));
-  }
-
-  toggle.addEventListener("click", () => {
-    expanded = !expanded;
-    render();
-    if (!expanded) {
-      document.getElementById("gformReviews").scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-
-  render();
+  window.ubeImportedReviews = responses.map(
+    ([date, appearance, texture, flavor, comment], index) => ({
+      id: "imported-" + (index + 1),
+      display_name: "Anonymous",
+      is_anonymous: true,
+      flavor: "Original UbeSmores Cookie",
+      rating: (appearance + texture + flavor) / 3,
+      review_text: comment,
+      created_at: date + "T12:00:00+08:00",
+      imported_ratings: {
+        appearance,
+        texture,
+        flavor
+      }
+    })
+  );
 })();

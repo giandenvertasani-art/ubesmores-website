@@ -149,7 +149,7 @@
 
   <link
     rel="stylesheet"
-    href="./style.css?v=20260925-3"
+    href="./style.css?v=20260925-4"
   >
 </head>
 
@@ -442,62 +442,6 @@
 
       </div>
 
-      <section class="survey-results" aria-labelledby="surveyResultsTitle">
-        <div class="survey-heading">
-          <div>
-            <p class="eyebrow">Original UbeSmores tasting survey</p>
-            <h3 id="surveyResultsTitle">What our tasters told us.</h3>
-            <p>Google Form feedback collected September 19–20, 2026.</p>
-          </div>
-          <div class="survey-count"><strong>57</strong><span>responses</span></div>
-        </div>
-
-        <div class="survey-metrics" aria-label="Average ratings out of five">
-          <article class="survey-metric">
-            <h4>Overall appearance</h4>
-            <p class="survey-score">4.65 <span>/ 5</span></p>
-            <div class="survey-meter" aria-hidden="true"><span style="width: 92.98%"></span></div>
-            <p>54 of 57 rated it 4 or 5</p>
-          </article>
-          <article class="survey-metric">
-            <h4>Texture</h4>
-            <p class="survey-score">4.51 <span>/ 5</span></p>
-            <div class="survey-meter" aria-hidden="true"><span style="width: 90.18%"></span></div>
-            <p>50 of 57 rated it 4 or 5</p>
-          </article>
-          <article class="survey-metric">
-            <h4>Ube + s’mores combination</h4>
-            <p class="survey-score">4.74 <span>/ 5</span></p>
-            <div class="survey-meter" aria-hidden="true"><span style="width: 94.74%"></span></div>
-            <p>55 of 57 rated it 4 or 5</p>
-          </article>
-        </div>
-
-        <div class="survey-notes">
-          <p><strong>What stood out:</strong> Responses often mentioned the ube filling, toasted marshmallows, and the flavor combination.</p>
-          <p><strong>What we heard:</strong> Suggestions included a softer texture, more filling, and adjustments to sweetness.</p>
-        </div>
-        <p class="survey-source">Averages use all 57 ratings for each question. These survey results are separate from the customer reviews below.</p>
-      </section>
-
-      <section class="gform-reviews" id="gformReviews" aria-labelledby="gformReviewsTitle">
-        <div class="gform-reviews-heading">
-          <div>
-            <p class="eyebrow">From the tasting table</p>
-            <h3 id="gformReviewsTitle">What individual tasters said.</h3>
-          </div>
-          <p>All 57 responses from the September 2026 Google Form survey. Every respondent is shown as Anonymous.</p>
-        </div>
-
-        <div class="gform-review-grid" id="gformReviewGrid" aria-live="polite"></div>
-
-        <button class="gform-toggle" id="gformReviewToggle" type="button" aria-expanded="false">
-          Show all 57 reviews <span aria-hidden="true">↓</span>
-        </button>
-
-        <p class="gform-review-note">Comments were lightly edited for spelling and readability. Names and emails are hidden, and ratings remain unchanged.</p>
-      </section>
-
       <div class="review-layout">
 
         <form class="review-form reveal" id="reviewForm">
@@ -603,7 +547,7 @@
 
         </form>
 
-        <div class="customer-reviews reveal">
+        <div class="customer-reviews reveal" id="gformReviews">
 
           <div class="review-summary">
             <div>
@@ -621,6 +565,10 @@
           <div class="review-grid" id="reviewsList" aria-live="polite">
             <p class="reviews-loading">Loading sweet reviews…</p>
           </div>
+
+          <button class="reviews-toggle" id="reviewsToggle" type="button" aria-expanded="false" hidden>
+            Show all reviews <span aria-hidden="true">↓</span>
+          </button>
 
         </div>
 
@@ -1261,8 +1209,8 @@
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./gform-reviews.js?v=20260925-1"></script>
-  <script src="./script.js?v=20260923-1"></script>
+  <script src="./gform-reviews.js?v=20260925-2"></script>
+  <script src="./script.js?v=20260925-2"></script>
 
 </body>
 </html>
