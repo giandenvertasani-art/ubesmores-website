@@ -1,1249 +1,238 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta name="theme-color" content="#5b2b82">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf5ea">
+  <title>UbeSmores Cookie | A Little Bakery, A Lot of Happy</title>
+  <meta name="description" content="Step into our cozy cookie corner. Shop the original UbeSmores and four new flavors, explore our playful 3D display, and build a box of 6 or 8. All cookies ₱89 each.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://giandenvertasani-art.github.io/ubesmores-website/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UbeSmores Cookie">
+  <meta property="og:title" content="UbeSmores Cookie | Come in. Get cozy.">
+  <meta property="og:description" content="Five cookie flavors, one cozy little bakery. Soft. Gooey. Unforgettable.">
+  <meta property="og:url" content="https://giandenvertasani-art.github.io/ubesmores-website/">
+  <meta property="og:image" content="https://giandenvertasani-art.github.io/ubesmores-website/images/bakery/ube.webp">
+  <meta property="og:image:alt" content="Purple UbeSmores cookies with toasted marshmallows and caramel drizzle">
+  <meta property="og:locale" content="en_PH">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UbeSmores Cookie | Come in. Get cozy.">
+  <meta name="twitter:description" content="Soft. Gooey. Unforgettable. Find your favorite cookie and build your own box.">
+  <meta name="twitter:image" content="https://giandenvertasani-art.github.io/ubesmores-website/images/bakery/ube.webp">
+  <meta name="twitter:image:alt" content="Original UbeSmores cookies with toasted marshmallows">
   <script>
-    (function () {
-      try {
-        var savedTheme = localStorage.getItem("ubesmoresTheme");
-        var preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-
-        document.documentElement.setAttribute(
-          "data-theme",
-          savedTheme || preferredTheme
-        );
-      } catch (error) {
-        document.documentElement.setAttribute("data-theme", "light");
-      }
-    })();
+    try {
+      const saved = localStorage.getItem("ubesmoresTheme");
+      const theme = saved === "light" || saved === "dark" ? saved : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = theme;
+    } catch (_) {}
   </script>
-
-  <title>UbeSmores Cookie | Premium Cookies</title>
-
-  <meta
-    name="description"
-    content="Enjoy our original UbeSmores Cookie plus four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan."
-  >
-  <!-- Search-engine instructions -->
-
-<meta
-  name="robots"
-  content="index, follow, max-image-preview:large"
->
-
-<link
-  rel="canonical"
-  href="https://giandenvertasani-art.github.io/ubesmores-website/"
->
-
-
-<!-- Facebook and Instagram sharing preview -->
-
-<meta property="og:type" content="website">
-
-<meta
-  property="og:site_name"
-  content="UbeSmores Cookie"
->
-
-<meta
-  property="og:title"
-  content="UbeSmores Cookie | Premium Cookies"
->
-
-<meta
-  property="og:description"
-  content="Discover the original UbeSmores Cookie and four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan."
->
-
-<meta
-  property="og:url"
-  content="https://giandenvertasani-art.github.io/ubesmores-website/"
->
-
-<meta
-  property="og:image"
-  content="https://giandenvertasani-art.github.io/ubesmores-website/images/coffee-white-chocolate.webp"
->
-
-<meta
-  property="og:image:alt"
-  content="Coffee White Chocolate cookie from the new UbeSmores flavor collection"
->
-
-<meta property="og:locale" content="en_PH">
-
-
-<!-- X sharing preview -->
-
-<meta
-  name="twitter:card"
-  content="summary_large_image"
->
-
-<meta
-  name="twitter:title"
-  content="UbeSmores Cookie | Premium Cookies"
->
-
-<meta
-  name="twitter:description"
-  content="Meet the original UbeSmores Cookie and four new freshly baked flavors, available for pickup or delivery."
->
-
-<meta
-  name="twitter:image"
-  content="https://giandenvertasani-art.github.io/ubesmores-website/images/coffee-white-chocolate.webp"
->
-
-<meta
-  name="twitter:image:alt"
-  content="UbeSmores Cookie topped with toasted marshmallows and caramel drizzle"
->
-
-
-<!-- Business information for search engines -->
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Bakery",
-  "name": "UbeSmores Cookie",
-  "url": "https://giandenvertasani-art.github.io/ubesmores-website/",
-  "image": "https://giandenvertasani-art.github.io/ubesmores-website/images/coffee-white-chocolate.webp",
-  "description": "The original UbeSmores Cookie plus four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan.",
-  "priceRange": "₱89",
-  "sameAs": [
-    "https://www.facebook.com/Ube.Smores.Cookie",
-    "https://www.instagram.com/ubesmoresc.o/",
-    "https://x.com/UbeSmoresC0",
-    "https://www.youtube.com/@UbeSmoresCookie",
-    "https://www.tiktok.com/@ubesmores.co"
-  ]
-}
-</script>
-
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Bakery","name":"UbeSmores Cookie","url":"https://giandenvertasani-art.github.io/ubesmores-website/","image":"https://giandenvertasani-art.github.io/ubesmores-website/images/bakery/ube.webp","description":"The original UbeSmores Cookie plus Coffee White Chocolate, Salted Caramel, Biscoff Yema and Buko Pandan.","priceRange":"₱89","sameAs":["https://www.facebook.com/Ube.Smores.Cookie","https://www.instagram.com/ubesmoresc.o/","https://x.com/UbeSmoresC0","https://www.youtube.com/@UbeSmoresCookie","https://www.tiktok.com/@ubesmores.co"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="./style.css?v=20260925-1"
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./bakery.css?v=20260925-1">
 </head>
-
 <body>
-
-  <!-- Announcement -->
-  <div class="announcement">
-    Four new flavors have arrived ♡
-    <span>NEW • ₱89 each</span>
-  </div>
-
-  <!-- Navigation -->
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announcement"><span>Freshly baked. Always a little extra cozy.</span><span>Five flavors · ₱89 each</span></div>
   <header class="navbar">
-
-    <a
-      class="brand"
-      href="#home"
-      aria-label="UbeSmores Cookie home"
-    >
-
-      <img
-        src="./images/Logo.jpg"
-        alt="UbeSmores Cookie logo"
-      >
-
-      <span>
-        <b>Ube</b>Smores
-        <i>Cookie</i>
-      </span>
-
+    <a class="brand" href="#home" aria-label="UbeSmores Cookie home">
+      <img src="./images/Logo.jpg" alt="" width="48" height="48">
+      <span><b>Ube</b>Smores<small>THE COOKIE CORNER</small></span>
     </a>
-
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav id="navMenu">
-      <a href="#home">Home</a>
-      <a href="#story">Our Story</a>
-      <a href="#menu">Menu</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#socials">Socials</a>
-
-      <button
-        class="theme-toggle"
-        id="themeToggle"
-        type="button"
-        aria-label="Switch to dark mode"
-        aria-pressed="false"
-      >
-        <span class="theme-icon" aria-hidden="true">☾</span>
-        <span class="theme-label">Dark</span>
-      </button>
-
-      <a class="nav-order" href="#order">Order now</a>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-controls="navMenu" aria-expanded="false" aria-label="Open navigation menu"><span></span><span></span></button>
+    <nav id="navMenu" aria-label="Main navigation">
+      <a href="#menu">The cookie counter</a><a href="#showroom">3D showroom</a><a href="#story">Our story</a><a href="#reviews">Sweet words</a>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false"><span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span></button>
+      <a class="button small" href="#order">Build your box <span aria-hidden="true">↗</span></a>
     </nav>
-
   </header>
-
-  <main>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-
-      <div class="hero-copy reveal">
-
-        <p class="eyebrow">
-          Meet the new flavor collection
-        </p>
-
-        <h1>
-          Four fresh flavors.
-          <em>One sweet drop.</em>
-        </h1>
-
-        <p class="hero-text">
-          The original UbeSmores Cookie plus Coffee White Chocolate,
-          Salted Caramel, Biscoff Yema, and Buko Pandan.
-        </p>
-
-        <div class="hero-actions">
-
-          <a class="button primary" href="#menu">
-            Explore flavors
-            <span>→</span>
-          </a>
-
-          <a class="button ghost" href="#order">
-            Place an order
-          </a>
-
-        </div>
-
-        <div class="social-proof">
-
-          <div class="faces">
-            <b>U</b>
-            <b>B</b>
-            <b>E</b>
-            <b>+</b>
-          </div>
-
-          <div>
-            <strong>Made to brighten your day</strong>
-            <span>Freshly baked with love ♡</span>
-          </div>
-
-        </div>
-
+  <main id="main">
+    <section class="hero section" id="home" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="tiny-flower" aria-hidden="true">✳</span> WELCOME TO OUR LITTLE COOKIE CORNER</p>
+        <h1 id="heroTitle">Come in.<br>Get <em>cozy.</em><br>Have a cookie.</h1>
+        <p class="hero-text">A little Filipino flavor. A lot of warm, gooey goodness. Find your happy place, one cookie at a time.</p>
+        <div class="hero-actions"><a class="button" href="#menu">Meet your next favorite <span aria-hidden="true">↗</span></a><a class="text-link" href="#showroom">Take a look around <span aria-hidden="true">→</span></a></div>
+        <p class="hero-footnote"><span aria-hidden="true">♡</span> Baked with love. Made for sharing.</p>
       </div>
-
-      <div class="hero-visual reveal">
-
-        <div class="hero-glow"></div>
-
-        <span class="spark spark-one">✦</span>
-        <span class="spark spark-two">♡</span>
-
-        <img
-          class="hero-product-image"
-          src="./images/ube.png"
-          alt="Original UbeSmores Cookie with toasted marshmallows and caramel drizzle"
-        >
-
-        <div class="floating-note">
-          <span>★★★★★</span>
-          <strong>SOFT. GOOEY. UNFORGETTABLE.</strong>
-          <small>Original favorite + four new flavors</small>
-        </div>
-
+      <div class="hero-room" aria-label="Original UbeSmores cookie display">
+        <div class="pendant pendant-one" aria-hidden="true"></div><div class="pendant pendant-two" aria-hidden="true"></div>
+        <div class="arch-frame"><img src="./images/bakery/ube.webp" width="1100" height="1100" alt="Original purple UbeSmores cookies with toasted marshmallows and caramel drizzle on a cream plate" fetchpriority="high"></div>
+        <div class="bakery-stamp"><span>THE ORIGINAL</span><b>Made<br>with ube.</b><span>LOVED WITH EVERY BITE</span></div>
+        <div class="counter-top" aria-hidden="true"></div><div class="counter-front" aria-hidden="true"></div>
+        <div class="hero-label"><span>Our signature cookie</span><strong>UbeSmores</strong><span>₱89 / cookie</span></div>
       </div>
-
     </section>
+    <div class="bakery-promise" aria-label="Our cookie promise"><span>SOFT.</span><i aria-hidden="true">✳</i><span>GOOEY.</span><i aria-hidden="true">✳</i><span>UNFORGETTABLE.</span><i aria-hidden="true">✳</i><span class="promise-extra">FRESHLY BAKED WITH LOVE.</span></div>
 
-    <!-- Moving text -->
-    <div class="marquee">
-
-      <div>
-        FOUR NEW FLAVORS ✦ ₱89 EACH ♡ FRESHLY BAKED ✦
-        SOFT ♡ GOOEY ✦ UNFORGETTABLE ♡ MADE WITH LOVE ✦
-        FOUR NEW FLAVORS ✦ ₱89 EACH ♡ FRESHLY BAKED ✦
+    <section class="menu-section section" id="menu" aria-labelledby="menuTitle">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">01 / THE COOKIE COUNTER</p><h2 id="menuTitle">A little something<br>for every <em>craving.</em></h2></div>
+        <div><p>Our original favorite and four new reasons to stay a little longer.</p><span class="price-ticket">Every cookie <strong>₱89</strong></span></div>
       </div>
-
-    </div>
-
-    <!-- Story -->
-    <section class="story section" id="story">
-
-      <div class="story-image reveal">
-
-        <img
-          src="./images/coffee-white-chocolate.webp"
-          alt="Freshly baked Coffee White Chocolate cookie"
-        >
-
-        <span>Good things ahead ♡</span>
-
-      </div>
-
-      <div class="story-copy reveal">
-
-        <p class="eyebrow">
-          Made for sweet moments
-        </p>
-
-        <h2>
-          Familiar flavors, made extra cozy.
-        </h2>
-
-        <p>
-          UbeSmores Cookie began with one comforting idea:
-          combine the familiar Filipino flavor of ube with the
-          sweetness of classic s’mores.
-        </p>
-
-        <p>
-          Our original UbeSmores Cookie stays on the menu alongside
-          Coffee White Chocolate, Salted Caramel, Biscoff Yema,
-          and Buko Pandan—five choices for your sweetest moments.
-        </p>
-
-        <div class="features">
-
-          <div>
-            <span>☁</span>
-            <strong>Soft and chewy</strong>
-            <small>A satisfying center in every bite</small>
-          </div>
-
-          <div>
-            <span>♡</span>
-            <strong>Baked with love</strong>
-            <small>Thoughtfully prepared in every batch</small>
-          </div>
-
-          <div>
-            <span>☕</span>
-            <strong>Coffee’s bestie</strong>
-            <small>Perfect with your favorite drink</small>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- Cookie menu -->
-    <section class="menu-section section" id="menu">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Just dropped</p>
-        <h2>The original plus four new flavors.</h2>
-        <p>Keep loving the original UbeSmores Cookie and meet four exciting new creations—all ₱89 each.</p>
-      </div>
-
       <div class="cookie-menu">
-        <article class="menu-card signature flavor-ube reveal" style="--cookie-image: url('./images/ube.png'); --flavor-accent: #7040a0;">
-          <span class="menu-badge">Original</span>
-          <div class="menu-card-content">
-            <h3>UbeSmores Cookie</h3>
-            <p>Our original soft ube cookie topped with toasted marshmallows and golden caramel drizzle.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="ube-smores">Add to order <span aria-hidden="true">→</span></a></div>
-          </div>
+        <article class="menu-card signature">
+          <div class="product-photo"><img src="./images/bakery/ube.webp" alt="UbeSmores Cookie with marshmallows and caramel" loading="lazy" width="1100" height="1100"><span class="menu-badge">Our original</span></div>
+          <div class="menu-card-content"><span class="flavor-note">UBE · MARSHMALLOW · CARAMEL</span><h3>UbeSmores Cookie</h3><p>Soft ube, toasted marshmallows, and golden caramel. The cookie that started our little story.</p><div class="menu-card-bottom"><strong>₱89 <small>/ cookie</small></strong><a href="#order" data-menu-flavor="ube-smores" aria-label="Choose UbeSmores Cookie">Choose cookie <span aria-hidden="true">↗</span></a></div></div>
         </article>
+        <article class="menu-card flavor-coffee">
+          <div class="product-photo"><img src="./images/bakery/coffee.webp" alt="Coffee White Chocolate cookie with white chocolate chips" loading="lazy" width="800" height="800"><span class="menu-badge new-flavor">New flavor</span></div>
+          <div class="menu-card-content"><span class="flavor-note">COFFEE · WHITE CHOCOLATE</span><h3>Coffee White Chocolate</h3><p>Rich coffee meets creamy white chocolate. Your afternoon pick-me-up, in cookie form.</p><div class="menu-card-bottom"><strong>₱89 <small>/ cookie</small></strong><a href="#order" data-menu-flavor="coffee-white-chocolate" aria-label="Choose Coffee White Chocolate">Choose cookie <span aria-hidden="true">↗</span></a></div></div>
+        </article>
+        <article class="menu-card flavor-caramel">
+          <div class="product-photo"><img src="./images/bakery/caramel.webp" alt="Salted Caramel cookie with caramel filling and sea salt" loading="lazy" width="800" height="800"><span class="menu-badge new-flavor">New flavor</span></div>
+          <div class="menu-card-content"><span class="flavor-note">CARAMEL · SEA SALT</span><h3>Salted Caramel</h3><p>Golden, gooey caramel with a little sea-salt sparkle. Sweet with just the right balance.</p><div class="menu-card-bottom"><strong>₱89 <small>/ cookie</small></strong><a href="#order" data-menu-flavor="salted-caramel" aria-label="Choose Salted Caramel">Choose cookie <span aria-hidden="true">↗</span></a></div></div>
+        </article>
+        <article class="menu-card flavor-biscoff">
+          <div class="product-photo"><img src="./images/bakery/biscoff.webp" alt="Biscoff Yema cookie topped with biscuit crumbs and golden yema filling" loading="lazy" width="800" height="800"><span class="menu-badge new-flavor">New flavor</span></div>
+          <div class="menu-card-content"><span class="flavor-note">BISCOFF · GOLDEN YEMA</span><h3>Biscoff Yema</h3><p>Spiced biscuit crumbs and a creamy yema center. A cozy meeting of two favorites.</p><div class="menu-card-bottom"><strong>₱89 <small>/ cookie</small></strong><a href="#order" data-menu-flavor="biscoff-yema" aria-label="Choose Biscoff Yema">Choose cookie <span aria-hidden="true">↗</span></a></div></div>
+        </article>
+        <article class="menu-card flavor-pandan">
+          <div class="product-photo"><img src="./images/bakery/pandan.webp" alt="Green Buko Pandan cookie with coconut flakes and white chocolate" loading="lazy" width="800" height="800"><span class="menu-badge new-flavor">New flavor</span></div>
+          <div class="menu-card-content"><span class="flavor-note">PANDAN · COCONUT · WHITE CHOCOLATE</span><h3>Buko Pandan</h3><p>Fragrant pandan, toasted coconut, and creamy white chocolate. A little taste of home.</p><div class="menu-card-bottom"><strong>₱89 <small>/ cookie</small></strong><a href="#order" data-menu-flavor="buko-pandan" aria-label="Choose Buko Pandan">Choose cookie <span aria-hidden="true">↗</span></a></div></div>
+        </article>
+      </div>
+      <div class="counter-caption"><span aria-hidden="true">✳</span> Can't choose just one? That's what mixed boxes are for. <a href="#order">Build a box →</a></div>
+    </section>
 
-        <article class="menu-card flavor-coffee reveal" style="--cookie-image: url('./images/coffee-white-chocolate-menu.webp'); --flavor-accent: #8a5a44;">
-          <span class="menu-badge new-flavor">New Flavor</span>
-          <div class="menu-card-content">
-            <h3>Coffee White Chocolate</h3>
-            <p>Rich coffee cookie blended with creamy white chocolate chips for the perfect café-inspired bite.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="coffee-white-chocolate">Add to order <span aria-hidden="true">→</span></a></div>
-          </div>
-        </article>
-
-        <article class="menu-card flavor-caramel reveal" style="--cookie-image: url('./images/salted-caramel-menu.webp'); --flavor-accent: #c8842f;">
-          <span class="menu-badge new-flavor">New Flavor</span>
-          <div class="menu-card-content">
-            <h3>Salted Caramel</h3>
-            <p>A soft caramel cookie with a gooey caramel center and a delicate touch of sea salt.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="salted-caramel">Add to order <span aria-hidden="true">→</span></a></div>
-          </div>
-        </article>
-
-        <article class="menu-card flavor-biscoff reveal" style="--cookie-image: url('./images/biscoff-yema-menu.webp'); --flavor-accent: #b5672e;">
-          <span class="menu-badge new-flavor">New Flavor</span>
-          <div class="menu-card-content">
-            <h3>Biscoff Yema</h3>
-            <p>Spiced Biscoff cookie crumbs wrapped around a luscious, creamy golden-yema center.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="biscoff-yema">Add to order <span aria-hidden="true">→</span></a></div>
-          </div>
-        </article>
-
-        <article class="menu-card flavor-pandan reveal" style="--cookie-image: url('./images/buko-pandan-menu.webp'); --flavor-accent: #598e62;">
-          <span class="menu-badge new-flavor">New Flavor</span>
-          <div class="menu-card-content">
-            <h3>Buko Pandan</h3>
-            <p>Fragrant pandan cookie with creamy white chocolate and toasted coconut for a tropical treat.</p>
-            <div class="menu-card-bottom"><strong>₱89</strong><a href="#order" data-menu-flavor="buko-pandan">Add to order <span aria-hidden="true">→</span></a></div>
-          </div>
-        </article>
+    <section class="showroom section" id="showroom" aria-labelledby="showroomTitle">
+      <div class="section-heading"><p class="eyebrow">02 / A CLOSER LOOK</p><h2 id="showroomTitle">Stay a while.<br>Explore the <em>cookie cabinet.</em></h2><p>A playful 3D take on our five flavors. Pick a cookie and give it a little spin.</p></div>
+      <div class="showroom-layout">
+        <div class="showroom-stage" id="showroomStage">
+          <div class="showroom-poster" id="showroomPoster"><img src="./images/bakery/ube.webp" alt="Original UbeSmores cookie preview" width="1100" height="1100" loading="lazy"><div><span class="eyebrow">STEP UP TO THE COUNTER</span><button type="button" class="button" id="loadShowroom">Explore in 3D <span aria-hidden="true">↗</span></button><p>Load when you're ready. Take your time.</p></div></div>
+          <div id="showroomCanvas" class="showroom-canvas" hidden></div>
+          <div class="viewer-controls" id="viewerControls" hidden><button type="button" id="rotateCookie" aria-pressed="false">Auto rotate</button><button type="button" id="zoomIn" aria-label="Zoom in">+</button><button type="button" id="zoomOut" aria-label="Zoom out">−</button><button type="button" id="resetView">Reset view</button></div>
+          <p class="viewer-instruction" id="viewerInstruction" hidden>Drag to turn · Tap a cookie to select · Arrow keys to rotate</p>
+        </div>
+        <div class="showroom-details">
+          <div class="showroom-number" aria-hidden="true"><span id="showroomNumber">01</span> / 05</div>
+          <p class="eyebrow">ON THE PEDESTAL</p><h3 id="showroomName">UbeSmores Cookie</h3><p id="showroomDescription">Our signature purple cookie, finished with toasted marshmallows and a ribbon of caramel.</p>
+          <strong class="showroom-price">₱89 <small>per cookie</small></strong>
+          <a href="#order" class="button" id="showroomOrder" data-menu-flavor="ube-smores">Choose this cookie <span aria-hidden="true">↗</span></a>
+          <p class="model-note">An illustrated 3D preview. See the cookie counter above for product photos.</p>
+          <p class="showroom-status" id="showroomStatus" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+      <div class="flavor-tabs" aria-label="Choose a flavor to preview">
+        <button type="button" data-showroom-flavor="ube-smores" aria-pressed="true"><span style="--swatch:#8c6399"></span>UbeSmores</button>
+        <button type="button" data-showroom-flavor="coffee-white-chocolate" aria-pressed="false"><span style="--swatch:#7e5140"></span>Coffee</button>
+        <button type="button" data-showroom-flavor="salted-caramel" aria-pressed="false"><span style="--swatch:#b98235"></span>Salted Caramel</button>
+        <button type="button" data-showroom-flavor="biscoff-yema" aria-pressed="false"><span style="--swatch:#a36333"></span>Biscoff Yema</button>
+        <button type="button" data-showroom-flavor="buko-pandan" aria-pressed="false"><span style="--swatch:#73834f"></span>Buko Pandan</button>
       </div>
     </section>
 
-    <!-- Reviews -->
-    <section class="reviews section" id="reviews">
+    <section class="story section" id="story" aria-labelledby="storyTitle">
+      <div class="story-picture"><img src="./images/bakery/biscoff.webp" alt="Biscoff Yema cookie with a warm golden center" width="800" height="800" loading="lazy"><span class="paper-note">Good things<br>take a little love.</span></div>
+      <div class="story-copy"><p class="eyebrow">03 / FROM OUR LITTLE KITCHEN</p><h2 id="storyTitle">Familiar flavors.<br><em>A little extra love.</em></h2><p>UbeSmores began with one comforting idea: bring the Filipino flavor of ube together with the joy of classic s’mores.</p><p>Now, our original cookie has four new friends. Every flavor is made for slow afternoons, small celebrations, and those “just one more bite” moments.</p><div class="story-signoff"><span aria-hidden="true">♡</span><span>Warm cookies.<br>Sweet little memories.</span></div><a class="text-link" href="#order">Bring a little cozy home →</a></div>
+    </section>
 
-      <div class="section-heading reveal">
-
-        <p class="eyebrow">
-          Sweet words
-        </p>
-
-        <h2>
-          Loved at first bite.
-        </h2>
-
-        <p>
-          Share your cookie experience and read what other
-          UbeSmores lovers have to say.
-        </p>
-
-      </div>
-
+    <section class="reviews section" id="reviews" aria-labelledby="reviewsTitle">
+      <div class="section-heading"><p class="eyebrow">04 / SWEET WORDS</p><h2 id="reviewsTitle">Pull up a chair.<br><em>Tell us what you think.</em></h2><p>Your cookie moments make this little corner feel like home.</p></div>
       <section class="survey-results" aria-labelledby="surveyResultsTitle">
         <div class="survey-heading">
           <div>
-            <p class="eyebrow">Original UbeSmores tasting survey</p>
+            <p class="eyebrow">ORIGINAL UBESMORES TASTING SURVEY</p>
             <h3 id="surveyResultsTitle">What our tasters told us.</h3>
             <p>Google Form feedback collected September 19–20, 2026.</p>
           </div>
           <div class="survey-count"><strong>56</strong><span>responses</span></div>
         </div>
-
         <div class="survey-metrics" aria-label="Average ratings out of five">
-          <article class="survey-metric">
-            <h4>Overall appearance</h4>
-            <p class="survey-score">4.64 <span>/ 5</span></p>
-            <div class="survey-meter" aria-hidden="true"><span style="width: 92.86%"></span></div>
-            <p>53 of 56 rated it 4 or 5</p>
-          </article>
-          <article class="survey-metric">
-            <h4>Texture</h4>
-            <p class="survey-score">4.50 <span>/ 5</span></p>
-            <div class="survey-meter" aria-hidden="true"><span style="width: 90%"></span></div>
-            <p>49 of 56 rated it 4 or 5</p>
-          </article>
-          <article class="survey-metric">
-            <h4>Ube + s’mores combination</h4>
-            <p class="survey-score">4.73 <span>/ 5</span></p>
-            <div class="survey-meter" aria-hidden="true"><span style="width: 94.64%"></span></div>
-            <p>54 of 56 rated it 4 or 5</p>
-          </article>
+          <article class="survey-metric"><span class="survey-stars" aria-hidden="true">★★★★★</span><h4>Overall appearance</h4><p class="survey-score">4.64 <span>/ 5</span></p><div class="survey-meter" aria-hidden="true"><span style="width:92.86%"></span></div><p>53 of 56 rated it 4 or 5</p></article>
+          <article class="survey-metric"><span class="survey-stars" aria-hidden="true">★★★★★</span><h4>Texture</h4><p class="survey-score">4.50 <span>/ 5</span></p><div class="survey-meter" aria-hidden="true"><span style="width:90%"></span></div><p>49 of 56 rated it 4 or 5</p></article>
+          <article class="survey-metric"><span class="survey-stars" aria-hidden="true">★★★★★</span><h4>Ube + s’mores combination</h4><p class="survey-score">4.73 <span>/ 5</span></p><div class="survey-meter" aria-hidden="true"><span style="width:94.64%"></span></div><p>54 of 56 rated it 4 or 5</p></article>
         </div>
-
         <div class="survey-notes">
-          <p><strong>What stood out:</strong> Responses often mentioned the ube filling, toasted marshmallows, and the flavor combination.</p>
-          <p><strong>What we heard:</strong> Suggestions included a softer texture, more filling, and adjustments to sweetness.</p>
+          <p><strong>What stood out</strong> Ube filling, toasted marshmallows, and the flavor combination.</p>
+          <p><strong>What we heard</strong> Softer texture, more filling, and small adjustments to sweetness.</p>
         </div>
         <p class="survey-source">Averages use all 56 ratings for each question. These survey results are separate from the customer reviews below.</p>
       </section>
-
       <div class="review-layout">
-
-        <form class="review-form reveal" id="reviewForm">
-
-          <div class="review-form-heading">
-            <span>✦</span>
-
-            <div>
-              <p class="eyebrow">Your turn</p>
-              <h3>Leave a sweet review</h3>
-            </div>
-          </div>
-
+        <div class="customer-reviews">
+          <div class="review-summary"><h3>Notes from our cookie lovers</h3><div class="average-rating" id="averageRating" hidden><strong id="averageRatingNumber">0.0</strong><span aria-hidden="true">★★★★★</span><small id="reviewCount">0 reviews</small></div></div>
+          <div class="review-grid" id="reviewsList" aria-live="polite"><p class="reviews-loading">Loading sweet reviews…</p></div>
+        </div>
+        <form class="review-form" id="reviewForm">
+          <p class="eyebrow">LEAVE A LITTLE NOTE</p><h3>How was your cookie?</h3>
           <div class="review-form-grid">
-
-            <label class="review-field">
-              <span>Display name</span>
-              <input
-                id="reviewName"
-                name="display_name"
-                type="text"
-                maxlength="40"
-                placeholder="First name or nickname"
-                autocomplete="name"
-                required
-              >
-            </label>
-
-            <label class="review-field">
-              <span>Cookie flavor</span>
-              <select id="reviewFlavor" name="flavor" required>
-                <option value="">Choose a flavor</option>
-                <option>UbeSmores Cookie</option>
-                <option>Coffee White Chocolate</option>
-                <option>Salted Caramel</option>
-                <option>Biscoff Yema</option>
-                <option>Buko Pandan</option>
-              </select>
-            </label>
-
-            <fieldset class="review-rating">
-              <legend>Your rating</legend>
-
-              <div class="star-picker" aria-label="Choose a rating">
-                <input type="radio" id="star5" name="rating" value="5" required>
-                <label for="star5" title="5 stars">★</label>
-
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4" title="4 stars">★</label>
-
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3" title="3 stars">★</label>
-
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2" title="2 stars">★</label>
-
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1" title="1 star">★</label>
-              </div>
-            </fieldset>
-
-            <label class="review-field review-field-full">
-              <span>Your review</span>
-              <textarea
-                id="reviewText"
-                name="review_text"
-                rows="5"
-                minlength="5"
-                maxlength="500"
-                placeholder="What did you love about your cookie?"
-                required
-              ></textarea>
-              <small><span id="reviewCharacterCount">0</span>/500 characters</small>
-            </label>
-
-            <label class="anonymous-option review-field-full">
-              <input id="reviewAnonymous" name="is_anonymous" type="checkbox">
-              <span>Post as “Anonymous Cookie Lover”</span>
-            </label>
-
-            <label class="review-honeypot" aria-hidden="true">
-              Leave this empty
-              <input
-                id="reviewWebsite"
-                name="website"
-                type="text"
-                tabindex="-1"
-                autocomplete="off"
-              >
-            </label>
-
+            <label class="review-field"><span>Display name</span><input id="reviewName" name="display_name" type="text" maxlength="40" placeholder="First name or nickname" autocomplete="given-name" required></label>
+            <label class="review-field"><span>Cookie flavor</span><select id="reviewFlavor" name="flavor" required><option value="">Choose a flavor</option><option>UbeSmores Cookie</option><option>Coffee White Chocolate</option><option>Salted Caramel</option><option>Biscoff Yema</option><option>Buko Pandan</option></select></label>
+            <fieldset class="review-rating"><legend>Your rating</legend><div class="star-picker">
+              <input type="radio" id="star5" name="rating" value="5" required aria-label="5 stars"><label for="star5" title="5 stars" aria-hidden="true">★</label>
+              <input type="radio" id="star4" name="rating" value="4" aria-label="4 stars"><label for="star4" title="4 stars" aria-hidden="true">★</label>
+              <input type="radio" id="star3" name="rating" value="3" aria-label="3 stars"><label for="star3" title="3 stars" aria-hidden="true">★</label>
+              <input type="radio" id="star2" name="rating" value="2" aria-label="2 stars"><label for="star2" title="2 stars" aria-hidden="true">★</label>
+              <input type="radio" id="star1" name="rating" value="1" aria-label="1 star"><label for="star1" title="1 star" aria-hidden="true">★</label>
+            </div></fieldset>
+            <label class="review-field review-field-full"><span>Your review</span><textarea id="reviewText" name="review_text" rows="4" minlength="5" maxlength="500" placeholder="Tell us about your cookie moment…" required></textarea><small><span id="reviewCharacterCount">0</span>/500 characters</small></label>
+            <label class="anonymous-option review-field-full"><input id="reviewAnonymous" name="is_anonymous" type="checkbox"><span>Post as “Anonymous Cookie Lover”</span></label>
+            <label class="review-honeypot" aria-hidden="true">Leave this empty<input id="reviewWebsite" name="website" type="text" tabindex="-1" autocomplete="off"></label>
           </div>
-
-          <button class="review-submit" id="reviewSubmit" type="submit">
-            Submit review <span>→</span>
-          </button>
-
-          <p class="review-status" id="reviewStatus" role="status" aria-live="polite"></p>
-
-          <small class="review-note">
-            Reviews are checked before appearing publicly.
-          </small>
-
+          <button class="button review-submit" id="reviewSubmit" type="submit">Submit review <span aria-hidden="true">→</span></button>
+          <p class="review-status" id="reviewStatus" role="status" aria-live="polite"></p><small class="review-note">Reviews are checked before appearing publicly.</small>
         </form>
-
-        <div class="customer-reviews reveal">
-
-          <div class="review-summary">
-            <div>
-              <p class="eyebrow">Cookie community</p>
-              <h3>Customer reviews</h3>
-            </div>
-
-            <div class="average-rating" id="averageRating" hidden>
-              <strong id="averageRatingNumber">0.0</strong>
-              <span>★★★★★</span>
-              <small id="reviewCount">0 reviews</small>
-            </div>
-          </div>
-
-          <div class="review-grid" id="reviewsList" aria-live="polite">
-            <p class="reviews-loading">Loading sweet reviews…</p>
-          </div>
-
-        </div>
-
       </div>
-
     </section>
 
-    <!-- FAQ -->
-    <section class="faq section" id="faq">
-
-      <div class="section-heading reveal">
-
-        <p class="eyebrow">
-          Got questions?
-        </p>
-
-        <h2>
-          Cookie questions, answered.
-        </h2>
-
-      </div>
-
-      <div class="faq-list">
-
-        <details>
-
-          <summary>
-            How should I store my cookies?
-            <span>+</span>
-          </summary>
-
-          <p>
-            Keep them in an airtight container. Warm them
-            briefly before eating for a fresh-baked experience.
-          </p>
-
-        </details>
-
-        <details>
-
-          <summary>
-            Can I order different flavors?
-            <span>+</span>
-          </summary>
-
-          <p>
-            Yes! Use the Build Your Box section to combine
-            different flavors in one order.
-          </p>
-
-        </details>
-
-        <details>
-
-          <summary>
-            Are pickup and delivery available?
-            <span>+</span>
-          </summary>
-
-          <p>
-            Yes. Choose Pickup or Delivery in the order form.
-            The address field appears when Delivery is selected.
-          </p>
-
-        </details>
-
-      </div>
-
-    </section>
-
-    <!-- Order form -->
-    <section class="order-section section" id="order">
-
-      <div class="order-intro reveal">
-
-        <p class="eyebrow">
-          A sweet little treat awaits
-        </p>
-
-        <h2>
-          Place your order.
-        </h2>
-
-        <p>
-          Choose a solo cookie or build a mixed box of 6 or 8.
-          Your quantity and total will update automatically.
-        </p>
-
-      </div>
-
-      <form
-        class="order-form reveal"
-        id="orderForm"
-        action="https://formspree.io/f/xgawrlkb"
-        method="POST"
-      >
-
-        <div class="form-grid">
-
-          <!-- Order type -->
-          <fieldset class="order-type-picker form-field full" id="orderTypePicker">
-            <legend>
-              <span class="box-step-number">01</span>
-              Choose your order type
-            </legend>
-
+    <section class="order-section section" id="order" aria-labelledby="orderTitle">
+      <div class="section-heading"><p class="eyebrow">05 / A BOX OF HAPPY</p><h2 id="orderTitle">What shall we<br><em>pack for you?</em></h2><p>Something just for you, or a little box to share. Choose your cookies below.</p></div>
+      <form class="order-form" id="orderForm" action="https://formspree.io/f/xgawrlkb" method="POST">
+        <div class="order-main">
+          <fieldset class="order-type-picker" id="orderTypePicker"><legend><span class="box-step-number">01</span>Choose your order</legend>
             <div class="order-type-options">
-              <label class="order-type-card">
-                <input
-                  type="radio"
-                  name="Order Type"
-                  value="Solo Order"
-                  data-order-type="solo"
-                  checked
-                >
-                <span>
-                  <strong>Solo Cookie</strong>
-                  <small>Choose one flavor</small>
-                </span>
-              </label>
-
-              <label class="order-type-card">
-                <input
-                  type="radio"
-                  name="Order Type"
-                  value="Mix Box of 6"
-                  data-order-type="box-6"
-                >
-                <span>
-                  <strong>Mix Box 6</strong>
-                  <small>Choose exactly 6 cookies</small>
-                </span>
-              </label>
-
-              <label class="order-type-card">
-                <input
-                  type="radio"
-                  name="Order Type"
-                  value="Mix Box of 8"
-                  data-order-type="box-8"
-                >
-                <span>
-                  <strong>Mix Box 8</strong>
-                  <small>Choose exactly 8 cookies</small>
-                </span>
-              </label>
+              <label class="order-type-card"><input type="radio" name="Order Type" value="Solo Order" data-order-type="solo" checked><span><span class="pack-icon pack-solo" aria-hidden="true">●</span><strong>Solo Cookie</strong><small>One flavor · any quantity</small><b>₱89 each</b></span></label>
+              <label class="order-type-card"><input type="radio" name="Order Type" value="Mix Box of 6" data-order-type="box-6"><span><span class="pack-icon" aria-hidden="true">● ● ●<br>● ● ●</span><strong>Box of 6</strong><small>Mix your favorites</small><b>₱534</b></span></label>
+              <label class="order-type-card"><input type="radio" name="Order Type" value="Mix Box of 8" data-order-type="box-8"><span><span class="pack-icon" aria-hidden="true">● ● ● ●<br>● ● ● ●</span><strong>Box of 8</strong><small>A little more to share</small><b>₱712</b></span></label>
             </div>
           </fieldset>
-
-          <!-- Build your box -->
-          <div class="box-builder form-field full" id="boxBuilder">
-
-            <div class="box-builder-heading">
-              <div>
-                <span class="box-step-number">02</span>
-                <h3 id="boxBuilderTitle">Choose your flavor</h3>
-              </div>
-
-              <p id="boxBuilderHint">Solo orders use one flavor.</p>
-            </div>
-
+          <div class="box-builder" id="boxBuilder"><div class="box-builder-heading"><div><span class="box-step-number">02</span><h3 id="boxBuilderTitle">Choose your solo flavor</h3></div><p id="boxBuilderHint">Choose one flavor in any quantity.</p></div>
             <div class="box-flavor-grid">
-
-              <article class="box-flavor" data-flavor-card="ube-smores">
-                <img src="./images/ube.png" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>UbeSmores Cookie</strong><small>₱89 each</small></div>
-                <div class="quantity-control">
-                  <button type="button" class="box-step" data-action="decrease" aria-label="Remove one UbeSmores Cookie">−</button>
-                  <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="ube-smores" aria-label="UbeSmores Cookie quantity">
-                  <button type="button" class="box-step" data-action="increase" aria-label="Add one UbeSmores Cookie">+</button>
-                </div>
-              </article>
-
-              <article class="box-flavor" data-flavor-card="coffee-white-chocolate">
-                <img src="./images/coffee-white-chocolate.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Coffee White Chocolate</strong><small>₱89 each</small></div>
-                <div class="quantity-control">
-                  <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Coffee White Chocolate">−</button>
-                  <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="coffee-white-chocolate" aria-label="Coffee White Chocolate quantity">
-                  <button type="button" class="box-step" data-action="increase" aria-label="Add one Coffee White Chocolate">+</button>
-                </div>
-              </article>
-
-              <article class="box-flavor" data-flavor-card="salted-caramel">
-                <img src="./images/salted-caramel.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Salted Caramel</strong><small>₱89 each</small></div>
-                <div class="quantity-control">
-                  <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Salted Caramel">−</button>
-                  <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="salted-caramel" aria-label="Salted Caramel quantity">
-                  <button type="button" class="box-step" data-action="increase" aria-label="Add one Salted Caramel">+</button>
-                </div>
-              </article>
-
-              <article class="box-flavor" data-flavor-card="biscoff-yema">
-                <img src="./images/biscoff-yema.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Biscoff Yema</strong><small>₱89 each</small></div>
-                <div class="quantity-control">
-                  <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Biscoff Yema">−</button>
-                  <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="biscoff-yema" aria-label="Biscoff Yema quantity">
-                  <button type="button" class="box-step" data-action="increase" aria-label="Add one Biscoff Yema">+</button>
-                </div>
-              </article>
-
-              <article class="box-flavor" data-flavor-card="buko-pandan">
-                <img src="./images/buko-pandan.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Buko Pandan</strong><small>₱89 each</small></div>
-                <div class="quantity-control">
-                  <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Buko Pandan">−</button>
-                  <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="buko-pandan" aria-label="Buko Pandan quantity">
-                  <button type="button" class="box-step" data-action="increase" aria-label="Add one Buko Pandan">+</button>
-                </div>
-              </article>
-
-            </div>
-
-            <p class="box-error" id="box-error" role="alert"></p>
-
+              <article class="box-flavor" data-flavor-card="ube-smores"><img src="./images/bakery/ube.webp" alt="" width="64" height="64" loading="lazy"><div class="box-flavor-info"><strong>UbeSmores Cookie</strong><small>₱89 each</small></div><div class="quantity-control"><button type="button" class="box-step" data-action="decrease" aria-label="Remove one UbeSmores Cookie">−</button><input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="ube-smores" aria-label="UbeSmores Cookie quantity"><button type="button" class="box-step" data-action="increase" aria-label="Add one UbeSmores Cookie">+</button></div></article>
+              <article class="box-flavor" data-flavor-card="coffee-white-chocolate"><img src="./images/bakery/coffee.webp" alt="" width="64" height="64" loading="lazy"><div class="box-flavor-info"><strong>Coffee White Chocolate</strong><small>₱89 each</small></div><div class="quantity-control"><button type="button" class="box-step" data-action="decrease" aria-label="Remove one Coffee White Chocolate">−</button><input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="coffee-white-chocolate" aria-label="Coffee White Chocolate quantity"><button type="button" class="box-step" data-action="increase" aria-label="Add one Coffee White Chocolate">+</button></div></article>
+              <article class="box-flavor" data-flavor-card="salted-caramel"><img src="./images/bakery/caramel.webp" alt="" width="64" height="64" loading="lazy"><div class="box-flavor-info"><strong>Salted Caramel</strong><small>₱89 each</small></div><div class="quantity-control"><button type="button" class="box-step" data-action="decrease" aria-label="Remove one Salted Caramel">−</button><input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="salted-caramel" aria-label="Salted Caramel quantity"><button type="button" class="box-step" data-action="increase" aria-label="Add one Salted Caramel">+</button></div></article>
+              <article class="box-flavor" data-flavor-card="biscoff-yema"><img src="./images/bakery/biscoff.webp" alt="" width="64" height="64" loading="lazy"><div class="box-flavor-info"><strong>Biscoff Yema</strong><small>₱89 each</small></div><div class="quantity-control"><button type="button" class="box-step" data-action="decrease" aria-label="Remove one Biscoff Yema">−</button><input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="biscoff-yema" aria-label="Biscoff Yema quantity"><button type="button" class="box-step" data-action="increase" aria-label="Add one Biscoff Yema">+</button></div></article>
+              <article class="box-flavor" data-flavor-card="buko-pandan"><img src="./images/bakery/pandan.webp" alt="" width="64" height="64" loading="lazy"><div class="box-flavor-info"><strong>Buko Pandan</strong><small>₱89 each</small></div><div class="quantity-control"><button type="button" class="box-step" data-action="decrease" aria-label="Remove one Buko Pandan">−</button><input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="buko-pandan" aria-label="Buko Pandan quantity"><button type="button" class="box-step" data-action="increase" aria-label="Add one Buko Pandan">+</button></div></article>
+            </div><p class="box-error" id="box-error" role="alert"></p>
           </div>
-
-          <!-- Customer and fulfilment details -->
-          <fieldset class="customer-details form-field full">
-            <legend>
-              <span class="box-step-number">03</span>
-              <span>
-                Delivery details
-                <small>Tell us where and when you want your cookies.</small>
-              </span>
-            </legend>
-
-            <div class="customer-details-grid">
-
-          <!-- Full name -->
-          <div class="form-field">
-
-            <label for="name">
-              Full Name
-            </label>
-
-            <input
-              type="text"
-              id="name"
-              name="Full Name"
-              placeholder="Enter your full name"
-              required
-            >
-
-          </div>
-
-          <!-- Contact -->
-          <div class="form-field">
-
-            <label for="contact-number">
-              Contact Number
-            </label>
-
-            <input
-              type="tel"
-              id="contact-number"
-              name="Contact Number"
-              placeholder="09XXXXXXXXX"
-              pattern="09[0-9]{9}"
-              required
-            >
-
-          </div>
-
-          <!-- Method -->
-          <div class="form-field">
-
-            <label for="method">
-              Order Method
-            </label>
-
-            <select
-              id="method"
-              name="Order Method"
-              required
-            >
-
-              <option value="">
-                Choose one
-              </option>
-
-              <option value="Pickup">
-                Pickup
-              </option>
-
-              <option value="Delivery">
-                Delivery
-              </option>
-
-            </select>
-
-          </div>
-
-          <!-- Address -->
-          <div
-            class="form-field full"
-            id="address-group"
-          >
-
-            <label for="address">
-              Delivery Address
-            </label>
-
-            <textarea
-              id="address"
-              name="Delivery Address"
-              rows="3"
-              placeholder="Enter your complete delivery address"
-            ></textarea>
-
-          </div>
-
-          <!-- Date -->
-          <div class="form-field full">
-
-            <label for="date">
-              Preferred Date
-            </label>
-
-            <input
-              type="date"
-              id="date"
-              name="Preferred Date"
-              required
-            >
-
-            <small>
-              Please select tomorrow or a later date.
-            </small>
-
-          </div>
-
-            </div>
-          </fieldset>
-
+          <fieldset class="customer-details"><legend><span class="box-step-number">03</span>Your pickup or delivery details</legend><div class="customer-details-grid">
+            <div class="form-field"><label for="name">Full name</label><input type="text" id="name" name="Full Name" placeholder="Your full name" autocomplete="name" required></div>
+            <div class="form-field"><label for="contact-number">Contact number</label><input type="tel" id="contact-number" name="Contact Number" placeholder="09XXXXXXXXX" autocomplete="tel" pattern="09[0-9]{9}" required><small>A Philippine mobile number, starting with 09.</small></div>
+            <div class="form-field"><label for="method">Order method</label><select id="method" name="Order Method" required><option value="">Choose one</option><option value="Pickup">Pickup</option><option value="Delivery">Delivery</option></select></div>
+            <div class="form-field"><label for="date">Preferred date</label><input type="date" id="date" name="Preferred Date" required><small>Please choose tomorrow or a later date.</small></div>
+            <div class="form-field full" id="address-group"><label for="address">Delivery address</label><textarea id="address" name="Delivery Address" rows="3" placeholder="Your complete delivery address" autocomplete="street-address"></textarea></div>
+          </div></fieldset>
         </div>
-
-        <!-- Order total -->
-        <div class="order-summary">
-
-          <div>
-
-            <small>
-              <span id="cookie-count">0 cookies selected</span>
-            </small>
-
-            <strong>
-              Total: ₱<span id="total-price">0</span>
-            </strong>
-
-          </div>
-
-          <input
-            type="hidden"
-            id="box-summary-input"
-            name="Cookie Box"
-            value=""
-          >
-
-          <input
-            type="hidden"
-            id="total-quantity-input"
-            name="Total Quantity"
-            value="0"
-          >
-
-          <input
-            type="hidden"
-            id="total-input"
-            name="Total"
-            value="₱0"
-          >
-
-          <button type="submit">
-            Submit Order
-            <span>→</span>
-          </button>
-
-        </div>
-
-        <p
-          id="success-message"
-          aria-live="polite"
-        ></p>
-
+        <aside class="order-summary" aria-label="Your order summary">
+          <p class="eyebrow">FRESH FROM THE COUNTER</p><h3>Your little box<br>of <em>happy.</em></h3>
+          <ul class="receipt-items" id="receiptItems"><li class="receipt-empty">Your favorites will appear here.</li></ul>
+          <div class="receipt-total" aria-live="polite"><small id="cookie-count">0 cookies selected</small><div><span>Cookie total</span><strong>₱<span id="total-price">0</span></strong></div></div>
+          <input type="hidden" id="box-summary-input" name="Cookie Box" value=""><input type="hidden" id="total-quantity-input" name="Total Quantity" value="0"><input type="hidden" id="total-input" name="Total" value="₱0">
+          <button class="button" type="submit">Submit order <span aria-hidden="true">→</span></button>
+          <p class="receipt-note">Pickup or delivery · Order at least one day ahead.</p><p id="success-message" role="status" aria-live="polite"></p>
+        </aside>
       </form>
-
     </section>
 
-    <!-- Social media -->
-    <section class="social-section section" id="socials">
-
-      <div class="section-heading reveal">
-
-        <p class="eyebrow">
-          Let’s stay connected
-        </p>
-
-        <h2>
-          Follow our sweet journey.
-        </h2>
-
-        <p>
-          Follow us for new flavors, promotions, cookie
-          content, and order updates.
-        </p>
-
-      </div>
-
-      <div class="social-grid">
-
-        <a
-          class="social-card facebook reveal"
-          href="https://www.facebook.com/Ube.Smores.Cookie"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span class="social-icon">f</span>
-
-          <div>
-            <small>Facebook</small>
-            <strong>Ube.Smores.Cookie</strong>
-          </div>
-
-          <b>→</b>
-
-        </a>
-
-        <a
-          class="social-card instagram reveal"
-          href="https://www.instagram.com/ubesmoresc.o/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span class="social-icon">◎</span>
-
-          <div>
-            <small>Instagram</small>
-            <strong>@ubesmoresc.o</strong>
-          </div>
-
-          <b>→</b>
-
-        </a>
-
-        <a
-          class="social-card twitter reveal"
-          href="https://x.com/UbeSmoresC0"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span class="social-icon">𝕏</span>
-
-          <div>
-            <small>X</small>
-            <strong>@UbeSmoresC0</strong>
-          </div>
-
-          <b>→</b>
-
-        </a>
-
-        <a
-          class="social-card youtube reveal"
-          href="https://www.youtube.com/@UbeSmoresCookie"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span class="social-icon">▶</span>
-
-          <div>
-            <small>YouTube</small>
-            <strong>@UbeSmoresCookie</strong>
-          </div>
-
-          <b>→</b>
-
-        </a>
-
-        <a
-          class="social-card tiktok reveal"
-          href="https://www.tiktok.com/@ubesmores.co"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span class="social-icon">♪</span>
-
-          <div>
-            <small>TikTok</small>
-            <strong>@ubesmores.co</strong>
-          </div>
-
-          <b>→</b>
-
-        </a>
-
-      </div>
-
-    </section>
-
+    <section class="faq section" id="faq" aria-labelledby="faqTitle"><div><p class="eyebrow">A FEW GOOD THINGS TO KNOW</p><h2 id="faqTitle">Cookie <em>questions?</em></h2><p>We've saved you a seat—and a few answers.</p></div><div class="faq-list">
+      <details><summary>Can I mix different flavors?<span aria-hidden="true">+</span></summary><p>Yes! Choose a mixed box of exactly 6 or 8 cookies, then divide it among your favorite flavors. Solo orders contain one flavor in any quantity.</p></details>
+      <details><summary>When should I place my order?<span aria-hidden="true">+</span></summary><p>Please order at least one day in advance. Choose tomorrow or a later date in the order form.</p></details>
+      <details><summary>Can I choose pickup or delivery?<span aria-hidden="true">+</span></summary><p>Yes. Choose your order method at checkout. For delivery, include your complete address.</p></details>
+      <details><summary>How do I keep my cookies cozy?<span aria-hidden="true">+</span></summary><p>Keep them in an airtight container. Warm them briefly before enjoying for a soft, gooey bite.</p></details>
+    </div></section>
+    <section class="social-section section" id="socials"><p class="eyebrow">SAVE A LITTLE ROOM FOR US</p><h2>Your daily dose of <em>cookie joy.</em></h2><p>New flavors, behind-the-scenes moments, and something sweet for your feed.</p><div class="social-links"><a href="https://www.facebook.com/Ube.Smores.Cookie" target="_blank" rel="noopener noreferrer">Facebook ↗</a><a href="https://www.instagram.com/ubesmoresc.o/" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="https://www.tiktok.com/@ubesmores.co" target="_blank" rel="noopener noreferrer">TikTok ↗</a><a href="https://www.youtube.com/@UbeSmoresCookie" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://x.com/UbeSmoresC0" target="_blank" rel="noopener noreferrer">X ↗</a></div></section>
   </main>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-
-    <a class="brand" href="#home">
-
-      <img
-        src="./images/Logo.jpg"
-        alt="UbeSmores Cookie logo"
-      >
-
-      <span>
-        <b>Ube</b>Smores
-        <i>Cookie</i>
-      </span>
-
-    </a>
-
-    <p>
-      Warm cookies. Cozy moments. Sweet memories. ♡
-    </p>
-
-    <div class="footer-links">
-      <a href="#home">Home</a>
-      <a href="#menu">Menu</a>
-      <a href="#order">Order</a>
-      <a href="#socials">Socials</a>
-    </div>
-
-    <small>
-      © <span id="year"></span> UbeSmores Cookie.
-      Baked with love.
-    </small>
-
-  </footer>
-
-  <!-- Chatbot launcher -->
-  <button
-    class="chat-launcher"
-    id="chatLauncher"
-    type="button"
-    aria-label="Open Ubie chatbot"
-  >
-    ♡
-    <i></i>
-  </button>
-
-  <!-- Chatbot -->
-  <section
-    class="chatbot"
-    id="chatbot"
-    aria-label="Ubie chatbot"
-    aria-hidden="true"
-  >
-
-    <header>
-
-      <div class="bot-avatar">
-        ♡
-      </div>
-
-      <div>
-
-        <strong>Ubie</strong>
-
-        <small>
-          <i></i>
-          Online and ready to help
-        </small>
-
-      </div>
-
-      <button
-        id="closeChat"
-        type="button"
-        aria-label="Close chatbot"
-      >
-        ×
-      </button>
-
-    </header>
-
-    <div
-      class="chat-messages"
-      id="chatMessages"
-    >
-
-      <div class="message bot">
-        Hi, cookie lover! 💜 Ask me about our flavors,
-        prices, pickup, delivery, or ordering.
-      </div>
-
-    </div>
-
-    <div class="quick-replies">
-
-      <button type="button" data-reply="menu">
-        Flavors
-      </button>
-
-      <button type="button" data-reply="order">
-        How to order?
-      </button>
-
-      <button type="button" data-reply="price">
-        Prices
-      </button>
-
-    </div>
-
-    <form id="chatForm">
-
-      <input
-        id="chatInput"
-        type="text"
-        placeholder="Type your message..."
-        autocomplete="off"
-        aria-label="Chat message"
-      >
-
-      <button
-        type="submit"
-        aria-label="Send message"
-      >
-        ➤
-      </button>
-
-    </form>
-
-  </section>
-
+  <footer class="main-footer"><a class="brand" href="#home"><img src="./images/Logo.jpg" alt="" width="48" height="48"><span><b>Ube</b>Smores<small>THE COOKIE CORNER</small></span></a><p>SOFT. GOOEY. UNFORGETTABLE.</p><small>© <span id="year">2026</span> UbeSmores Cookie</small><a href="#home" class="back-top">Back to the top ↑</a></footer>
+  <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open Ubie chatbot" aria-expanded="false" aria-controls="chatbot"><span aria-hidden="true">🍪</span><span>Ask Ubie</span></button>
+  <section class="chatbot" id="chatbot" aria-label="Ubie chatbot" aria-hidden="true" inert><header><div class="bot-avatar" aria-hidden="true">♡</div><div><strong>Ubie</strong><small>Your little cookie helper</small></div><button id="closeChat" type="button" aria-label="Close chatbot">×</button></header><div class="chat-messages" id="chatMessages" role="log" aria-live="polite"><div class="message bot">Welcome to our cookie corner! Ask me about flavors, prices, or building your box. ♡</div></div><div class="quick-replies"><button type="button" data-reply="menu">Flavors</button><button type="button" data-reply="order">How to order?</button><button type="button" data-reply="price">Prices</button></div><form id="chatForm"><input id="chatInput" type="text" placeholder="Ask about our cookies…" autocomplete="off" aria-label="Chat message"><button type="submit" aria-label="Send message">→</button></form></section>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="./script.js?v=20260923-1"></script>
-
+  <script src="./script.js?v=20260925-1"></script>
+  <script src="./showroom.js?v=20260925-1"></script>
 </body>
 </html>

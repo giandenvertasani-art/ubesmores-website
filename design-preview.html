@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>UbeSmores · Cozy bakery design preview</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#ded2c5;color:#352731;font:13px/1.4 system-ui,sans-serif}header{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px 22px;background:#fbf5ea;border-bottom:1px solid #cbbbab}strong{display:block;font-size:14px}small{font-size:10px;color:#74625b}nav{display:flex;gap:6px}button{min-height:36px;border:1px solid #bcabbc;background:transparent;color:inherit;border-radius:5px;padding:7px 13px;cursor:pointer;font:inherit}button[aria-pressed=true]{background:#62426e;color:#fff7e9;border-color:#62426e}button:focus-visible{outline:3px solid #62426e;outline-offset:3px}main{height:calc(100dvh - 67px);display:flex;justify-content:center;padding:0 10px}iframe{display:block;width:100%;max-width:100%;height:100%;border:0;background:#fbf5ea;box-shadow:0 0 25px #31212117}output{display:block;position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:#62426e;color:#fff7e9;padding:12px 20px;border-radius:6px;box-shadow:0 4px 20px #0002;max-width:90%;text-align:center}output:empty{display:none}@media(max-width:650px){header{padding:10px 13px;gap:10px}nav button{font-size:11px;padding-inline:10px;min-height:32px}main{height:calc(100dvh - 107px);padding:0}}
+  </style>
+</head>
+<body>
+  <header><div><strong>UbeSmores · Bakery design preview</strong><small>Try the layout and 3D cabinet. Orders and reviews stay in this preview.</small></div><nav aria-label="Preview width"><button type="button" data-width="100%" aria-pressed="true">Desktop</button><button type="button" data-width="768px" aria-pressed="false">Tablet</button><button type="button" data-width="390px" aria-pressed="false">Phone</button><button type="button" data-width="320px" aria-pressed="false">Small phone</button></nav></header>
+  <main><iframe id="sitePreview" title="Cozy bakery website preview" src="./index.html"></iframe></main>
+  <output id="previewNotice" role="status" aria-live="polite"></output>
+  <script>
+    const frame = document.getElementById('sitePreview');
+    document.querySelectorAll('[data-width]').forEach(button => {
+      button.addEventListener('click', () => {
+        frame.style.width = button.dataset.width;
+        document.querySelectorAll('[data-width]').forEach(option => option.setAttribute('aria-pressed', String(option === button)));
+      });
+    });
+    frame.addEventListener('load', () => {
+      const doc = frame.contentDocument;
+      if (!doc) return;
+      doc.addEventListener('submit', event => {
+        if (!['orderForm', 'reviewForm'].includes(event.target.id)) return;
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        const notice = document.getElementById('previewNotice');
+        notice.textContent = event.target.id === 'orderForm'
+          ? 'Preview only — your order has not been sent.'
+          : 'Preview only — your review has not been posted.';
+      }, true);
+    });
+  </script>
+</body>
+</html>
