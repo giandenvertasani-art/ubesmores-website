@@ -156,9 +156,16 @@
     rel="stylesheet"
     href="./cozy-refresh.css?v=20260925-1"
   >
+
+  <link
+    rel="stylesheet"
+    href="./depth-showroom.css?v=20260925-1"
+  >
 </head>
 
-<body class="cozy-showroom">
+<body class="cozy-showroom depth-showroom">
+
+  <div class="showroom-progress" aria-hidden="true"></div>
 
   <!-- Announcement -->
   <div class="announcement">
@@ -1175,6 +1182,14 @@
 
   </footer>
 
+  <a class="mobile-order-dock" href="#order">
+    <span>
+      <small>Fresh from the showroom</small>
+      Order cookies
+    </span>
+    <strong>From ₱89&nbsp; →</strong>
+  </a>
+
   <!-- Chatbot launcher -->
   <button
     class="chat-launcher"
@@ -1273,6 +1288,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./gform-reviews.js?v=20260925-3"></script>
   <script src="./script.js?v=20260925-4"></script>
+  <script src="./depth-showroom.js?v=20260925-1"></script>
 
 </body>
 </html>

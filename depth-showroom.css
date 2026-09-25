@@ -1,0 +1,535 @@
+/* Premium 2.5D showroom preview — 2026-09-25 */
+
+.depth-showroom {
+  --showroom-x: 50%;
+  --showroom-y: 18%;
+  --scroll-progress: 0%;
+}
+
+.depth-showroom::before {
+  content: "";
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  background: radial-gradient(
+    440px circle at var(--showroom-x) var(--showroom-y),
+    rgba(197, 132, 222, 0.12),
+    transparent 68%
+  );
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.showroom-progress {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: var(--scroll-progress);
+  height: 3px;
+  background: linear-gradient(90deg, #f0b85f, #a75ad2, #5b2b82);
+  box-shadow: 0 0 16px rgba(167, 90, 210, 0.5);
+  pointer-events: none;
+}
+
+/* Floating glass navigation */
+
+.depth-showroom .navbar {
+  transform: translateZ(0);
+  transition:
+    width 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.depth-showroom .navbar.is-scrolled {
+  width: calc(100% - clamp(34px, 8vw, 116px));
+  background: rgba(255, 250, 241, 0.92);
+  border-color: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 20px 46px rgba(47, 24, 50, 0.15);
+}
+
+.depth-showroom .navbar nav > a:not(.nav-order) {
+  position: relative;
+}
+
+.depth-showroom .navbar nav > a:not(.nav-order)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cozy-gold), #9f5bc4);
+  border-radius: 99px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.depth-showroom .navbar nav > a:not(.nav-order):hover::after,
+.depth-showroom .navbar nav > a:not(.nav-order):focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Layered hero scene */
+
+.depth-showroom .hero {
+  isolation: isolate;
+  perspective: 1500px;
+}
+
+.depth-showroom .hero::before {
+  animation: showroom-orbit 14s ease-in-out infinite alternate;
+}
+
+.depth-showroom .hero-copy {
+  position: relative;
+  z-index: 4;
+}
+
+.depth-showroom .hero-copy::before {
+  content: "Signature bake · 01";
+  position: absolute;
+  top: -42px;
+  left: -18px;
+  padding: 7px 12px;
+  color: rgba(96, 48, 138, 0.66);
+  border: 1px solid rgba(96, 48, 138, 0.13);
+  border-radius: 999px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.depth-showroom .hero h1 {
+  text-wrap: balance;
+  text-shadow: 0 16px 38px rgba(50, 29, 52, 0.08);
+}
+
+.depth-showroom .hero h1 em {
+  display: inline-block;
+  filter: drop-shadow(0 10px 20px rgba(96, 48, 138, 0.16));
+  transition: transform 0.35s ease;
+}
+
+.depth-showroom .hero h1:hover em {
+  transform: translateX(8px) rotate(-1deg);
+}
+
+.depth-showroom .hero-visual {
+  --depth-rx: 0deg;
+  --depth-ry: 0deg;
+  --depth-x: 0px;
+  --depth-y: 0px;
+  --depth-back-x: 0px;
+  --depth-back-y: 0px;
+  position: relative;
+  isolation: isolate;
+  transform-style: preserve-3d;
+}
+
+.depth-showroom .hero-visual::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 4%;
+  bottom: 2%;
+  width: 80%;
+  height: 22%;
+  background: radial-gradient(ellipse, rgba(45, 18, 52, 0.28), transparent 68%);
+  filter: blur(14px);
+  transform: translate3d(var(--depth-back-x), var(--depth-back-y), -60px);
+  transition: transform 0.22s ease-out;
+}
+
+.depth-showroom .hero-glow {
+  transform: translate3d(var(--depth-back-x), var(--depth-back-y), -25px) rotate(-7deg);
+  transition: transform 0.24s ease-out;
+  animation: glow-breathe 5.5s ease-in-out infinite;
+}
+
+.depth-showroom .hero-product-image {
+  animation: none;
+  transform:
+    translate3d(var(--depth-x), var(--depth-y), 72px)
+    rotateX(var(--depth-rx))
+    rotateY(var(--depth-ry))
+    rotateZ(2deg);
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.depth-showroom .hero-flavor-chip,
+.depth-showroom .floating-note,
+.depth-showroom .spark {
+  will-change: transform;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.depth-showroom .chip-one {
+  transform: translate3d(var(--depth-back-x), var(--depth-y), 118px) rotate(-4deg);
+}
+
+.depth-showroom .chip-two {
+  transform: translate3d(var(--depth-x), var(--depth-back-y), 132px) rotate(4deg);
+}
+
+.depth-showroom .floating-note {
+  transform: translate3d(var(--depth-x), var(--depth-y), 145px) rotate(2deg);
+}
+
+.depth-showroom .spark-one {
+  transform: translate3d(var(--depth-x), var(--depth-back-y), 100px);
+}
+
+.depth-showroom .spark-two {
+  transform: translate3d(var(--depth-back-x), var(--depth-y), 85px);
+}
+
+.depth-showroom .button,
+.depth-showroom .nav-order {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.depth-showroom .button::before,
+.depth-showroom .nav-order::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -100%;
+  bottom: -100%;
+  left: 135%;
+  width: 34px;
+  background: rgba(255, 255, 255, 0.32);
+  filter: blur(7px);
+  transform: rotate(20deg);
+  transition: left 0.55s ease;
+}
+
+.depth-showroom .button:hover::before,
+.depth-showroom .nav-order:hover::before {
+  left: -75%;
+}
+
+/* Editorial image depth */
+
+.depth-showroom .story-image {
+  --depth-rx: 0deg;
+  --depth-ry: 0deg;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.depth-showroom .story-image img {
+  transform: rotateX(var(--depth-rx)) rotateY(var(--depth-ry)) translateZ(22px);
+  will-change: transform;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.depth-showroom .story-image span {
+  transform: translateZ(60px) rotate(-2deg);
+  box-shadow: 0 18px 34px rgba(52, 24, 57, 0.18);
+}
+
+/* Dimensional menu cards */
+
+.depth-showroom .cookie-menu {
+  perspective: 1600px;
+}
+
+.depth-showroom .menu-card {
+  --depth-rx: 0deg;
+  --depth-ry: 0deg;
+  --light-x: 50%;
+  --light-y: 20%;
+  transform:
+    rotateX(var(--depth-rx))
+    rotateY(var(--depth-ry))
+    translateY(var(--card-lift, 0px));
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.depth-showroom .menu-card::after {
+  z-index: 3;
+  background:
+    radial-gradient(
+      280px circle at var(--light-x) var(--light-y),
+      rgba(255, 255, 255, 0.34),
+      transparent 58%
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.36),
+    inset 0 -60px 90px rgba(67, 30, 78, 0.05);
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+
+.depth-showroom .menu-card:hover,
+.depth-showroom .menu-card.is-depth-active {
+  --card-lift: -10px;
+  border-color: color-mix(in srgb, var(--flavor-accent) 42%, transparent);
+  box-shadow:
+    0 42px 80px rgba(54, 25, 60, 0.22),
+    0 10px 24px color-mix(in srgb, var(--flavor-accent) 15%, transparent);
+}
+
+.depth-showroom .menu-card:hover::after,
+.depth-showroom .menu-card.is-depth-active::after {
+  opacity: 1;
+}
+
+.depth-showroom .menu-card::before {
+  transform: translateZ(18px) scale(1.015);
+}
+
+.depth-showroom .menu-card:hover::before {
+  transform: translateZ(22px) scale(1.055);
+}
+
+.depth-showroom .menu-card-content {
+  transform: translateZ(34px);
+  transform-style: preserve-3d;
+}
+
+.depth-showroom .menu-card h3,
+.depth-showroom .menu-card-bottom {
+  transform: translateZ(15px);
+}
+
+.depth-showroom .menu-badge {
+  transform: translateZ(52px) rotate(40deg);
+}
+
+.depth-showroom .menu-card:nth-child(1)::after {
+  content: "01";
+}
+
+.depth-showroom .menu-card:nth-child(2)::after {
+  content: "02";
+}
+
+.depth-showroom .menu-card:nth-child(3)::after {
+  content: "03";
+}
+
+.depth-showroom .menu-card:nth-child(4)::after {
+  content: "04";
+}
+
+.depth-showroom .menu-card:nth-child(5)::after {
+  content: "05";
+}
+
+.depth-showroom .menu-card::after {
+  color: rgba(96, 48, 138, 0.26);
+  padding: 18px;
+  font-family: "Playfair Display", serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+/* Review cards feel like layered tasting notes */
+
+.depth-showroom .review-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.depth-showroom .review-card::before {
+  content: "";
+  position: absolute;
+  top: -90px;
+  right: -70px;
+  width: 170px;
+  height: 170px;
+  background: radial-gradient(circle, rgba(241, 182, 90, 0.2), transparent 68%);
+  pointer-events: none;
+}
+
+.depth-showroom .review-card:hover {
+  transform: translateY(-7px) rotateX(1.5deg) rotateY(-1.5deg);
+  box-shadow: 0 28px 56px rgba(12, 5, 17, 0.28);
+}
+
+/* Mobile conversion dock */
+
+.mobile-order-dock {
+  display: none;
+}
+
+html[data-theme="dark"] .depth-showroom .navbar.is-scrolled {
+  background: rgba(27, 14, 38, 0.93);
+  border-color: rgba(217, 184, 238, 0.16);
+}
+
+html[data-theme="dark"] .depth-showroom::before {
+  background: radial-gradient(
+    460px circle at var(--showroom-x) var(--showroom-y),
+    rgba(168, 89, 207, 0.16),
+    transparent 68%
+  );
+}
+
+html[data-theme="dark"] .depth-showroom .hero-copy::before {
+  color: rgba(244, 219, 255, 0.68);
+  border-color: rgba(244, 219, 255, 0.13);
+}
+
+@keyframes glow-breathe {
+  0%,
+  100% {
+    filter: saturate(0.96) brightness(1);
+  }
+
+  50% {
+    filter: saturate(1.08) brightness(1.06);
+  }
+}
+
+@keyframes showroom-orbit {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-24px, 18px, 0) scale(1.04);
+  }
+}
+
+@media (max-width: 860px) {
+  .depth-showroom {
+    padding-bottom: 84px;
+  }
+
+  .depth-showroom .navbar.is-scrolled {
+    width: 100%;
+  }
+
+  .mobile-order-dock {
+    position: fixed;
+    z-index: 700;
+    right: 82px;
+    bottom: 14px;
+    left: 14px;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 10px 12px 10px 17px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(48, 23, 63, 0.96), rgba(105, 54, 139, 0.96));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 19px;
+    box-shadow: 0 18px 40px rgba(41, 18, 48, 0.28);
+    backdrop-filter: blur(18px);
+    transition: transform 0.28s ease, opacity 0.28s ease;
+  }
+
+  .mobile-order-dock.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(130%);
+  }
+
+  .mobile-order-dock span {
+    display: grid;
+    gap: 1px;
+    font-size: 13px;
+    font-weight: 800;
+  }
+
+  .mobile-order-dock small {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobile-order-dock strong {
+    padding: 10px 12px;
+    color: #4d2868;
+    background: #fff4dc;
+    border-radius: 13px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .depth-showroom .chat-launcher {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .depth-showroom .chatbot {
+    bottom: 86px;
+  }
+
+  .depth-showroom .hero-copy::before {
+    left: 0;
+  }
+
+  .depth-showroom .menu-card,
+  .depth-showroom .menu-card:hover,
+  .depth-showroom .story-image img,
+  .depth-showroom .review-card:hover {
+    transform: none;
+  }
+
+  .depth-showroom .menu-card::before,
+  .depth-showroom .menu-card:hover::before {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 520px) {
+  .depth-showroom .hero-copy::before {
+    top: -35px;
+  }
+
+  .mobile-order-dock {
+    right: 77px;
+    left: 9px;
+  }
+
+  .mobile-order-dock small {
+    display: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .depth-showroom::before {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-showroom .hero::before,
+  .depth-showroom .hero-glow {
+    animation: none;
+  }
+
+  .depth-showroom .hero-product-image,
+  .depth-showroom .hero-flavor-chip,
+  .depth-showroom .floating-note,
+  .depth-showroom .spark,
+  .depth-showroom .menu-card,
+  .depth-showroom .story-image img,
+  .depth-showroom .navbar {
+    transform: none;
+    transition: none;
+  }
+}
