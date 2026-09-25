@@ -61,20 +61,57 @@
     ["2026-09-20", 5, 5, 5, "I think you can make the portion bigger so it doesn’t leave you wanting more. :)))"]
   ];
 
+  const maskedEmails = [
+    ...Array(20).fill("Anonymous"),
+    "melan*******@gmail.com",
+    "ven30*******@gmail.com",
+    "sanmi*******@gmail.com",
+    "shyne*******@gmail.com",
+    "armas*******@gmail.com",
+    "keane*******@gmail.com",
+    "jasmi*******@gmail.com",
+    "maria*******@gmail.com",
+    "samyg*******@gmail.com",
+    "jessi*******@gmail.com",
+    "joann*******@gmail.com",
+    "allan*******@gmail.com",
+    "staan*******@gmail.com",
+    "lorra*******@gmail.com",
+    "cyrus*******@gmail.com",
+    "chris*******@gmail.com",
+    "tolen*******@gmail.com",
+    "tenac*******@gmail.com",
+    "jelin*******@gmail.com",
+    "charl*******@gmail.com",
+    "jilli*******@gmail.com",
+    "jaspe*******@gmail.com",
+    "arell*******@gmail.com",
+    "atien*******@gmail.com",
+    "adrie*******@gmail.com",
+    "koich*******@gmail.com",
+    "tagra*******@gmail.com",
+    "shexy*******@gmail.com",
+    "icieg*******@gmail.com",
+    "cyrus*******@gmail.com",
+    "anafe*******@gmail.com",
+    "laial*******@gmail.com",
+    "cherr*******@gmail.com",
+    "nicol*******@gmail.com",
+    "rento*******@gmail.com",
+    "raymo*******@gmail.com",
+    "jpbnl*******@gmail.com"
+  ];
+
   window.ubeImportedReviews = responses.map(
     ([date, appearance, texture, flavor, comment], index) => ({
       id: "imported-" + (index + 1),
-      display_name: "Anonymous",
+      display_name: maskedEmails[index],
       is_anonymous: true,
+      is_imported: true,
       flavor: "Original UbeSmores Cookie",
       rating: (appearance + texture + flavor) / 3,
       review_text: comment,
-      created_at: date + "T12:00:00+08:00",
-      imported_ratings: {
-        appearance,
-        texture,
-        flavor
-      }
+      created_at: date + "T12:00:00+08:00"
     })
   );
 })();

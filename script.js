@@ -1207,8 +1207,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     message.textContent = "“" + review.review_text + "”";
 
-    name.textContent = review.imported_ratings
-      ? "Anonymous"
+    name.textContent = review.is_imported
+      ? review.display_name
       : review.is_anonymous
         ? "Anonymous Cookie Lover"
         : review.display_name;
@@ -1228,30 +1228,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ).format(reviewDate);
 
     footer.append(name, flavor, date);
-    card.append(stars, message);
-
-    if (review.imported_ratings) {
-      const breakdown = document.createElement("div");
-      breakdown.className = "review-rating-breakdown";
-
-      [
-        ["Appearance", review.imported_ratings.appearance],
-        ["Texture", review.imported_ratings.texture],
-        ["Flavor", review.imported_ratings.flavor]
-      ].forEach(function (ratingItem) {
-        const item = document.createElement("span");
-        const score = document.createElement("strong");
-
-        item.append(document.createTextNode(ratingItem[0] + " "));
-        score.textContent = ratingItem[1] + "/5";
-        item.append(score);
-        breakdown.append(item);
-      });
-
-      card.append(breakdown);
-    }
-
-    card.append(footer);
+    card.append(stars, message, footer);
     card.className = "review-card";
 
     return card;
