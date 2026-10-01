@@ -123,7 +123,7 @@
   "url": "https://giandenvertasani-art.github.io/ubesmores-website/",
   "image": "https://giandenvertasani-art.github.io/ubesmores-website/images/coffee-white-chocolate.webp",
   "description": "The original UbeSmores Cookie plus four new flavors: Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan.",
-  "priceRange": "₱89",
+  "priceRange": "₱89–₱489",
   "sameAs": [
     "https://www.facebook.com/Ube.Smores.Cookie",
     "https://www.instagram.com/ubesmoresc.o/",
@@ -156,9 +156,14 @@
     rel="stylesheet"
     href="./cozy-refresh.css?v=20260925-1"
   >
+
+  <link
+    rel="stylesheet"
+    href="./refined-cozy.css?v=20261001-2"
+  >
 </head>
 
-<body class="cozy-showroom">
+<body class="cozy-showroom refined-cozy">
 
   <!-- Announcement -->
   <div class="announcement">
@@ -328,11 +333,12 @@
       <div class="story-image reveal">
 
         <img
-          src="./images/coffee-white-chocolate.webp"
-          alt="Freshly baked Coffee White Chocolate cookie"
+          class="story-team-image"
+          src="./images/ubesmores-team.webp?v=20261001-1"
+          alt="UbeSmores group gathered together"
         >
 
-        <span>Good things ahead ♡</span>
+        <span>Sweet moments, made together ♡</span>
 
       </div>
 
@@ -390,6 +396,14 @@
         <p class="eyebrow">Just dropped</p>
         <h2>The original plus four new flavors.</h2>
         <p>Keep loving the original UbeSmores Cookie and meet four exciting new creations—all ₱89 each.</p>
+      </div>
+
+      <div class="flavor-guide" aria-label="Available cookie flavors">
+        <span><b>01</b> UbeSmores</span>
+        <span><b>02</b> Coffee</span>
+        <span><b>03</b> Salted Caramel</span>
+        <span><b>04</b> Biscoff Yema</span>
+        <span><b>05</b> Buko Pandan</span>
       </div>
 
       <div class="cookie-menu">
@@ -712,8 +726,8 @@
         </h2>
 
         <p>
-          Choose a solo cookie or build a mixed box of 6 or 8.
-          Your quantity and total will update automatically.
+          Choose 1 piece for ₱89, mix any 3 for ₱249,
+          or build a box of 6 for ₱489.
         </p>
 
       </div>
@@ -731,7 +745,7 @@
           <fieldset class="order-type-picker form-field full" id="orderTypePicker">
             <legend>
               <span class="box-step-number">01</span>
-              Choose your order type
+              Choose your package
             </legend>
 
             <div class="order-type-options">
@@ -739,13 +753,13 @@
                 <input
                   type="radio"
                   name="Order Type"
-                  value="Solo Order"
-                  data-order-type="solo"
+                  value="1 Piece – ₱89"
+                  data-order-type="piece-1"
                   checked
                 >
                 <span>
-                  <strong>Solo Cookie</strong>
-                  <small>Choose one flavor</small>
+                  <strong>1 Piece</strong>
+                  <small>1 cookie · ₱89</small>
                 </span>
               </label>
 
@@ -753,25 +767,25 @@
                 <input
                   type="radio"
                   name="Order Type"
-                  value="Mix Box of 6"
+                  value="Box of 3 – ₱249"
+                  data-order-type="box-3"
+                >
+                <span>
+                  <strong>3 Pieces</strong>
+                  <small>Mix any 3 · ₱249</small>
+                </span>
+              </label>
+
+              <label class="order-type-card">
+                <input
+                  type="radio"
+                  name="Order Type"
+                  value="Box of 6 – ₱489"
                   data-order-type="box-6"
                 >
                 <span>
-                  <strong>Mix Box 6</strong>
-                  <small>Choose exactly 6 cookies</small>
-                </span>
-              </label>
-
-              <label class="order-type-card">
-                <input
-                  type="radio"
-                  name="Order Type"
-                  value="Mix Box of 8"
-                  data-order-type="box-8"
-                >
-                <span>
-                  <strong>Mix Box 8</strong>
-                  <small>Choose exactly 8 cookies</small>
+                  <strong>6 Pieces</strong>
+                  <small>Mix any 6 · ₱489</small>
                 </span>
               </label>
             </div>
@@ -786,14 +800,14 @@
                 <h3 id="boxBuilderTitle">Choose your flavor</h3>
               </div>
 
-              <p id="boxBuilderHint">Solo orders use one flavor.</p>
+              <p id="boxBuilderHint">Choose exactly 1 cookie.</p>
             </div>
 
             <div class="box-flavor-grid">
 
               <article class="box-flavor" data-flavor-card="ube-smores">
                 <img src="./images/ube.png" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>UbeSmores Cookie</strong><small>₱89 each</small></div>
+                <div class="box-flavor-info"><strong>UbeSmores Cookie</strong><small>Choose for your package</small></div>
                 <div class="quantity-control">
                   <button type="button" class="box-step" data-action="decrease" aria-label="Remove one UbeSmores Cookie">−</button>
                   <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="ube-smores" aria-label="UbeSmores Cookie quantity">
@@ -803,7 +817,7 @@
 
               <article class="box-flavor" data-flavor-card="coffee-white-chocolate">
                 <img src="./images/coffee-white-chocolate-menu.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Coffee White Chocolate</strong><small>₱89 each</small></div>
+                <div class="box-flavor-info"><strong>Coffee White Chocolate</strong><small>Choose for your package</small></div>
                 <div class="quantity-control">
                   <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Coffee White Chocolate">−</button>
                   <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="coffee-white-chocolate" aria-label="Coffee White Chocolate quantity">
@@ -813,7 +827,7 @@
 
               <article class="box-flavor" data-flavor-card="salted-caramel">
                 <img src="./images/salted-caramel-menu.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Salted Caramel</strong><small>₱89 each</small></div>
+                <div class="box-flavor-info"><strong>Salted Caramel</strong><small>Choose for your package</small></div>
                 <div class="quantity-control">
                   <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Salted Caramel">−</button>
                   <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="salted-caramel" aria-label="Salted Caramel quantity">
@@ -823,7 +837,7 @@
 
               <article class="box-flavor" data-flavor-card="biscoff-yema">
                 <img src="./images/biscoff-yema-menu.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Biscoff Yema</strong><small>₱89 each</small></div>
+                <div class="box-flavor-info"><strong>Biscoff Yema</strong><small>Choose for your package</small></div>
                 <div class="quantity-control">
                   <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Biscoff Yema">−</button>
                   <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="biscoff-yema" aria-label="Biscoff Yema quantity">
@@ -833,7 +847,7 @@
 
               <article class="box-flavor" data-flavor-card="buko-pandan">
                 <img src="./images/buko-pandan-menu.webp" alt="" loading="lazy" width="76" height="76">
-                <div class="box-flavor-info"><strong>Buko Pandan</strong><small>₱89 each</small></div>
+                <div class="box-flavor-info"><strong>Buko Pandan</strong><small>Choose for your package</small></div>
                 <div class="quantity-control">
                   <button type="button" class="box-step" data-action="decrease" aria-label="Remove one Buko Pandan">−</button>
                   <input class="flavor-quantity" type="number" min="0" max="99" value="0" inputmode="numeric" data-flavor="buko-pandan" aria-label="Buko Pandan quantity">
@@ -1272,7 +1286,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./gform-reviews.js?v=20260925-3"></script>
-  <script src="./script.js?v=20260925-4"></script>
+  <script src="./script.js?v=20261001-1"></script>
 
 </body>
 </html>
