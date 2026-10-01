@@ -247,6 +247,13 @@ body.refined-cozy {
   box-shadow: 0 20px 44px rgba(55, 32, 57, 0.14);
 }
 
+.refined-cozy .story-image .story-team-image {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+}
+
 .refined-cozy .story-image span {
   right: 18px;
   bottom: 18px;
