@@ -216,10 +216,10 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   const orderPackages = {
-    "piece-1": {
-      label: "1 Piece",
-      quantity: 1,
-      price: 89
+    "solo": {
+      label: "Solo Cookies",
+      quantity: null,
+      unitPrice: 89
     },
     "box-3": {
       label: "Box of 3",
@@ -247,18 +247,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return selected
       ? selected.getAttribute("data-order-type")
-      : "piece-1";
+      : "solo";
   }
 
   function getSelectedOrderPackage() {
     return (
       orderPackages[getSelectedOrderType()] ||
-      orderPackages["piece-1"]
+      orderPackages.solo
     );
   }
 
   function getOrderLimit() {
-    return getSelectedOrderPackage().quantity;
+    return getSelectedOrderPackage().quantity || 99;
   }
 
   function normalizeFlavorQuantity(input) {
@@ -315,15 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function enforceOrderType(changedInput) {
     const orderType = getSelectedOrderType();
 
-    if (orderType === "piece-1" && changedInput) {
-      flavorQuantityInputs.forEach(function (input) {
-        if (input !== changedInput && Number(changedInput.value) > 0) {
-          input.value = "0";
-        }
-      });
-    }
-
-    if (orderType !== "piece-1") {
+    if (orderType !== "solo") {
       const limit = getOrderLimit();
       let remaining = limit;
 
@@ -354,18 +346,23 @@ document.addEventListener("DOMContentLoaded", function () {
     const orderType = getSelectedOrderType();
     const selectedPackage = getSelectedOrderPackage();
     const targetQuantity = selectedPackage.quantity;
-    const totalPrice = totalQuantity > 0
-      ? selectedPackage.price
-      : 0;
+    const isSoloOrder = orderType === "solo";
+    const totalPrice = isSoloOrder
+      ? totalQuantity * selectedPackage.unitPrice
+      : totalQuantity > 0
+        ? selectedPackage.price
+        : 0;
 
     if (cookieCountDisplay) {
-      cookieCountDisplay.textContent =
-        totalQuantity +
-        " of " +
-        targetQuantity +
-        (targetQuantity === 1
-          ? " cookie selected"
-          : " cookies selected");
+      cookieCountDisplay.textContent = isSoloOrder
+        ? totalQuantity +
+          (totalQuantity === 1
+            ? " cookie selected"
+            : " cookies selected")
+        : totalQuantity +
+          " of " +
+          targetQuantity +
+          " cookies selected";
     }
 
     if (totalPriceDisplay) {
@@ -383,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
       boxSummaryInput.value = flavorSummary
         ? selectedPackage.label +
           " — ₱" +
-          selectedPackage.price.toLocaleString("en-PH") +
+          totalPrice.toLocaleString("en-PH") +
           "\n" +
           flavorSummary
         : "";
@@ -431,20 +428,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (boxBuilderTitle) {
       boxBuilderTitle.textContent =
-        orderType === "piece-1"
-          ? "Choose your cookie"
+        orderType === "solo"
+          ? "Choose your cookies"
           : "Mix your cookie box";
     }
 
     if (boxBuilderHint) {
       const selectedPackage = getSelectedOrderPackage();
 
-      boxBuilderHint.textContent =
-        "Choose exactly " +
-        selectedPackage.quantity +
-        (selectedPackage.quantity === 1
-          ? " cookie."
-          : " cookies. You can mix flavors.");
+      boxBuilderHint.textContent = orderType === "solo"
+        ? "Add one or more of any flavor. ₱89 each."
+        : "Choose exactly " +
+          selectedPackage.quantity +
+          " cookies. You can mix flavors.";
     }
 
     flavorQuantityInputs.forEach(function (input) {
@@ -504,7 +500,10 @@ document.addEventListener("DOMContentLoaded", function () {
           const current =
             normalizeFlavorQuantity(input);
 
-          if (direction === "increase") {
+          if (
+            direction === "increase" &&
+            getSelectedOrderType() !== "solo"
+          ) {
             const totals = updateOrderTotal();
 
             if (totals.totalQuantity >= getOrderLimit()) {
@@ -551,19 +550,28 @@ document.addEventListener("DOMContentLoaded", function () {
             input &&
             flavorInformation[selectedFlavor]
           ) {
-            const singlePieceOption = orderTypeInputs.find(
+            const wasSoloOrder =
+              getSelectedOrderType() === "solo";
+
+            const soloOption = orderTypeInputs.find(
               function (option) {
-                return option.getAttribute("data-order-type") === "piece-1";
+                return option.getAttribute("data-order-type") === "solo";
               }
             );
 
-            if (singlePieceOption) {
-              singlePieceOption.checked = true;
+            if (soloOption) {
+              soloOption.checked = true;
             }
 
-            flavorQuantityInputs.forEach(function (quantityInput) {
-              quantityInput.value = quantityInput === input ? "1" : "0";
-            });
+            if (!wasSoloOrder) {
+              flavorQuantityInputs.forEach(function (quantityInput) {
+                quantityInput.value = "0";
+              });
+            }
+
+            input.value = String(
+              Math.min((Number(input.value) || 0) + 1, 99)
+            );
 
             updateOrderType(false);
 
@@ -703,8 +711,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const boxTotals = updateOrderTotal();
 
         const invalidPackage =
+          boxTotals.targetQuantity &&
           boxTotals.totalQuantity !==
-          boxTotals.targetQuantity;
+            boxTotals.targetQuantity;
 
         if (
           boxTotals.totalQuantity < 1 ||
@@ -890,13 +899,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "Hi, cookie lover! 💜 Ask me about our original UbeSmores Cookie, four NEW flavors, prices, ordering, pickup, delivery, preferred date, or social-media accounts.",
 
     flavors:
-      "We have five flavors: UbeSmores Cookie, Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan. Choose any flavor for 1 piece, or mix flavors in the 3- and 6-piece boxes. 🍪",
+      "We have five flavors: UbeSmores Cookie, Coffee White Chocolate, Salted Caramel, Biscoff Yema, and Buko Pandan. Order one or more solo cookies in any flavor, or mix flavors in the 3- and 6-piece boxes. 🍪",
 
     prices:
-      "Our package prices are 1 piece for ₱89, 3 pieces for ₱249, and 6 pieces for ₱489.",
+      "Solo cookies are ₱89 each. You can also choose 3 pieces for ₱249 or 6 pieces for ₱489.",
 
     order:
-      "Choose 1 Piece, 3 Pieces, or 6 Pieces. Select the exact number of cookies for your package, mix flavors if you like, enter your delivery details, and submit your order.",
+      "Choose Solo Cookies to add one or more of any flavor, or select the 3-piece or 6-piece package and complete the exact box quantity. Then enter your delivery details and submit your order.",
 
     delivery:
       "Delivery is available! Choose Delivery in the order form and enter your complete delivery address.",
